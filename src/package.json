@@ -15,7 +15,10 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@fancyapps/ui": "^5.0.35",
         "jquery": "^3.7.1",
-        "swiper": "^11.1.0"
+        "spinkit": "^2.0.1",
+        "swiper": "^11.1.0",
+        "toastr": "^2.1.4"
     }
 }

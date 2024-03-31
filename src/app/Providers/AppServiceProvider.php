@@ -23,5 +23,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('main-layout', \App\View\Components\Layouts\Main::class);
         Blade::component('main-header', \App\View\Components\Headers\Main::class);
         Blade::component('main-footer', \App\View\Components\Footers\Main::class);
+
+        Blade::component('form', \App\View\Components\Forms\Form::class);
     }
 }
