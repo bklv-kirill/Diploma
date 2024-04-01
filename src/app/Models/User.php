@@ -2,19 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Notifications\Notifiable;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
 use Orchid\Platform\Models\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
+    use Notifiable;
+
     protected $fillable = [
         'first_name',
         'second_name',
         'patronymic',
         'email',
         'password',
+        'main_role_id',
     ];
 
     protected $hidden = [
@@ -48,4 +54,9 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+    public function mainRole(): BelongsTo
+    {
+        return $this->belongsTo(MainRole::class);
+    }
 }

@@ -13,8 +13,8 @@ class StoreController extends Controller
     {
         $userData = $request->validated();
 
-        User::query()->create($userData);
+        User::query()->create(array_merge(['main_role_id' => 2], $userData));
 
-        return redirect()->route('user.login');
+        return redirect()->route('main');
     }
 }

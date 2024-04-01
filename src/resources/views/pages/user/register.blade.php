@@ -12,50 +12,12 @@
 <div class="wrapper">
     <h2>Регистрация</h2>
     <x-form :action="route('user.store')" method="POST">
-        @error('first_name')
-        <span>{{ $message }}</span>
-        @enderror
-        <div class="input-box">
-            <input type="text" name="first_name" class="@error('first_name') auth-invalid @enderror"
-                   placeholder="Введите имя" value="{{ old('first_name') }}" required>
-        </div>
-
-        @error('second_name')
-        <span>{{ $message }}</span>
-        @enderror
-        <div class="input-box">
-            <input type="text" name="second_name" class="@error('second_name') auth-invalid @enderror"
-                   placeholder="Введите фамилию" value="{{ old('second_name') }}" required>
-        </div>
-
-        @error('patronymic')
-        <span>{{ $message }}</span>
-        @enderror
-        <div class="input-box">
-            <input type="text" name="patronymic" class="@error('patronymic') auth-invalid @enderror"
-                   placeholder="Введите отчество" value="{{ old('patronymic') }}" required>
-        </div>
-
-        @error('email')
-        <span>{{ $message }}</span>
-        @enderror
-        <div class="input-box">
-            <input type="text" name="email" class="@error('email') auth-invalid @enderror"
-                   placeholder="Введите email" value="{{ old('email') }}" required>
-        </div>
-
-        @error('password')
-        <span>{{ $message }}</span>
-        @enderror
-        <div class="input-box">
-            <input type="password" name="password" class="@error('password') auth-invalid @enderror"
-                   placeholder="Введите пароль" required>
-        </div>
-
-        <div class="input-box">
-            <input type="password" name="password_confirmation"
-                   class="@error('password') auth-invalid @enderror" placeholder="Подтвердите пароль" required>
-        </div>
+        <x-auth-register-input name="first_name" type="text" placeholder="Введите имя" required/>
+        <x-auth-register-input name="second_name" type="text" placeholder="Введите фамилию" required/>
+        <x-auth-register-input name="patronymic" type="text" placeholder="Введите отчество" required/>
+        <x-auth-register-input name="email" type="email" placeholder="Введите email" required/>
+        <x-auth-register-input name="password" type="password" placeholder="Введите пароль" required/>
+        <x-auth-register-input name="password_confirmation" type="password" placeholder="Введите пароль"/>
 
         <div class="input-box button">
             <input type="submit" value="Зарегестрироваться">

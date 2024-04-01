@@ -12,26 +12,8 @@
 <div class="wrapper">
     <h2>Авторизация</h2>
     <x-form :action="route('user.auth')" method="POST">
-        @error('email')
-        <span>{{ $message }}</span>
-        @enderror
-        <div class="input-box">
-            <input type="email" name="email" class="@error('email') auth-invalid @enderror"
-                   placeholder="Введите email" value="{{ old('email') }}" required>
-        </div>
-
-        @error('password')
-        <span>{{ $message }}</span>
-        @enderror
-        <div class="input-box">
-            <input type="password" name="password" class="@error('password') auth-invalid @enderror"
-                   placeholder="Введите пароль" required>
-        </div>
-
-        <div class="remember-me">
-            <input type="checkbox" name="remember_me">
-            <h3>Запомнить меня</h3>
-        </div>
+        <x-auth-register-input name="email" type="email" placeholder="Введите email" required/>
+        <x-auth-register-input name="password" type="password" placeholder="Введите пароль" required/>
 
         <div class="input-box button">
             <input type="submit" value="Войти">

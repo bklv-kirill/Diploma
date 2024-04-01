@@ -19,5 +19,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('main-footer', \App\View\Components\Footers\Main::class);
 
         Blade::component('form', \App\View\Components\Forms\Form::class);
+        Blade::component('auth-register-input', \App\View\Components\Forms\AuthRegister\Input::class);
+
+        \App\Models\User::observe(\App\Observers\UserObserver::class);
     }
 }

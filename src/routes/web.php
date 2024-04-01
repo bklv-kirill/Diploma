@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', \App\Http\Controllers\Pages\MainPageController::class)->name("main");
+Route::get('/', \App\Http\Controllers\Pages\MainPageController::class)->name('main');
 
 Route::name('user.')->group(function () {
     Route::middleware('guest')->group(function () {
@@ -14,4 +14,10 @@ Route::name('user.')->group(function () {
     Route::post('/register', \App\Http\Controllers\User\StoreController::class)->name('store');
 
     Route::get('/log-out', \App\Http\Controllers\User\LogOutController::class)->name('log-out');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/email/verify/{id}/{hash}', \App\Http\Controllers\User\EmailVerificationController::class)
+        ->middleware('signed')
+        ->name('verification.verify');
 });
