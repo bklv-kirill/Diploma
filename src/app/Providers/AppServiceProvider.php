@@ -14,9 +14,13 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        Blade::component('nav-bar', \App\View\Components\NavBar::class);
+        Blade::component('footer', \App\View\Components\Footer::class);
+
         Blade::component('main-layout', \App\View\Components\Layouts\Main::class);
+        Blade::component('auth-register-layout', \App\View\Components\Layouts\AuthRegister::class);
+
         Blade::component('main-header', \App\View\Components\Headers\Main::class);
-        Blade::component('main-footer', \App\View\Components\Footers\Main::class);
 
         Blade::component('form', \App\View\Components\Forms\Form::class);
         Blade::component('auth-register-input', \App\View\Components\Forms\AuthRegister\Input::class);
