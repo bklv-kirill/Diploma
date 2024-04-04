@@ -1,0 +1,111 @@
+.nav-bar {
+    @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap'); // Шрифт для заголовков.
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    min-width: 256px;
+
+    background-color: #4070f4;
+
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: #fff;
+
+    > .logo, > .toggle {
+        margin: 20px;
+    }
+
+    > .toggle {
+        display: none;
+
+        transition: transform 0.1s ease;
+
+        svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        &.scaled {
+            transform: scale(0.9);
+        }
+    }
+
+    > .navigation {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    > .controls {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        > div > svg {
+            min-width: 24px;
+            max-width: 24px;
+            min-height: 24px;
+            max-height: 24px;
+        }
+
+        a {
+            margin-left: 8px;
+        }
+    }
+
+    > .navigation, > .controls {
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: nowrap;
+
+            margin: 20px;
+        }
+    }
+
+    > .navigation, > .controls {
+        a {
+            font-size: 16px;
+            white-space: nowrap;
+
+            transition: border-bottom-color 0.2s ease-in-out;
+
+            border-bottom: 2px solid transparent;
+            border-bottom-left-radius: 1px;
+            border-bottom-right-radius: 1px;
+
+            &.active-page {
+                border-bottom: 2px solid #fff;
+            }
+
+            &:hover {
+                border-bottom: 2px solid #fff;
+            }
+        }
+    }
+
+
+    @media (max-width: 980px) {
+        justify-content: flex-start;
+    }
+
+    @media (max-width: 430px) {
+        justify-content: space-between;
+
+        & > .navigation, > .controls {
+            display: none;
+        }
+        & > .toggle {
+            display: block;
+        }
+
+        & .open {
+            display: flex;
+        }
+    }
+}

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Pages\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 
-class RegisterController extends Controller
+class LoginController extends Controller
 {
     public function __invoke(): View
     {
-        return view('pages.user.register');
+        return view('pages.user.login');
     }
 }
