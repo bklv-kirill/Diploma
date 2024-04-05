@@ -1,0 +1,66 @@
+@import '../variables/colors';
+
+.footer {
+    flex-shrink: 0;
+
+    padding: 20px;
+
+    background-color: $background-color;
+
+    color: #fff;
+
+    .footer-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .logo, .footer-column {
+            margin: 20px;
+        }
+
+        .logo {
+            font-family: "Montserrat Alternates", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 16px;
+        }
+
+        .footer-column {
+
+            > span {
+                font-family: "Montserrat Alternates", sans-serif;
+                font-weight: 500;
+                font-style: normal;
+                font-size: 16px;
+
+                margin-bottom: 25px;
+                padding-bottom: 5px;
+
+                border-bottom: 2px solid $border-color;
+                border-bottom-left-radius: 1px;
+                border-bottom-right-radius: 1px;
+            }
+
+            > ul > li {
+                &:first-child {
+                    margin-top: 20px;
+                }
+
+                > a {
+                    font-family: "Comfortaa", sans-serif;
+                    font-weight: 300;
+                    font-style: normal;
+                    font-size: 14px;
+
+                    text-decoration: none;
+                    transition: padding 0.2s ease-in-out;
+
+                    &:hover {
+                        padding-left: 8px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -8,11 +8,9 @@ use Illuminate\View\Component;
 
 class AuthRegister extends Component
 {
-    public string $title;
 
-    public function __construct(string $title)
+    public function __construct(public string $title)
     {
-        $this->title = $title;
     }
 
     public function render(): View|Closure|string

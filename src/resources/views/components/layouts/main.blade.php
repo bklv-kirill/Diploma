@@ -10,8 +10,9 @@
 </head>
 <body>
 <x-nav-bar/>
-<x-main-header/>
-{{ $slot }}
+<div class="main-content">
+    {{ $slot }}
+</div>
 <x-footer/>
 </body>
 </html>

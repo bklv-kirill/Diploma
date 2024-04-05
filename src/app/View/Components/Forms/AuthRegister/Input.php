@@ -8,17 +8,13 @@ use Illuminate\View\Component;
 
 class Input extends Component
 {
-    public string $name;
-    public string $type;
-    public string $placeholder;
-    public bool $required;
-
-    public function __construct(string $name, string $type, string $placeholder, bool $required = false)
+    public function __construct(
+        public string $name,
+        public string $type,
+        public string $placeholder,
+        public bool   $required = false,
+    )
     {
-        $this->name = $name;
-        $this->type = $type;
-        $this->placeholder = $placeholder;
-        $this->required = $required;
     }
 
     public function render(): View|Closure|string

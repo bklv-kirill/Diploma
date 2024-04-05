@@ -6,3 +6,17 @@
     margin: 0;
     padding: 0;
 }
+
+html, body {
+    min-width: 256px;
+    height: 100%;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+    > .main-content {
+        padding: 20px;
+    }
+}

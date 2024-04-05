@@ -55,6 +55,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'created_at',
     ];
 
+    public function fullName(): string
+    {
+        return $this->first_name . ' ' . $this->second_name;
+    }
+
     public function mainRole(): BelongsTo
     {
         return $this->belongsTo(MainRole::class);

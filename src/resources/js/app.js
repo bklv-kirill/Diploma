@@ -9,6 +9,9 @@ import './components/navbar.js';
 
 import 'spinkit/spinkit.css'
 
+import '../scss/variables/colors.scss';
+import '../scss/variables/fonts.scss';
+
 import '../scss/components/nav-bar.scss'
 import '../scss/components/footer.scss'
 

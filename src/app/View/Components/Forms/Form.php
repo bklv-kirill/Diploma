@@ -8,13 +8,9 @@ use Illuminate\View\Component;
 
 class Form extends Component
 {
-    public string $action;
-    public string $method;
 
-    public function __construct(string $action, string $method)
+    public function __construct(public string $action, public string $method)
     {
-        $this->action = $action;
-        $this->method = $method;
     }
 
     public function render(): View|Closure|string
