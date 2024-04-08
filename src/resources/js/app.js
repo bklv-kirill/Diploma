@@ -16,6 +16,8 @@ import '../scss/components/nav-bar.scss'
 import '../scss/components/footer.scss'
 
 import '../scss/components/headers/main.scss';
+
 import '../scss/components/layouts/main.scss';
 
 import '../scss/pages/main.scss';
+import '../scss/pages/user/profile.scss';

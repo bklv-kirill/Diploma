@@ -154,6 +154,24 @@ body {
                 margin-bottom: 15px;
             }
 
+            > .gender-select {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                margin-bottom: 23px;
+
+                > .gender-radio {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:last-child {
+                        margin-left: 15px;
+                    }
+                }
+            }
+
             h3 {
                 margin-left: 10px;
 

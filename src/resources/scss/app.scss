@@ -15,8 +15,4 @@ html, body {
 body {
     display: grid;
     grid-template-rows: auto 1fr auto;
-
-    > .main-content {
-        padding: 20px;
-    }
 }

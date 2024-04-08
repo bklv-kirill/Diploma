@@ -1,0 +1,132 @@
+@import '../../variables/colors';
+
+.profile {
+    padding: 10px;
+
+    background-color: rgba(64, 112, 244, 0.18);
+
+    > .profile-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+        margin: 10px;
+
+        > .user-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+
+            padding: 10px;
+
+            > .avatar {
+                width: 250px;
+                height: 250px;
+
+                margin: 10px;
+
+                border-radius: 100%;
+
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            > .user-fio {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                margin: 10px;
+
+                font-family: "Montserrat Alternates", sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                font-style: normal;
+                color: $background-color;
+
+                > svg {
+                    width: 25px;
+                    min-width: 25px;
+                    height: 25px;
+                    min-height: 25px;
+
+                    margin-right: 10px;
+                }
+            }
+
+            .user-contacts {
+                width: 100%;
+
+                margin: 10px;
+                padding: 10px;
+
+                > h3 {
+                    font-family: "Montserrat Alternates", sans-serif;
+                    font-weight: 500;
+                    font-size: 20px;
+                    font-style: normal;
+                    color: $background-color;
+                }
+
+                > div {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    margin-top: 10px;
+
+                    border-bottom: 1px solid $background-color;
+
+                    > span:first-child {
+                        font-family: "Montserrat Alternates", sans-serif;
+                        font-weight: 500;
+                        font-size: 20px;
+                        font-style: normal;
+                        color: $background-color;
+                    }
+
+                    > span:last-child {
+                        font-family: "Comfortaa", sans-serif;
+                        font-weight: 400;
+                        font-size: 16px;
+                        font-style: normal;
+                        color: rgba(64, 112, 244, 0.88);
+                    }
+                }
+            }
+        }
+
+        > .user-info {
+            padding: 10px;
+
+            border-left: 2px solid $background-color;
+
+            > .user-about {
+                margin: 10px;
+
+                > h3 {
+                    font-family: "Montserrat Alternates", sans-serif;
+                    font-weight: 500;
+                    font-size: 20px;
+                    font-style: normal;
+                    color: $background-color;
+                }
+
+                > p {
+                    font-family: "Comfortaa", sans-serif;
+                    font-weight: 400;
+                    font-size: 16px;
+                    font-style: normal;
+                    color: rgba(64, 112, 244, 0.88);
+                }
+            }
+        }
+
+        @media (max-width: 750px) {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    }
+}

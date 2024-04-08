@@ -9,6 +9,7 @@ class ProfileController extends Controller
 {
     public function __invoke(): View
     {
-        return view('pages.user.profile');
+        $user = auth()->user();
+        return view('pages.user.profile', compact(['user']));
     }
 }

@@ -12,6 +12,8 @@ return new class extends Migration {
             $table->string('first_name');
             $table->string('second_name');
             $table->string('patronymic');
+            $table->boolean('gender');
+            $table->unsignedBigInteger('phone')->unique()->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
