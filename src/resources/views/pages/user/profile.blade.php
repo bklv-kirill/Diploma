@@ -1,5 +1,4 @@
 <x-main-layout :title="'Личный кабинет'">
-    <x-main-header/>
 
     <div class="profile">
         <div class="profile-container">
@@ -53,19 +52,12 @@
                         <span>{{ $user->email }}</span>
                     </div>
                 </div>
+                <a href="{{ route('user.edit') }}" class="user-profile-edit">Редактировать профиль</a>
             </div>
             <div class="user-info">
                 <div class="user-about">
                     <h3>Обо мне:</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum explicabo nesciunt omnis
-                        sapiente veritatis. Accusantium aliquam cupiditate delectus dolor, eius facere facilis libero
-                        maiores maxime minima, minus, numquam omnis praesentium quae quas quidem ratione. Alias aliquid
-                        atque blanditiis consequuntur dolor est ex excepturi fugiat harum iste itaque maiores nulla
-                        omnis, quisquam repellendus tempora tempore tenetur voluptas. Aliquid blanditiis ducimus esse,
-                        excepturi ipsa magni minima minus quasi temporibus! Cupiditate deserunt dolor expedita nemo non
-                        pariatur saepe similique velit veniam veritatis. Aliquid aut deserunt eius error illum ipsa
-                        molestiae, nemo odit optio perferendis perspiciatis provident, quasi quo sunt ut veniam, vero
-                        voluptatem?</p>
+                    <p>{{ $user->about ??  'Информация отсутствует' }}</p>
                 </div>
             </div>
         </div>

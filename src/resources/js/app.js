@@ -6,6 +6,7 @@ import './fancyapps.js';
 import './toastr.js';
 
 import './components/navbar.js';
+import './components/forms/modules/fileInput.js';
 
 import 'spinkit/spinkit.css'
 
@@ -21,3 +22,4 @@ import '../scss/components/layouts/main.scss';
 
 import '../scss/pages/main.scss';
 import '../scss/pages/user/profile.scss';
+import '../scss/pages/user/edit.scss';
