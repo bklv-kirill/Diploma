@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;
+use Orchid\Attachment\Attachable;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
@@ -13,6 +14,7 @@ use Orchid\Platform\Models\User as Authenticatable;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
+    use Attachable;
 
     protected $fillable = [
         'first_name',
@@ -63,6 +65,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function fullName(): string
     {
         return $this->first_name . ' ' . $this->second_name;
+    }
+
+    public function avatar(): string
+    {
+        return $this->attachment()->firstWhere('group', 'avatar')?->getRelativeUrlAttribute() ?? asset('/images/default.jpg');
     }
 
     public function mainRole(): BelongsTo

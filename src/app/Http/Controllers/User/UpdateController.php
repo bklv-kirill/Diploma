@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Actions\User\LoadUserAvatarIfExists;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UpdateRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
 
 class UpdateController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(UpdateRequest $request, User $user): RedirectResponse
+    public function __invoke(UpdateRequest $request, User $user, LoadUserAvatarIfExists $loadUserAvatarIfExists): RedirectResponse
     {
         $userData = $request->validated();
 
-        $avatar = isset($userData['avatar']) ? Storage::disk('images')->put('', $userData['avatar']) : null;
+        if (isset($userData['avatar']))
+            $loadUserAvatarIfExists($user, $userData['avatar']);
 
         $user->update([
             'about' => $userData['about'],

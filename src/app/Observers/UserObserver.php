@@ -4,7 +4,6 @@ namespace App\Observers;
 
 use App\Models\user;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Auth;
 
 class UserObserver
 {
@@ -13,7 +12,7 @@ class UserObserver
      */
     public function created(user $user): void
     {
-        Auth::login($user);
+        auth()->login($user);
 
         // TODO: Реализовать отправку почтовых писем через RabbitMQ очереди.
         event(new Registered($user));

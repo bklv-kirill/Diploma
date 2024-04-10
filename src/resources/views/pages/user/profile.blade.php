@@ -3,7 +3,8 @@
     <div class="profile">
         <div class="profile-container">
             <div class="user-container">
-                <div class="avatar" style="background-image: url('{{ asset('/images/default.jpg') }}')"></div>
+                <div class="avatar"
+                     style="background-image: url('{{ $user->avatar() }}')"></div>
                 <div class="user-fio">
                     @if($user->gender)
                         <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -55,6 +56,10 @@
                 <a href="{{ route('user.edit') }}" class="user-profile-edit">Редактировать профиль</a>
             </div>
             <div class="user-info">
+                <div class="user-created">
+                    <h3>На сайте с
+                        <span>{{ \Illuminate\Support\Carbon::parse($user->created_at)->format('d.m.Y') }}</span></h3>
+                </div>
                 <div class="user-about">
                     <h3>Обо мне:</h3>
                     <p>{{ $user->about ??  'Информация отсутствует' }}</p>

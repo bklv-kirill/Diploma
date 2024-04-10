@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\AuthRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -13,7 +12,7 @@ class AuthController extends Controller
     {
         $userData = $request->validated();
 
-        if (Auth::attempt([
+        if (auth()->attempt([
             'email' => $userData['email'],
             'password' => $userData['password']
         ], isset($userData['remember_me']))) {

@@ -120,12 +120,28 @@
         }
 
         > .user-info {
+            width: 100%;
+
             padding: 10px;
 
             border-left: 2px solid $background-color;
 
+            > .user-created {
+                margin: 10px;
+
+                > h3 {
+                    font-family: "Montserrat Alternates", sans-serif;
+                    font-weight: 500;
+                    font-size: 14px;
+                    font-style: normal;
+                    color: $border-color;
+                }
+            }
+
             > .user-about {
                 margin: 10px;
+
+                word-break: break-all;
 
                 > h3 {
                     font-family: "Montserrat Alternates", sans-serif;
