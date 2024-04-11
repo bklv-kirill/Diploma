@@ -58,11 +58,34 @@
             <div class="user-info">
                 <div class="user-created">
                     <h3>На сайте с
-                        <span>{{ \Illuminate\Support\Carbon::parse($user->created_at)->format('d.m.Y') }}</span></h3>
+                        <span>{{ \Illuminate\Support\Carbon::parse($user->created_at)->format('d.m.Y') }}</span>
+                    </h3>
                 </div>
                 <div class="user-about">
                     <h3>Обо мне:</h3>
-                    <p>{{ $user->about ??  'Информация отсутствует' }}</p>
+                    <p>- {{ $user->about ??  'Информация отсутствует' }}</p>
+                </div>
+                <div class="specifications">
+                    <div>
+                        <h3>Тип занятости:</h3>
+                        <ul>
+                            @forelse($employments as $employment)
+                                <li>- {{ $employment->name }}</li>
+                            @empty
+                                <li>- Не указан</li>
+                            @endforelse
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>График работы:</h3>
+                        <ul>
+                            @forelse($charts as $chart)
+                                <li>- {{ $chart->name }}</li>
+                            @empty
+                                <li>- Не указан</li>
+                            @endforelse
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

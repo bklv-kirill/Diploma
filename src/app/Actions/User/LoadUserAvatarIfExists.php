@@ -8,8 +8,10 @@ use Orchid\Attachment\File;
 
 class LoadUserAvatarIfExists
 {
-    public function __invoke(User $user, UploadedFile $uploadAvatar): void
+    public function __invoke(User $user, ?UploadedFile $uploadAvatar): void
     {
+        if (!$uploadAvatar) return;
+
         $user->attachment()->where('group', 'avatar')->delete();
 
         $uploadAvatar = new File($uploadAvatar, 'images', 'avatar');

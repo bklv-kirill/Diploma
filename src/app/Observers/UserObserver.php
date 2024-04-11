@@ -31,7 +31,8 @@ class UserObserver
      */
     public function deleted(user $user): void
     {
-        //
+        auth()->logout();
+        session()->regenerate();
     }
 
     /**

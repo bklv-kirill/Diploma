@@ -131,6 +131,43 @@
                 }
             }
 
+            > .specifications {
+                flex-wrap: wrap;
+                display: flex;
+
+                > div {
+                    margin: 10px;
+
+                    > h3 {
+                        margin: 10px;
+
+                        font-family: "Montserrat Alternates", sans-serif;
+                        font-weight: 500;
+                        font-size: 20px;
+                        font-style: normal;
+                        color: $background-color;
+                    }
+
+                    > div {
+                        margin: 10px;
+
+                        > label {
+                            margin-left: 2px;
+
+                            font-family: "Comfortaa", sans-serif;
+                            font-weight: 400;
+                            font-size: 16px;
+                            font-style: normal;
+                            color: $background-color;
+                        }
+
+                        > input, > label {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
             > .profile-update {
                 margin: 20px;
                 padding: 5px 10px;

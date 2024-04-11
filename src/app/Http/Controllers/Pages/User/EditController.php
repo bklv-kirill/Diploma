@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Pages\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chart;
+use App\Models\Employment;
 use Illuminate\View\View;
 
 class EditController extends Controller
@@ -11,6 +13,10 @@ class EditController extends Controller
     {
         $user = auth()->user();
 
-        return view('pages.user.edit', compact(['user']));
+        // TODO: Реализовать получение $employments и $charts через кеш. Добавить обсерверы.
+        $employments = Employment::query()->get();
+        $charts = Chart::query()->get();
+
+        return view('pages.user.edit', compact(['user', 'employments', 'charts']));
     }
 }

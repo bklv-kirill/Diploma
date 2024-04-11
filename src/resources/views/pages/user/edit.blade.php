@@ -26,33 +26,27 @@
                     </div>
                     @enderror
                 </div>
-                <div class="busyness">
-                    <h3>Занятость:</h3>
-                    <input type="checkbox" name="busyness[]" id="full_busyness">
-                    <label for="full_busyness">Полная занятость</label>
-
-                    <input type="checkbox" name="busyness[]" id="partly">
-                    <label for="partly">Частичная занятость</label>
-
-                    <input type="checkbox" name="busyness[]" id="internship">
-                    <label for="internship">Стажировка</label>
-                </div>
-                <div class="chart">
-                    <h3>Занятость:</h3>
-                    <input type="checkbox" name="chart[]" id="full_day">
-                    <label for="full_day">Полный день</label>
-
-                    <input type="checkbox" name="chart[]" id="replaceable">
-                    <label for="replaceable">Сменный график</label>
-
-                    <input type="checkbox" name="chart[]" id="flexible">
-                    <label for="flexible">Гибкий график</label>
-
-                    <input type="checkbox" name="chart[]" id="remotely">
-                    <label for="remotely">Удаленная работа</label>
-
-                    <input type="checkbox" name="chart[]" id="watch">
-                    <label for="watch">Вахтовый метод</label>
+                <div class="specifications">
+                    <div>
+                        <h3>Занятость:</h3>
+                        @foreach($employments as $employment)
+                            <div>
+                                <input type="checkbox" name="employments[]" id="{{ $employment->slug }}"
+                                       value="{{ $employment->id }}" @checked($user->employments->find($employment->id)?->exists())>
+                                <label for="{{ $employment->slug }}">{{ $employment->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div>
+                        <h3>График работы:</h3>
+                        @foreach($charts as $chart)
+                            <div>
+                                <input type="checkbox" name="charts[]" id="{{ $chart->slug }}"
+                                       value="{{ $chart->id }}" @checked($user->charts->find($chart->id)?->exists())>
+                                <label for="{{ $chart->slug }}">{{ $chart->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 <button class="profile-update" type="submit">Обновить</button>
             </x-form>

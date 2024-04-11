@@ -10,19 +10,20 @@ use Illuminate\Http\RedirectResponse;
 
 class UpdateController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
     public function __invoke(UpdateRequest $request, User $user, LoadUserAvatarIfExists $loadUserAvatarIfExists): RedirectResponse
     {
+        // TODO: Добвавить возможность удалить автатар, добавить номер телефона и изменить пароль.
+
         $userData = $request->validated();
 
-        if (isset($userData['avatar']))
-            $loadUserAvatarIfExists($user, $userData['avatar']);
+        $loadUserAvatarIfExists($user, $userData['avatar'] ?? null);
 
-        $user->update([
-            'about' => $userData['about'],
-        ]);
+        $user->employments()->sync($userData['employments'] ?? []);
+        $user->charts()->sync($userData['charts'] ?? []);
+
+        $user->update($userData);
+
+        // TODO: Добвавить всплывающее окно с информацией о обновлении данных.
 
         return redirect()->route('user.profile', $user);
     }

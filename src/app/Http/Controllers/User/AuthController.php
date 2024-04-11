@@ -10,6 +10,8 @@ class AuthController extends Controller
 {
     public function __invoke(AuthRequest $request): RedirectResponse
     {
+        // TODO: Добавить возмодность восстановления пароля.
+
         $userData = $request->validated();
 
         if (auth()->attempt([

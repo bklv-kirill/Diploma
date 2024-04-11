@@ -159,6 +159,31 @@
                     color: rgba(64, 112, 244, 0.88);
                 }
             }
+
+            .specifications {
+
+                > div {
+                    margin: 10px;
+
+                    > h3 {
+                        font-family: "Montserrat Alternates", sans-serif;
+                        font-weight: 500;
+                        font-size: 20px;
+                        font-style: normal;
+                        color: $background-color;
+                    }
+
+                    > ul {
+                        > li {
+                            font-family: "Comfortaa", sans-serif;
+                            font-weight: 400;
+                            font-size: 16px;
+                            font-style: normal;
+                            color: rgba(64, 112, 244, 0.88);
+                        }
+                    }
+                }
+            }
         }
 
         @media (max-width: 750px) {

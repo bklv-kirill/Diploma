@@ -5,11 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MainRole extends Model
+class EmploymentUser extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    protected $table = 'employment_user';
+
     protected $fillable = [
-        'name',
+        'employment_id',
+        'user_id',
     ];
 }

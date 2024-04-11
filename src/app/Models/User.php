@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 use Orchid\Attachment\Attachable;
 use Orchid\Filters\Types\Like;
@@ -72,8 +72,13 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->attachment()->firstWhere('group', 'avatar')?->getRelativeUrlAttribute() ?? asset('/images/default.jpg');
     }
 
-    public function mainRole(): BelongsTo
+    public function employments(): BelongsToMany
     {
-        return $this->belongsTo(MainRole::class);
+        return $this->belongsToMany(Employment::class, 'employment_user');
+    }
+
+    public function charts(): BelongsToMany
+    {
+        return $this->belongsToMany(Chart::class, 'chart_user');
     }
 }

@@ -11,11 +11,9 @@ class DeleteController extends Controller
 {
     public function __invoke(Request $request, User $user): RedirectResponse
     {
-        auth()->logout();
+        // TODO: Добавить возможность удалить аккаунт.
 
         $user->delete();
-
-        $request->session()->regenerate();
 
         return redirect()->route('login');
     }

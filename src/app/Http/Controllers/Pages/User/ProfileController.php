@@ -10,6 +10,9 @@ class ProfileController extends Controller
     public function __invoke(): View
     {
         $user = auth()->user();
-        return view('pages.user.profile', compact(['user']));
+        $employments = $user->employments;
+        $charts = $user->charts;
+
+        return view('pages.user.profile', compact(['user', 'employments', 'charts']));
     }
 }
