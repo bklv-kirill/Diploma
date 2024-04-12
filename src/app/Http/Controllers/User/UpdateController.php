@@ -23,7 +23,7 @@ class UpdateController extends Controller
 
         $user->update($userData);
 
-        // TODO: Добвавить всплывающее окно с информацией о обновлении данных.
+        toastr()->success('Данные успешно обновлены!', 'Отчет');
 
         return redirect()->route('user.profile', $user);
     }

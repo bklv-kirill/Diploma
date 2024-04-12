@@ -26,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'main_role_id',
+        'permissions',
     ];
 
     protected $hidden = [
@@ -62,9 +63,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'created_at',
     ];
 
-    public function fullName(): string
+    public function fullName(bool $notOfficialName = false): string
     {
-        return $this->first_name . ' ' . $this->second_name;
+        return $notOfficialName ?
+            $this->second_name . ' ' . $this->first_name :
+            $this->second_name . ' ' . $this->first_name . ' ' . $this->patronymic;
     }
 
     public function avatar(): string

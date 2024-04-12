@@ -32,6 +32,8 @@
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: cover;
+
+                cursor: pointer;
             }
 
             > .user-fio {
@@ -45,7 +47,7 @@
                 font-weight: 500;
                 font-size: 20px;
                 font-style: normal;
-                color: $background-color;
+                color: $main-color;
 
                 > svg {
                     width: 25px;
@@ -68,7 +70,7 @@
                     font-weight: 500;
                     font-size: 20px;
                     font-style: normal;
-                    color: $background-color;
+                    color: $main-color;
                 }
 
                 > div {
@@ -78,14 +80,14 @@
 
                     margin-top: 10px;
 
-                    border-bottom: 1px solid $background-color;
+                    border-bottom: 1px solid $main-color;
 
                     > span:first-child {
                         font-family: "Montserrat Alternates", sans-serif;
                         font-weight: 500;
                         font-size: 22px;
                         font-style: normal;
-                        color: $background-color;
+                        color: $main-color;
                     }
 
                     > span:last-child {
@@ -102,9 +104,10 @@
                 margin: 10px;
                 padding: 5px 10px;
 
-                background-color: $background-color;
+                background-color: $main-color;
                 border-radius: 5px;
 
+                text-align: center;
                 font-family: "Montserrat Alternates", sans-serif;
                 font-weight: 500;
                 font-size: 20px;
@@ -124,7 +127,7 @@
 
             padding: 10px;
 
-            border-left: 2px solid $background-color;
+            border-left: 2px solid $main-color;
 
             > .user-created {
                 margin: 10px;
@@ -134,7 +137,7 @@
                     font-weight: 500;
                     font-size: 14px;
                     font-style: normal;
-                    color: $border-color;
+                    color: $secondary-color;
                 }
             }
 
@@ -148,7 +151,7 @@
                     font-weight: 500;
                     font-size: 20px;
                     font-style: normal;
-                    color: $background-color;
+                    color: $main-color;
                 }
 
                 > p {
@@ -170,7 +173,7 @@
                         font-weight: 500;
                         font-size: 20px;
                         font-style: normal;
-                        color: $background-color;
+                        color: $main-color;
                     }
 
                     > ul {

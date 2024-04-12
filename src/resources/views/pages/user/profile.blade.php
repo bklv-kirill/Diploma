@@ -3,7 +3,8 @@
     <div class="profile">
         <div class="profile-container">
             <div class="user-container">
-                <div class="avatar"
+                <div class="avatar" data-src="{{ $user->avatar() }}" data-fancybox
+                     data-caption="{{ $user->fullName() }}"
                      style="background-image: url('{{ $user->avatar() }}')"></div>
                 <div class="user-fio">
                     @if($user->gender)
@@ -40,7 +41,7 @@
                                 </g>
                             </g></svg>
                     @endif
-                    <span>Бакалов Кирилл Александрович</span>
+                    <span>{{ $user->fullName() }}</span>
                 </div>
                 <div class="user-contacts">
                     <h3>Контакты</h3>

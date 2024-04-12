@@ -10,7 +10,8 @@
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
         "orchid/platform": "^14.21",
-        "predis/predis": "^2.2"
+        "predis/predis": "^2.2",
+        "yoeunes/toastr": "^2.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",

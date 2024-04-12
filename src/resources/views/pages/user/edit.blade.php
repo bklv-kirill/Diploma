@@ -4,7 +4,8 @@
         <div class="profile-edit-container">
             <x-form :action="route('user.update', $user)" method="PATCH" isMultipartFormData>
                 <div class="profile-avatar">
-                    <div class="avatar"
+                    <div class="avatar" data-src="{{ $user->avatar() }}" data-fancybox
+                         data-caption="{{ $user->fullName() }}"
                          style="background-image: url('{{ $user->avatar() }}')"></div>
                     <label class="file-input">
                         <input type="file" name="avatar">
@@ -48,9 +49,19 @@
                         @endforeach
                     </div>
                 </div>
-                <button class="profile-update" type="submit">Обновить</button>
+                <div class="controls">
+                    <button class="profile-update" type="submit">Обновить</button>
+                    <button class="profile-delete" data-delete-account="#deleteAccountConfirmation">Удалить аккаунт
+                    </button>
+                </div>
             </x-form>
         </div>
     </div>
+
+    <x-main-modal modalId="deleteAccountConfirmation" modalTitle="Вы действительно хотите удалить свой аккаунт?">
+        <x-form :action="route('user.delete', $user)" method="DELETE">
+            <button type="submit">Да, удалить аккаунт</button>
+        </x-form>
+    </x-main-modal>
 
 </x-main-layout>

@@ -1,0 +1,26 @@
+@import '../../variables/colors';
+
+.hystmodal {
+
+    > .hystmodal__wrap {
+
+        > .hystmodal__window {
+
+            > .modal-container {
+                padding: 10px;
+
+                > .modal-title {
+                    margin: 10px;
+
+                    text-align: center;
+
+                    font-family: "Montserrat Alternates", sans-serif;
+                    font-weight: 500;
+                    font-size: 20px;
+                    font-style: normal;
+                    color: $main-color;
+                }
+            }
+        }
+    }
+}
