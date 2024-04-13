@@ -89,7 +89,7 @@
                 }
             }
 
-            > .about {
+            > .phone {
                 margin: 10px;
                 padding: 10px;
 
@@ -101,7 +101,23 @@
                     color: $main-color;
                 }
 
-                > .about-error {
+                > input {
+                    margin-top: 5px;
+                    padding: 10px;
+
+                    border-radius: 5px;
+
+                    font-family: "Comfortaa", sans-serif;
+                    font-weight: 400;
+                    font-size: 16px;
+                    font-style: normal;
+
+                    &:focus-visible {
+                        outline: 2px solid $main-color;
+                    }
+                }
+
+                > .phone-error {
                     margin-top: 5px;
 
                     > span {
@@ -111,6 +127,19 @@
                         font-style: normal;
                         color: $secondary-color;
                     }
+                }
+            }
+
+            > .about {
+                margin: 10px;
+                padding: 10px;
+
+                > h3 {
+                    font-family: "Montserrat Alternates", sans-serif;
+                    font-weight: 500;
+                    font-size: 20px;
+                    font-style: normal;
+                    color: $main-color;
                 }
 
                 > textarea {
@@ -129,6 +158,18 @@
 
                     &:focus-visible {
                         outline: 2px solid $main-color;
+                    }
+                }
+
+                > .about-error {
+                    margin-top: 5px;
+
+                    > span {
+                        font-family: "Comfortaa", sans-serif;
+                        font-weight: 400;
+                        font-size: 16px;
+                        font-style: normal;
+                        color: $secondary-color;
                     }
                 }
             }
@@ -207,6 +248,21 @@
                             background-color: #f13571;
                         }
                     }
+                }
+            }
+
+            > .password {
+                margin: 10px;
+                padding: 10px;
+
+                > a {
+                    text-decoration: underline;
+
+                    font-family: "Comfortaa", sans-serif;
+                    font-weight: 400;
+                    font-size: 16px;
+                    font-style: normal;
+                    color: $secondary-color;
                 }
             }
         }

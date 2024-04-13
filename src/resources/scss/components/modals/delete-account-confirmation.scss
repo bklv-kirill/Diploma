@@ -8,27 +8,29 @@
 
             > .modal-container {
 
-                > form {
-                    display: flex;
-                    justify-content: center;
+                > .delete-account-confirmation {
+                    > form {
+                        display: flex;
+                        justify-content: center;
 
-                    > button {
-                        margin: 10px;
-                        padding: 5px 10px;
+                        > button {
+                            margin: 10px;
+                            padding: 5px 10px;
 
-                        background-color: $secondary-color;
-                        border-radius: 5px;
+                            background-color: $secondary-color;
+                            border-radius: 5px;
 
-                        font-family: "Montserrat Alternates", sans-serif;
-                        font-weight: 500;
-                        font-size: 20px;
-                        font-style: normal;
-                        color: #fff;
+                            font-family: "Montserrat Alternates", sans-serif;
+                            font-weight: 500;
+                            font-size: 20px;
+                            font-style: normal;
+                            color: #fff;
 
-                        transition: background-color 0.2s ease;
+                            transition: background-color 0.2s ease;
 
-                        &:hover {
-                            background-color: $secondary-hover-color;
+                            &:hover {
+                                background-color: $secondary-hover-color;
+                            }
                         }
                     }
                 }

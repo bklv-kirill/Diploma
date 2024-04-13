@@ -15,6 +15,9 @@ $(document).ready(function () {
     const deleteAccountConfirmation = new HystModal({
         linkAttributeName: "data-delete-account",
     });
+    const phoneEnter = new HystModal({
+        linkAttributeName: "data-phone-enter",
+    });
 
     let deleteButton = $('.profile-edit .profile-edit-container form .controls .profile-delete');
     if (deleteButton.length > 0) {

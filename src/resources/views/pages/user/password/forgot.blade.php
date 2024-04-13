@@ -1,21 +1,15 @@
-<x-auth-register-layout :title="'Авторизация'">
+<x-auth-register-layout :title="'Восстановление пароля'">
     <div class="wrapper">
-        <h2>Авторизация</h2>
-        <x-form :action="route('user.auth')" method="POST">
+        <h2>Восстановление пароля</h2>
+        <x-form :action="route('password.send-reset-link')" method="POST">
             <x-auth-register-input name="email" type="email" placeholder="Введите email" required/>
-            <x-auth-register-input name="password" type="password" placeholder="Введите пароль" required/>
-
-            <div class="remember-me">
-                <input type="checkbox" name="remember_me" id="remember">
-                <label for="remember"><h3>Запомнить меня</h3></label>
-            </div>
 
             <div class="input-box button">
-                <input type="submit" value="Войти">
+                <input type="submit" value="Восстановить пароль">
             </div>
 
             <div class="text">
-                <h3><a href="{{ route('password.forgot') }}">Восстановить пароль</a></h3>
+                <h3>Вспомнили пароль? <a href="{{ route('user.login') }}">Авторизоваться</a></h3>
             </div>
             <div class="text">
                 <h3>У вас еще нет аккаунта? <a href="{{ route('user.register') }}">Зарегестрироваться</a></h3>

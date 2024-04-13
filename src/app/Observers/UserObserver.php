@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
+use App\Jobs\User\SendEmailVerificationJob;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 
 class UserObserver
 {
@@ -11,8 +11,7 @@ class UserObserver
     {
         auth()->login($user);
 
-        // TODO: Реализовать отправку почтовых писем через RabbitMQ очереди.
-        event(new Registered($user));
+        SendEmailVerificationJob::dispatch($user);
     }
 
     public function deleted(User $user): void

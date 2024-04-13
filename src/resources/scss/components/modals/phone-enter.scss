@@ -1,0 +1,31 @@
+@import '../../variables/colors';
+
+.hystmodal {
+
+    > .hystmodal__wrap {
+
+        > .hystmodal__window {
+
+            > .modal-container {
+
+                > .phone-enter {
+                    margin: 10px;
+
+                    text-align: center;
+
+                    > p {
+                        font-family: "Comfortaa", sans-serif;
+                        font-weight: 400;
+                        font-size: 16px;
+                        font-style: normal;
+                        color: $main-color;
+
+                        > span {
+                            color: $secondary-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -19,5 +19,10 @@ Route::name('user.')->group(function () {
 
         Route::get('/log-out', \App\Http\Controllers\User\LogOutController::class)->name('log-out');
         Route::delete('/profile/{user}', \App\Http\Controllers\User\DeleteController::class)->name('delete');
+
+        Route::name('password.')->group(function () {
+            Route::get('/profile/edit/password', \App\Http\Controllers\Pages\User\Password\EditController::class)->name('edit');
+            Route::post('/profile/edit/password', \App\Http\Controllers\User\Password\EditController::class)->name('update');
+        });
     });
 });

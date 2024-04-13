@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -9,7 +10,6 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-
     }
 
     public function boot(): void
@@ -23,10 +23,14 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('main-header', \App\View\Components\Headers\Main::class);
 
         Blade::component('form', \App\View\Components\Forms\Form::class);
-        Blade::component('auth-register-input', \App\View\Components\Forms\AuthRegister\Input::class);
+        Blade::component('auth-register-input', \App\View\Components\Forms\Modules\AuthRegister\Input::class);
 
         Blade::component('main-modal', \App\View\Components\Modals\MainModal::class);
 
         \App\Models\User::observe(\App\Observers\UserObserver::class);
+
+        \Illuminate\Support\Facades\Gate::define('email-verified', function (User $user) {
+            return !is_null($user->email_verified_at);
+        });
     }
 }

@@ -13,7 +13,8 @@ class StoreController extends Controller
     {
         $userData = $request->validated();
 
-        User::query()->create(array_merge(['main_role_id' => 2], $userData));
+        if (User::query()->create(array_merge(['main_role_id' => 2], $userData)))
+            toastr()->info('На вашу почту было отправлено письми для ее подтверждения', 'Уведомление');
 
         return redirect()->route('main');
     }

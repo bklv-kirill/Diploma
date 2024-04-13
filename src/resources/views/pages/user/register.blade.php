@@ -6,7 +6,7 @@
             <x-auth-register-input name="first_name" type="text" placeholder="Введите имя" required/>
             <x-auth-register-input name="patronymic" type="text" placeholder="Введите отчество" required/>
             <x-auth-register-input name="email" type="email" placeholder="Введите email" required/>
-            
+
             <div class="gender-select">
                 <div class="gender-radio">
                     <input type="radio" name="gender" id="male" value="1" checked>
@@ -19,7 +19,7 @@
             </div>
 
             <x-auth-register-input name="password" type="password" placeholder="Введите пароль" required/>
-            <x-auth-register-input name="password_confirmation" type="password" placeholder="Введите пароль"/>
+            <x-auth-register-input name="password_confirmation" type="password" placeholder="Подтвердите пароль"/>
 
             <div class="input-box button">
                 <input type="submit" value="Зарегестрироваться">

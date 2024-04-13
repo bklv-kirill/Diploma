@@ -19,7 +19,7 @@ class StoreRequest extends FormRequest
             'patronymic' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'min:3', 'max:255', 'unique:users'],
             'gender' => ['required', 'bool'],
-            'password' => ['required', 'confirmed', \Illuminate\Validation\Rules\Password::min(8)->mixedCase()],
+            'password' => ['required', 'string', 'confirmed', \Illuminate\Validation\Rules\Password::min(8)->mixedCase()],
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components\Forms\AuthRegister;
+namespace App\View\Components\Forms\Modules\AuthRegister;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -11,7 +11,7 @@ class Input extends Component
     public function __construct(
         public string $name,
         public string $type,
-        public string $placeholder,
+        public string $placeholder = '',
         public bool   $required = false,
     )
     {
@@ -19,6 +19,6 @@ class Input extends Component
 
     public function render(): View|Closure|string
     {
-        return view('components.forms.auth-register.input');
+        return view('components.forms.modules.auth-register.input');
     }
 }

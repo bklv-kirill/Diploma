@@ -12,8 +12,6 @@ class UpdateController extends Controller
 {
     public function __invoke(UpdateRequest $request, User $user, LoadUserAvatarIfExists $loadUserAvatarIfExists): RedirectResponse
     {
-        // TODO: Добвавить возможность удалить автатар, добавить номер телефона и изменить пароль.
-
         $userData = $request->validated();
 
         $loadUserAvatarIfExists($user, $userData['avatar'] ?? null);
@@ -21,9 +19,8 @@ class UpdateController extends Controller
         $user->employments()->sync($userData['employments'] ?? []);
         $user->charts()->sync($userData['charts'] ?? []);
 
-        $user->update($userData);
-
-        toastr()->success('Данные успешно обновлены!', 'Отчет');
+        if ($user->update($userData))
+            toastr()->success('Данные успешно обновлены!', 'Отчет');
 
         return redirect()->route('user.profile', $user);
     }
