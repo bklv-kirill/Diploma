@@ -20,7 +20,7 @@ class Publish extends Command
         $msg = new AMQPMessage($this->argument('message'));
         $channel->basic_publish($msg, $this->argument('queue'), $this->argument('queue'));
 
-        echo " [x] Sent 'Hello World!'\n";
+        echo " [x] Sent message\n";
 
         $channel->close();
         $connection->close();

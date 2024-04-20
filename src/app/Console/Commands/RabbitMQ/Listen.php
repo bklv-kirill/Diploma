@@ -13,7 +13,7 @@ class Listen extends Command
 
     public function handle(): void
     {
-        $connection = new AMQPStreamConnection('rabbitmq', 5672, 'root', 'root', 'diploma');
+        $connection = new AMQPStreamConnection(config('rabbitmq.host'), config('rabbitmq.port'), config('rabbitmq.user'), config('rabbitmq.pass'), config('rabbitmq.vhost'));
         $channel = $connection->channel();
 
         echo " [*] Waiting for messages. To exit press CTRL+C\n";

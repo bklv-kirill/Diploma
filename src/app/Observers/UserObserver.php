@@ -11,7 +11,9 @@ class UserObserver
     {
         auth()->login($user);
 
-        SendEmailVerificationJob::dispatch($user);
+        SendEmailVerificationJob::dispatch($user)
+            ->onConnection('redis')
+            ->onQueue('user');
     }
 
     public function deleted(User $user): void
