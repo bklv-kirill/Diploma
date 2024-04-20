@@ -10,6 +10,7 @@
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
         "orchid/platform": "^14.21",
+        "php-amqplib/php-amqplib": "3.6.2",
         "predis/predis": "^2.2",
         "yoeunes/toastr": "^2.3"
     },

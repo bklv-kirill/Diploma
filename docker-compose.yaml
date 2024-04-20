@@ -7,7 +7,7 @@ services:
     expose:
       - 80/tcp
     ports:
-      - 80:80
+      - 8001:80
     restart: always
     volumes:
       - ./src:/var/www/html:delegated
@@ -16,6 +16,7 @@ services:
       - php
       - mysql
       - redis
+      - rabbitmq
     networks:
       - diploma-network
   php:
@@ -75,13 +76,29 @@ services:
     restart: always
     networks:
       - diploma-network
+  rabbitmq:
+    build:
+      context: ./docker
+      dockerfile: ./rabbitmq.dockerfile
+    container_name: rabbitmq-container
+    expose:
+      - 15672/tcp
+    ports:
+      - 15672:15672
+    restart: always
+    #    volumes:
+    #      - ./rabbitmq:/var/lib/rabbitmq
+    env_file:
+      - ./env/rabbitmq.env
+    networks:
+      - diploma-network
   phpmyadmin:
     image: phpmyadmin
     container_name: phpmyadmin-container
     expose:
       - 80/tcp
     ports:
-      - 8080:80
+      - 8081:80
     restart: always
     env_file:
       - ./env/phpmyadmin.env
