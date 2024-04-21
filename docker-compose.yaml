@@ -77,17 +77,16 @@ services:
     networks:
       - diploma-network
   rabbitmq:
-    build:
-      context: ./docker
-      dockerfile: ./rabbitmq.dockerfile
+    image: rabbitmq:3.13.1-management
     container_name: rabbitmq-container
+    hostname: rabbitmq
     expose:
       - 15672/tcp
     ports:
       - 15672:15672
     restart: always
-    #    volumes:
-    #      - ./rabbitmq:/var/lib/rabbitmq
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq
     env_file:
       - ./env/rabbitmq.env
     networks:
