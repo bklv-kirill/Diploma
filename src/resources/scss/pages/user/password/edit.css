@@ -1,0 +1,65 @@
+.edit-password {
+  margin: 20px auto;
+  padding: 10px;
+  max-width: 400px;
+  background-color: rgba(64, 112, 244, 0.18);
+  border-radius: 5px;
+}
+.edit-password .edit-password-container > form > .edit-password-input {
+  margin: 10px;
+  padding: 10px;
+}
+.edit-password .edit-password-container > form > .edit-password-input > h3 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #4070f4;
+}
+.edit-password .edit-password-container > form > .edit-password-input > span {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+  color: #e91e63;
+}
+.edit-password .edit-password-container > form > .edit-password-input > input {
+  margin-top: 5px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+}
+.edit-password .edit-password-container > form > .edit-password-input > input:focus-visible {
+  outline: 2px solid #4070f4;
+}
+.edit-password .edit-password-container > form .edit-password-submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edit-password .edit-password-container > form .edit-password-submit-button > button {
+  margin: 20px;
+  padding: 5px 10px;
+  background-color: #4070f4;
+  border-radius: 5px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+.edit-password .edit-password-container > form .edit-password-submit-button > button:hover {
+  background-color: #3c78ff;
+}
+@media (max-width: 435px) {
+  .edit-password {
+    margin: 20px;
+  }
+}
+
+/*# sourceMappingURL=edit.css.map */

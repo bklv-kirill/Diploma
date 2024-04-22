@@ -1,0 +1,21 @@
+.hystmodal > .hystmodal__wrap > .hystmodal__window > .modal-container > .delete-account-confirmation > form {
+  display: flex;
+  justify-content: center;
+}
+.hystmodal > .hystmodal__wrap > .hystmodal__window > .modal-container > .delete-account-confirmation > form > button {
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #e91e63;
+  border-radius: 5px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+.hystmodal > .hystmodal__wrap > .hystmodal__window > .modal-container > .delete-account-confirmation > form > button:hover {
+  background-color: #f13571;
+}
+
+/*# sourceMappingURL=delete-account-confirmation.css.map */

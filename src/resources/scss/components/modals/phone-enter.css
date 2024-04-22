@@ -1,0 +1,16 @@
+.hystmodal > .hystmodal__wrap > .hystmodal__window > .modal-container > .phone-enter {
+  margin: 10px;
+  text-align: center;
+}
+.hystmodal > .hystmodal__wrap > .hystmodal__window > .modal-container > .phone-enter > p {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+  color: #4070f4;
+}
+.hystmodal > .hystmodal__wrap > .hystmodal__window > .modal-container > .phone-enter > p > span {
+  color: #e91e63;
+}
+
+/*# sourceMappingURL=phone-enter.css.map */

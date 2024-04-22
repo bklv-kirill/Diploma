@@ -14,16 +14,9 @@
                 <input type="submit" value="Войти">
             </div>
 
-            <div class="text">
-                <h3><a href="{{ route('password.forgot') }}">Восстановить пароль</a></h3>
-            </div>
-            <div class="text">
-                <h3>У вас еще нет аккаунта? <a href="{{ route('user.register') }}">Зарегестрироваться</a></h3>
-            </div>
-            <div class="text">
-                <h3>Вернуться на главную <a href="{{ route('main') }}">страницу</a></h3>
-            </div>
-
+            <x-auth-register-text :link="route('password.forgot')" linkTitle="Восстановить пароль"/>
+            <x-auth-register-text beforeLink="У вас еще нет аккаунта? " :link="route('user.register')" linkTitle="Зарегестрироваться"/>
+            <x-auth-register-text beforeLink="Вернуться на главную " :link="route('main')" linkTitle="страницу"/>
         </x-form>
     </div>
 </x-auth-register-layout>

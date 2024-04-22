@@ -2,30 +2,35 @@
 
 namespace App\Console\Commands\RabbitMQ;
 
+use App\Models\User;
+use App\Services\RabbitMQ\RabbitMQService;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Console\Command;
-use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 
 class Listen extends Command
 {
-    protected $signature = 'rabbitmq:listen {queue}';
+    protected $signature = 'rabbitmq:listen';
 
     protected $description = 'Command description';
 
-    public function handle(): void
+    public function handle(RabbitMQService $rabbitMQService): void
     {
-        $connection = new AMQPStreamConnection(config('rabbitmq.host'), config('rabbitmq.port'), config('rabbitmq.user'), config('rabbitmq.pass'), config('rabbitmq.vhost'));
-        $channel = $connection->channel();
+        $rabbitMQChanel = $rabbitMQService->getRabbitMQChanel();
 
-        echo " [*] Waiting for messages. To exit press CTRL+C\n";
+        dump(" [*] Запущен RabbitMQ обработчик для очереди 'USER'. Для остановки нажмите CTRL+C");
 
-        $callback = function ($msg) {
-            echo ' [x] Received ', $msg->body, "\n";
+        $rabbitMQCallback = function (AMQPMessage $message) {
+            $user = User::query()->firstWhere('email', $message->body);
+
+            event(new Registered($user));
+            dump(' [*] Пользователю: ' . $user->fullName() . ' было отправлено письмо для подтверждения Email.');
         };
 
-        $channel->basic_consume($this->argument('queue'), '', false, true, false, false, $callback);
+        $rabbitMQChanel->basic_consume('user', '', false, true, false, false, $rabbitMQCallback);
 
         try {
-            $channel->consume();
+            $rabbitMQChanel->consume();
         } catch (\Throwable $exception) {
             echo $exception->getMessage();
         }

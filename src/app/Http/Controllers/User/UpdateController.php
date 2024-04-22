@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Actions\User\LoadUserAvatarIfExists;
+use App\Actions\User\LoadUserAvatarIfExistsAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UpdateRequest;
 use App\Models\User;
@@ -10,7 +10,7 @@ use Illuminate\Http\RedirectResponse;
 
 class UpdateController extends Controller
 {
-    public function __invoke(UpdateRequest $request, User $user, LoadUserAvatarIfExists $loadUserAvatarIfExists): RedirectResponse
+    public function __invoke(UpdateRequest $request, User $user, LoadUserAvatarIfExistsAction $loadUserAvatarIfExists): RedirectResponse
     {
         $userData = $request->validated();
 

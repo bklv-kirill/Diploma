@@ -4,9 +4,7 @@
         <div class="profile-edit-container">
             <x-form :action="route('user.update', $user)" method="PATCH" isMultipartFormData>
                 <div class="profile-avatar">
-                    <div class="avatar" data-src="{{ $user->avatar() }}" data-fancybox
-                         data-caption="{{ $user->fullName() }}"
-                         style="background-image: url('{{ $user->avatar() }}')"></div>
+                    <x-user-avatar :avatar="$user->avatar()" :fullUserName="$user->fullName()"/>
                     <label class="file-input">
                         <input type="file" name="avatar">
                         <span>Выберите файл</span>
@@ -37,7 +35,7 @@
                             @error('phone')
                             <div class="phone-error">
                                 <span
-                                    class="about-error">Вы указали неверный или уже используемый номер телефона.</span>
+                                    class="about-error">Указан неверный или уже используемый номер телефона.</span>
                             </div>
                             @enderror
                         </div>

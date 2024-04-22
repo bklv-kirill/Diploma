@@ -30,6 +30,7 @@ services:
     restart: always
     volumes:
       - ./src:/var/www/html:delegated
+      - ./conf/php/custom-php.ini:/usr/local/etc/php/conf.d/custom-php.ini:ro
     networks:
       - diploma-network
   npm:

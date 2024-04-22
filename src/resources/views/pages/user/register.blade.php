@@ -25,12 +25,8 @@
                 <input type="submit" value="Зарегестрироваться">
             </div>
 
-            <div class="text">
-                <h3>Уже есть аккаунт? <a href="{{ route('user.login') }}">Авторизироваться</a></h3>
-            </div>
-            <div class="text">
-                <h3>Вернуться на главную <a href="{{ route('main') }}">страницу</a></h3>
-            </div>
+            <x-auth-register-text beforeLink="Уже есть аккаунт? " :link="route('user.login')" linkTitle="Авторизироваться"/>
+            <x-auth-register-text beforeLink="Вернуться на главную " :link="route('main')" linkTitle="страницу"/>
         </x-form>
     </div>
 </x-auth-register-layout>

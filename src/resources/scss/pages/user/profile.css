@@ -1,0 +1,154 @@
+.profile {/home/kirill/projects/Diploma/src/storage/app/public/images
+  margin: 20px;
+  padding: 10px;
+  background-color: rgba(64, 112, 244, 0.18);
+  border-radius: 5px;
+}
+.profile > .profile-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin: 10px;
+}
+.profile > .profile-container > .user-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 10px;
+}
+.profile > .profile-container > .user-container > .avatar {
+  width: 250px;
+  height: 250px;
+  margin: 10px;
+  border-radius: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+.profile > .profile-container > .user-container > .user-fio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #4070f4;
+}
+.profile > .profile-container > .user-container > .user-fio > svg {
+  width: 25px;
+  min-width: 25px;
+  height: 25px;
+  min-height: 25px;
+  margin-right: 10px;
+}
+.profile > .profile-container > .user-container .user-contacts {
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+}
+.profile > .profile-container > .user-container .user-contacts > h3 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #4070f4;
+}
+.profile > .profile-container > .user-container .user-contacts > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  border-bottom: 1px solid #4070f4;
+}
+.profile > .profile-container > .user-container .user-contacts > div > span:first-child {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  font-style: normal;
+  color: #4070f4;
+}
+.profile > .profile-container > .user-container .user-contacts > div > span:last-child {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+  color: rgba(64, 112, 244, 0.88);
+}
+.profile > .profile-container > .user-container > .user-profile-edit {
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #4070f4;
+  border-radius: 5px;
+  text-align: center;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+.profile > .profile-container > .user-container > .user-profile-edit:hover {
+  background-color: #3c78ff;
+}
+.profile > .profile-container > .user-info {
+  width: 100%;
+  padding: 10px;
+  border-left: 2px solid #4070f4;
+}
+.profile > .profile-container > .user-info > .user-created {
+  margin: 10px;
+}
+.profile > .profile-container > .user-info > .user-created > h3 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  font-style: normal;
+  color: #e91e63;
+}
+.profile > .profile-container > .user-info > .user-about {
+  margin: 10px;
+  word-break: break-all;
+}
+.profile > .profile-container > .user-info > .user-about > h3 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #4070f4;
+}
+.profile > .profile-container > .user-info > .user-about > p {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+  color: rgba(64, 112, 244, 0.88);
+}
+.profile > .profile-container > .user-info .specifications > div {
+  margin: 10px;
+}
+.profile > .profile-container > .user-info .specifications > div > h3 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #4070f4;
+}
+.profile > .profile-container > .user-info .specifications > div > ul > li {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+  color: rgba(64, 112, 244, 0.88);
+}
+@media (max-width: 750px) {
+  .profile > .profile-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/*# sourceMappingURL=profile.css.map */

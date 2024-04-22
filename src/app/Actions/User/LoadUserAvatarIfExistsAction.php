@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Orchid\Attachment\File;
 
-class LoadUserAvatarIfExists
+class LoadUserAvatarIfExistsAction
 {
     public function __invoke(User $user, ?UploadedFile $uploadAvatar): void
     {

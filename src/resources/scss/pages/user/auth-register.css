@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #4070f4;
+}
+body .wrapper {
+  position: relative;
+  padding: 34px;
+  margin: 20px;
+  max-width: 430px;
+  width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+body .wrapper > h2 {
+  position: relative;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+}
+body .wrapper > h2::before {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 28px;
+  background: #4070f4;
+  border-radius: 12px;
+  content: "";
+}
+body .wrapper > form {
+  margin-top: 30px;
+}
+body .wrapper > form > span {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #e91e63;
+}
+body .wrapper > form > .input-box {
+  margin: 5px 0 23px 0;
+  height: 52px;
+}
+body .wrapper > form > .input-box > input {
+  height: 100%;
+  width: 100%;
+  padding: 0 15px;
+  outline: none;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #333;
+  border: 1.5px solid #C7BEBE;
+  border-bottom-width: 2.5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+body .wrapper > form > .input-box > input:focus, body .wrapper > form > .input-box > input:valid {
+  border-color: #4070f4;
+}
+body .wrapper > form > .input-box > input.auth-invalid {
+  border-color: #e91e63;
+}
+body .wrapper > form > .input-box > input.auth-invalid:focus, body .wrapper > form > .input-box > input.auth-invalid:valid {
+  border-color: #e91e63;
+}
+body .wrapper > form > .input-box.button > input {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  background: #4070f4;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+body .wrapper > form > .input-box.button > input:hover {
+  background: #0e4bf1;
+}
+body .wrapper > form > .text {
+  margin: 5px;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+body .wrapper > form > .text h3 {
+  width: 100%;
+  color: #333;
+  text-align: left;
+}
+body .wrapper > form > .text h3 a {
+  color: #4070f4;
+  text-decoration: none;
+}
+body .wrapper > form > .text h3 a:hover {
+  text-decoration: underline;
+}
+body .wrapper > form > .remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+body .wrapper > form > .remember-me > input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+body .wrapper > form > .remember-me > input + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+body .wrapper > form > .remember-me > input + label::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid #4070f4;
+  border-radius: 0.25em;
+  margin-right: 0.5em;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+body .wrapper > form > .remember-me > input:checked + label::before {
+  border-color: #4070f4;
+  background-color: #4070f4;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+body .wrapper > form > .remember-me > input:not(:disabled):not(:checked) + label:hover::before {
+  border-color: #4070f4;
+}
+body .wrapper > form > .remember-me > input:not(:disabled):active + label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+body .wrapper > form > .remember-me > input:focus + label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+body .wrapper > form > .remember-me > input:focus:not(:checked) + label::before {
+  border-color: #80bdff;
+}
+body .wrapper > form > .remember-me > input:disabled + label::before {
+  background-color: #e9ecef;
+}
+body .wrapper > form > .gender-select {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 23px;
+}
+body .wrapper > form > .gender-select > .gender-radio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .wrapper > form > .gender-select > .gender-radio:last-child {
+  margin-left: 15px;
+}
+body .wrapper > form h3 {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  color: #707070;
+}
+
+/*# sourceMappingURL=auth-register.css.map */

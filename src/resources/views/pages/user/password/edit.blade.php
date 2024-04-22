@@ -3,24 +3,10 @@
     <div class="edit-password">
         <div class="edit-password-container">
             <x-form :action="route('user.password.update')" method="POST">
-                <div class="edit-password-input">
-                    <h3>Актуальный пароль:</h3>
-                    @error('old_password')
-                    <span>{{ $message }}</span>
-                    @enderror
-                    <input type="text" name="old_password" placeholder="Введите актуальный пароль">
-                </div>
-                <div class="edit-password-input">
-                    <h3>Новый пароль:</h3>
-                    @error('new_password')
-                    <span>{{ $message }}</span>
-                    @enderror
-                    <input type="text" name="new_password" placeholder="Введите новый пароль">
-                </div>
-                <div class="edit-password-input">
-                    <h3>Подтверждение пароля:</h3>
-                    <input type="text" name="new_password_confirmation" placeholder="Поддтвердите новый пароль">
-                </div>
+                <x-password-input title="Актуальный пароль:" name="old_password" type="password" placeholder="Введите актуальный пароль" required/>
+                <x-password-input title="Новый пароль:" name="new_password" type="password" placeholder="Введите новый пароль" required/>
+                <x-password-input title="Подтверждение пароля:" type="password" placeholder="Поддтвердите новый пароль" required/>
+
                 <div class="edit-password-submit-button">
                     <button type="submit">Изменить пароль</button>
                 </div>

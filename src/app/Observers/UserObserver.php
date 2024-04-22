@@ -2,18 +2,20 @@
 
 namespace App\Observers;
 
-use App\Jobs\User\SendEmailVerificationJob;
+use App\Actions\RabbitMQ\SendEmailVerificationRabbitMQAction;
+use PhpAmqpLib\Message\AMQPMessage;
+
 use App\Models\User;
 
 class UserObserver
 {
+
     public function created(User $user): void
     {
         auth()->login($user);
 
-        SendEmailVerificationJob::dispatch($user)
-            ->onConnection('redis')
-            ->onQueue('user');
+        $sendEmailVerificationRabbitMQAction = new SendEmailVerificationRabbitMQAction();
+        $sendEmailVerificationRabbitMQAction($user->email);
     }
 
     public function deleted(User $user): void

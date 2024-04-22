@@ -3,9 +3,7 @@
     <div class="profile">
         <div class="profile-container">
             <div class="user-container">
-                <div class="avatar" data-src="{{ $user->avatar() }}" data-fancybox
-                     data-caption="{{ $user->fullName() }}"
-                     style="background-image: url('{{ $user->avatar() }}')"></div>
+                <x-user-avatar :avatar="$user->avatar()" :fullUserName="$user->fullName()"/>
                 <div class="user-fio">
                     @if($user->gender)
                         <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -45,21 +43,15 @@
                 </div>
                 <div class="user-contacts">
                     <h3>Контакты</h3>
-                    <div class="user-contact">
-                        <span>Номер телефона:</span>
-                        <span>{{ $user->phone ?? 'не указан' }}</span>
-                    </div>
-                    <div class="user-contact">
-                        <span>Email:</span>
-                        <span>{{ $user->email }}</span>
-                    </div>
+                    <x-user-edit-contact contactTitle="Номер телефона:" :contact="$user->phone ?? 'не указан'"/>
+                    <x-user-edit-contact contactTitle="Email:" :contact="$user->email"/>
                 </div>
                 <a href="{{ route('user.edit') }}" class="user-profile-edit">Редактировать профиль</a>
             </div>
             <div class="user-info">
                 <div class="user-created">
                     <h3>На сайте с
-                        <span>{{ \Illuminate\Support\Carbon::parse($user->created_at)->format('d.m.Y') }}</span>
+                        <span>{{ getFormatedDate($user->created_at) }}</span>
                     </h3>
                 </div>
                 <div class="user-about">
@@ -67,26 +59,8 @@
                     <p>- {{ $user->about ??  'Информация отсутствует' }}</p>
                 </div>
                 <div class="specifications">
-                    <div>
-                        <h3>Тип занятости:</h3>
-                        <ul>
-                            @forelse($employments as $employment)
-                                <li>- {{ $employment->name }}</li>
-                            @empty
-                                <li>- Не указан</li>
-                            @endforelse
-                        </ul>
-                    </div>
-                    <div>
-                        <h3>График работы:</h3>
-                        <ul>
-                            @forelse($charts as $chart)
-                                <li>- {{ $chart->name }}</li>
-                            @empty
-                                <li>- Не указан</li>
-                            @endforelse
-                        </ul>
-                    </div>
+                    <x-user-profile-specification specificationTitle="Тип занятости:" :specifications="$employments"/>
+                    <x-user-profile-specification specificationTitle="График работы:" :specifications="$charts"/>
                 </div>
             </div>
         </div>
