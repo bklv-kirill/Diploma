@@ -5,10 +5,10 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/scss/app.scss',
+                'resources/styles/app.scss',
                 'resources/js/app.js',
 
-                'resources/scss/pages/user/auth-register.scss'
+                'resources/styles/pages/user/auth-register.scss'
             ],
             refresh: true,
         }),

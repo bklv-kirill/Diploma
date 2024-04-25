@@ -12,11 +12,11 @@ return new class extends Migration {
             $table->string('first_name');
             $table->string('second_name');
             $table->string('patronymic');
-            $table->text('about')->nullable();
             $table->boolean('gender');
             $table->string('phone')->unique()->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->text('about')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

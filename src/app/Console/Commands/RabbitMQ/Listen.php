@@ -18,7 +18,7 @@ class Listen extends Command
     {
         $rabbitMQChanel = $rabbitMQService->getRabbitMQChanel();
 
-        dump(" [*] Запущен RabbitMQ обработчик для очереди 'USER'. Для остановки нажмите CTRL+C");
+        dump(" [*] Запущен RabbitMQ обработчик для очереди 'USERS'. Для остановки нажмите CTRL+C");
 
         $rabbitMQCallback = function (AMQPMessage $message) {
             $user = User::query()->firstWhere('email', $message->body);
@@ -27,7 +27,7 @@ class Listen extends Command
             dump(' [*] Пользователю: ' . $user->fullName() . ' было отправлено письмо для подтверждения Email.');
         };
 
-        $rabbitMQChanel->basic_consume('user', '', false, true, false, false, $rabbitMQCallback);
+        $rabbitMQChanel->basic_consume('users', '', false, true, false, false, $rabbitMQCallback);
 
         try {
             $rabbitMQChanel->consume();

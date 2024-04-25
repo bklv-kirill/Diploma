@@ -16,6 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use Attachable;
 
+    protected $table = 'users';
     protected $fillable = [
         'first_name',
         'second_name',

@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MainRole extends Model
+class District extends Model
 {
     use HasFactory;
 
-    protected $table = 'main_roles';
+    public $timestamps = false;
+
+    protected $table = 'districts';
+
     protected $fillable = [
         'name',
-        'slug',
     ];
 }

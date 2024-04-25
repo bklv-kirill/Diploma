@@ -8,6 +8,7 @@
         "php": "^8.2",
         "kerigard/laravel-lang-ru": "^2.0",
         "laravel/framework": "^11.0",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "orchid/platform": "^14.21",
         "php-amqplib/php-amqplib": "3.6.2",

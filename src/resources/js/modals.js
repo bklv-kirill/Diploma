@@ -1,7 +1,6 @@
+import $ from 'jquery';
 import './modal/hystmodal.min.css';
 import './modal/hystmodal.min.js';
-
-import $ from 'jquery';
 
 $(document).ready(function () {
 

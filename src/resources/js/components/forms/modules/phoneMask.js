@@ -1,5 +1,5 @@
-import IMask from 'imask';
 import $ from 'jquery';
+import IMask from 'imask';
 
 $(document).ready(function () {
     let phoneInput = $('.profile-edit .profile-edit-container form .phone input');

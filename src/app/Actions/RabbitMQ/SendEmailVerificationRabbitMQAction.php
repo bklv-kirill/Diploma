@@ -13,7 +13,7 @@ class SendEmailVerificationRabbitMQAction extends AbstractRabbitMQ
         $rabbitMQChanel = $this->getRabbitMQChanel();
 
         $message = new AMQPMessage($email);
-        $rabbitMQChanel->basic_publish($message, 'user', 'user');
+        $rabbitMQChanel->basic_publish($message, 'users', 'users');
 
         $this->closeRabbitMQChanel();
         $this->closeRabbitMQConnection();

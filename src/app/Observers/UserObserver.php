@@ -3,7 +3,6 @@
 namespace App\Observers;
 
 use App\Actions\RabbitMQ\SendEmailVerificationRabbitMQAction;
-use PhpAmqpLib\Message\AMQPMessage;
 
 use App\Models\User;
 

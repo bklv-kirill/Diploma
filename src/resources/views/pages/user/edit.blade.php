@@ -41,6 +41,10 @@
                         </div>
                     @endif
                 @endcan
+                // TODO: Добавить стили.
+                <div class="city" style="display: flex">
+                    <select name="city"></select>
+                </div>
                 <div class="specifications">
                     <div>
                         <h3>Занятость:</h3>
