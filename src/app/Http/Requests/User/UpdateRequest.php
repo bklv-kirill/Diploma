@@ -18,6 +18,7 @@ class UpdateRequest extends FormRequest
             'about' => ['nullable', 'string', 'max:10000'],
             'avatar' => ['nullable', File::image()->max('10mb')],
             'phone' => ['nullable', 'string', 'min:18', 'max:18', 'unique:users'],
+            'city_id' => ['nullable', 'integer', 'exists:cities,id'],
             'employments' => ['nullable', 'array'],
             'employments.*' => ['nullable', 'int', 'exists:employments,id'],
             'charts' => ['nullable', 'array'],

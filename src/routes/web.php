@@ -7,9 +7,6 @@ require_once 'password.php';
 
 // TODO: Подумать над текстом сообщений для тостов.
 // TODO: Подумать над текстом плейсхолдеров.
-// TODO: Провести рефактор SCSS файлов.
-// TODO: Провести рефактор Blade страниц.
-// TODO: Создать и внедрить Laravel компоненты где это необходимо.
 
 Route::get('/', \App\Http\Controllers\Pages\MainPageController::class)->name('main');
 

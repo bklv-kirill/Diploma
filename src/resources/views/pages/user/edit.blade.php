@@ -43,7 +43,7 @@
                 @endcan
                 // TODO: Добавить стили.
                 <div class="city" style="display: flex">
-                    <select name="city"></select>
+                    <select name="city_id"></select>
                 </div>
                 <div class="specifications">
                     <div>

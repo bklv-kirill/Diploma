@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
+
             $table->string('queue')->index();
             $table->longText('payload');
             $table->unsignedTinyInteger('attempts');
@@ -32,6 +33,7 @@ return new class extends Migration {
 
         Schema::create('failed_jobs', function (Blueprint $table) {
             $table->id();
+            
             $table->string('uuid')->unique();
             $table->text('connection');
             $table->text('queue');

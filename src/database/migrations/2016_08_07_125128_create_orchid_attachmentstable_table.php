@@ -9,6 +9,7 @@ return new class extends Migration {
     {
         Schema::create('attachments', function (Blueprint $table) {
             $table->increments('id');
+
             $table->text('name');
             $table->text('original_name');
             $table->string('mime');
@@ -22,11 +23,13 @@ return new class extends Migration {
             $table->string('disk')->default('public');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('group')->nullable();
+
             $table->timestamps();
         });
 
         Schema::create('attachmentable', function (Blueprint $table) {
             $table->increments('id');
+
             $table->string('attachmentable_type');
             $table->unsignedInteger('attachmentable_id');
             $table->unsignedInteger('attachment_id');
