@@ -14,6 +14,8 @@ class UpdateController extends Controller
     {
         $userData = $request->validated();
 
+        $userData['city_id'] = isset($userData['city_id']) ? $userData['city_id'] : null;
+
         $loadUserAvatarIfExists($user, $userData['avatar'] ?? null);
 
         $user->employments()->sync($userData['employments'] ?? []);
