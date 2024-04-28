@@ -41,9 +41,25 @@
                         </div>
                     @endif
                 @endcan
-                // TODO: Добавить стили.
-                <div class="city" style="display: flex">
-                    <select name="city_id"></select>
+                <div class="city">
+                    <h3>Город:</h3>
+                    <div class="city-select">
+                        <select name="city_id">
+                            @if($city = $user->city)
+                                <option value="{{ $city->id }}" selected>{{ $city->name }}</option>
+                            @endif
+                        </select>
+                    </div>
+                    <script>
+                        let ymapCoords;
+                    </script>
+                    @if($city)
+                        <div class="ymap-container"></div>
+
+                        <script>
+                            ymapCoords = {'geo_lat': {!! $city->geo_lat !!}, 'geo_lon': {!! $city->geo_lon !!}};
+                        </script>
+                    @endif
                 </div>
                 <div class="specifications">
                     <div>

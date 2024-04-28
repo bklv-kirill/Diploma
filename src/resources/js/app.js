@@ -4,6 +4,7 @@ import './modals.js';
 import './swiper.js';
 import './fancyapps.js';
 import './search.js';
+import './map.js';
 
 import './components/navbar.js';
 import './components/forms/modules/fileInput.js';

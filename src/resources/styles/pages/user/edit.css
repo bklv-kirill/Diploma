@@ -93,6 +93,22 @@
   font-style: normal;
   color: #e91e63;
 }
+.profile-edit > .profile-edit-container > form > .city {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+}
+.profile-edit > .profile-edit-container > form > .city > h3 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #4070f4;
+}
+.profile-edit > .profile-edit-container > form > .city > .city-select {
+  margin-top: 5px;
+}
 .profile-edit > .profile-edit-container > form > .about {
   margin: 10px;
   padding: 10px;

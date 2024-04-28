@@ -13,8 +13,8 @@ class IndexController extends Controller
     {
         $searchData = $request->validated();
 
-        $search = isset($searchData['q']) ? $searchData['q'] : null;
-        $page = isset($searchData['page']) ? $searchData['page'] : null;
+        $search = $searchData['q'] ?? null;
+        $page = $searchData['page'] ?? null;
 
         $cites = City::query()
             ->where('name', 'LIKE', '%' . $search . '%')

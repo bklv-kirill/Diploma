@@ -130,6 +130,26 @@
                 }
             }
 
+            > .city {
+                display: flex;
+                flex-direction: column;
+
+                margin: 10px;
+                padding: 10px;
+
+                > h3 {
+                    font-family: "Montserrat Alternates", sans-serif;
+                    font-weight: 500;
+                    font-size: 20px;
+                    font-style: normal;
+                    color: $main-color;
+                }
+
+                > .city-select {
+                    margin-top: 5px;
+                }
+            }
+
             > .about {
                 margin: 10px;
                 padding: 10px;

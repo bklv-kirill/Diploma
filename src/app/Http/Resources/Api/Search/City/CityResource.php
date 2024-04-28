@@ -12,6 +12,8 @@ class CityResource extends JsonResource
         return [
             'id' => $this['id'],
             'name' => $this['name'],
+            'geo_lat' => $this['geo_lat'],
+            'geo_lon' => $this['geo_lon'],
         ];
     }
 }
