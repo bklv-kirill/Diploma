@@ -12,5 +12,6 @@ class Test extends Command
 
     public function handle()
     {
+        dd('test');
     }
 }

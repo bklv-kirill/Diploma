@@ -8,9 +8,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->after('password', function () use ($table) {
-                $table->foreignIdFor(\App\Models\MainRole::class, 'main_role_id')->constrained()->cascadeOnDelete();
-            });
+            $table->foreignIdFor(\App\Models\MainRole::class, 'main_role_id')->after('password')->constrained()->cascadeOnDelete();
         });
     }
 

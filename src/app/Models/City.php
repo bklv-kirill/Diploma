@@ -16,6 +16,7 @@ class City extends Model
     protected $fillable = [
         'region_id',
         'name',
+        'slug',
         'geo_lat',
         'geo_lon',
     ];

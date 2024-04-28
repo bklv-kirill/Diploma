@@ -48,11 +48,73 @@ $(document).ready(function () {
         };
     });
 
-    $('.profile-edit .profile-edit-container form div.city select').select2({
+    $('.profile-edit .profile-edit-container form .city select').select2({
         language: 'ru',
         width: '40%',
         ajax: {
             url: "/api/cities",
+            data: function (options) {
+                return {
+                    q: options.term,
+                    page: options.page
+                };
+            },
+            dataType: 'json',
+            delay: 250,
+            processResults: function (response, options) {
+                const data = response.data;
+                options.page = response.meta.current_page || 1;
+
+                data.forEach(function (city) {
+                    city.text = city.name
+                })
+
+                return {
+                    results: data,
+                    pagination: {
+                        more: (options.page * 20) < response.meta.total
+                    }
+                };
+            },
+        },
+    });
+
+    $('.profile-edit .profile-edit-container form .education .university-select select').select2({
+        language: 'ru',
+        width: '60%',
+        ajax: {
+            url: "/api/universities",
+            data: function (options) {
+                return {
+                    q: options.term,
+                    page: options.page
+                };
+            },
+            dataType: 'json',
+            delay: 250,
+            processResults: function (response, options) {
+                const data = response.data;
+                options.page = response.meta.current_page || 1;
+
+                data.forEach(function (city) {
+                    city.text = city.name
+                })
+
+                return {
+                    results: data,
+                    pagination: {
+                        more: (options.page * 20) < response.meta.total
+                    }
+                };
+            },
+        },
+    });
+
+    $('.profile-edit .profile-edit-container form .education .collage-select select').select2({
+        language: 'ru',
+        width: '60%',
+        ajax: {
+            url: "/api/collages",
             data: function (options) {
                 return {
                     q: options.term,

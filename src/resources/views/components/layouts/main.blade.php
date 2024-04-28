@@ -14,6 +14,7 @@
 <div class="main-content">
     {{ $slot }}
 </div>
+
 <x-footer/>
 </body>
 </html>

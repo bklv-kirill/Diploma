@@ -109,6 +109,30 @@
 .profile-edit > .profile-edit-container > form > .city > .city-select {
   margin-top: 5px;
 }
+.profile-edit > .profile-edit-container > form > .education {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+}
+.profile-edit > .profile-edit-container > form > .education > h3 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #4070f4;
+}
+.profile-edit > .profile-edit-container > form > .education > .education-select-container > .university-select, .profile-edit > .profile-edit-container > form > .education > .education-select-container .collage-select {
+  margin-top: 20px;
+}
+.profile-edit > .profile-edit-container > form > .education > .education-select-container > .university-select > h4, .profile-edit > .profile-edit-container > form > .education > .education-select-container .collage-select > h4 {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+  color: #4070f4;
+  margin-bottom: 5px;
+}
 .profile-edit > .profile-edit-container > form > .about {
   margin: 10px;
   padding: 10px;

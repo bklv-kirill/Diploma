@@ -58,9 +58,40 @@
                     <h3>Обо мне:</h3>
                     <p>- {{ $user->about ??  'Информация отсутствует' }}</p>
                 </div>
-                <div class="specifications">
+                <div class="user-specifications">
                     <x-user-profile-specification specificationTitle="Тип занятости:" :specifications="$employments"/>
                     <x-user-profile-specification specificationTitle="График работы:" :specifications="$charts"/>
+                </div>
+                <div class="user-about">
+                    <h3>Образования:</h3>
+                    @if($user->universities->count() || $user->collages->count())
+                        @if($universities = $user->universities)
+                            @foreach($universities as $university)
+                                <p>- {{ $university->name }}</p>
+                            @endforeach
+                        @endif
+                        @if($collages = $user->collages)
+                            @foreach($collages as $collage)
+                                <p>- {{ $collage->name }}</p>
+                            @endforeach
+                        @endif
+                    @else
+                        <p>- Информация отсутствует</p>
+                    @endif
+                </div>
+                <div class="user-city">
+                    <h3>Город проживания:</h3>
+                    <p>- {{ $user->city->name ?? 'Не указан' }}</p>
+                    @if($user->city)
+                        <div class="ymap-container"></div>
+
+                        <script>
+                            ymapCoords = {
+                                'geo_lat': {!! $user->city->geo_lat !!},
+                                'geo_lon': {!! $user->city->geo_lon !!}
+                            };
+                        </script>
+                    @endif
                 </div>
             </div>
         </div>

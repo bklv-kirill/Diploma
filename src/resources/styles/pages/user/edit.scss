@@ -145,8 +145,41 @@
                     color: $main-color;
                 }
 
-                > .city-select {
+                > .city-select,  {
                     margin-top: 5px;
+                }
+            }
+
+            > .education {
+                display: flex;
+                flex-direction: column;
+
+                margin: 10px;
+                padding: 10px;
+
+                > h3 {
+                    font-family: "Montserrat Alternates", sans-serif;
+                    font-weight: 500;
+                    font-size: 20px;
+                    font-style: normal;
+                    color: $main-color;
+                }
+
+                > .education-select-container {
+
+                    > .university-select, .collage-select {
+                        > h4 {
+                            font-family: "Comfortaa", sans-serif;
+                            font-weight: 400;
+                            font-size: 16px;
+                            font-style: normal;
+                            color: $main-color;
+
+                            margin-bottom: 5px;
+                        }
+
+                        margin-top: 20px;
+                    }
                 }
             }
 

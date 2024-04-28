@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class District extends Model
+class CollageUser extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
-    protected $table = 'districts';
+    protected $table = 'collage_user';
 
     protected $fillable = [
-        'name',
-        'slug',
+        'collage_id',
+        'user_id',
     ];
 }

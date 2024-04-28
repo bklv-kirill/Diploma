@@ -20,6 +20,8 @@ class UpdateController extends Controller
 
         $user->employments()->sync($userData['employments'] ?? []);
         $user->charts()->sync($userData['charts'] ?? []);
+        $user->universities()->sync($userData['universities'] ?? []);
+        $user->collages()->sync($userData['collages'] ?? []);
 
         if ($user->update($userData))
             toastr()->success('Данные успешно обновлены!', 'Отчет');

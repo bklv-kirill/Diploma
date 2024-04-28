@@ -40,49 +40,64 @@
                             @enderror
                         </div>
                     @endif
+                    <div class="city">
+                        <h3>Город проживания:</h3>
+                        <div class="city-select">
+                            <select name="city_id">
+                                @if($city = $user->city)
+                                    <option value="{{ $city->id }}" selected>{{ $city->name }}</option>
+                                @endif
+                            </select>
+                        </div>
+                    </div>
+                    <div class="education">
+                        <h3>Информация об образовании: </h3>
+                        <div class="education-select-container">
+                            <div class="university-select">
+                                <h4>Список ВУЗов: </h4>
+                                <select name="universities[]" multiple>
+                                    @if($universities = $user->universities)
+                                        @foreach($universities as $university)
+                                            <option value="{{ $university->id }}" selected>{{ $university->name }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                            <div class="collage-select">
+                                <h4>Список ССУЗВов</h4>
+                                <select name="collages[]" multiple>
+                                    @if($collages = $user->collages)
+                                        @foreach($collages as $collage)
+                                            <option value="{{ $collage->id }}" selected>{{ $collage->name }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="specifications">
+                        <div>
+                            <h3>Занятость:</h3>
+                            @foreach($employments as $employment)
+                                <div>
+                                    <input type="checkbox" name="employments[]" id="{{ $employment->slug }}"
+                                           value="{{ $employment->id }}" @checked($user->employments->find($employment->id)?->exists())>
+                                    <label for="{{ $employment->slug }}">{{ $employment->name }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div>
+                            <h3>График работы:</h3>
+                            @foreach($charts as $chart)
+                                <div>
+                                    <input type="checkbox" name="charts[]" id="{{ $chart->slug }}"
+                                           value="{{ $chart->id }}" @checked($user->charts->find($chart->id)?->exists())>
+                                    <label for="{{ $chart->slug }}">{{ $chart->name }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 @endcan
-                <div class="city">
-                    <h3>Город:</h3>
-                    <div class="city-select">
-                        <select name="city_id">
-                            @if($city = $user->city)
-                                <option value="{{ $city->id }}" selected>{{ $city->name }}</option>
-                            @endif
-                        </select>
-                    </div>
-                    <script>
-                        let ymapCoords;
-                    </script>
-                    @if($city)
-                        <div class="ymap-container"></div>
-
-                        <script>
-                            ymapCoords = {'geo_lat': {!! $city->geo_lat !!}, 'geo_lon': {!! $city->geo_lon !!}};
-                        </script>
-                    @endif
-                </div>
-                <div class="specifications">
-                    <div>
-                        <h3>Занятость:</h3>
-                        @foreach($employments as $employment)
-                            <div>
-                                <input type="checkbox" name="employments[]" id="{{ $employment->slug }}"
-                                       value="{{ $employment->id }}" @checked($user->employments->find($employment->id)?->exists())>
-                                <label for="{{ $employment->slug }}">{{ $employment->name }}</label>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div>
-                        <h3>График работы:</h3>
-                        @foreach($charts as $chart)
-                            <div>
-                                <input type="checkbox" name="charts[]" id="{{ $chart->slug }}"
-                                       value="{{ $chart->id }}" @checked($user->charts->find($chart->id)?->exists())>
-                                <label for="{{ $chart->slug }}">{{ $chart->name }}</label>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
                 <div class="controls">
                     <button class="profile-update" type="submit">Обновить</button>
                     <button class="profile-delete" data-delete-account="#deleteAccountConfirmation">Удалить аккаунт

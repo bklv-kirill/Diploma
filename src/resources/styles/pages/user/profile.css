@@ -80,6 +80,7 @@
 .profile > .profile-container > .user-container > .user-profile-edit {
   margin: 10px;
   padding: 5px 10px;
+  width: 100%;
   background-color: #4070f4;
   border-radius: 5px;
   text-align: center;
@@ -108,35 +109,39 @@
   font-style: normal;
   color: #e91e63;
 }
-.profile > .profile-container > .user-info > .user-about {
+.profile > .profile-container > .user-info > .user-about, .profile > .profile-container > .user-info > .user-city {
   margin: 10px;
   word-break: break-all;
 }
-.profile > .profile-container > .user-info > .user-about > h3 {
+.profile > .profile-container > .user-info > .user-about > h3, .profile > .profile-container > .user-info > .user-city > h3 {
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 500;
   font-size: 20px;
   font-style: normal;
   color: #4070f4;
 }
-.profile > .profile-container > .user-info > .user-about > p {
+.profile > .profile-container > .user-info > .user-about > p, .profile > .profile-container > .user-info > .user-city > p {
   font-family: "Comfortaa", sans-serif;
   font-weight: 400;
   font-size: 16px;
   font-style: normal;
   color: rgba(64, 112, 244, 0.88);
 }
-.profile > .profile-container > .user-info .specifications > div {
+.profile > .profile-container > .user-info > .user-about.user-city > .ymap-container, .profile > .profile-container > .user-info > .user-city.user-city > .ymap-container {
+  display: grid;
+  margin-top: 10px;
+}
+.profile > .profile-container > .user-info .user-specifications > div {
   margin: 10px;
 }
-.profile > .profile-container > .user-info .specifications > div > h3 {
+.profile > .profile-container > .user-info .user-specifications > div > h3 {
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 500;
   font-size: 20px;
   font-style: normal;
   color: #4070f4;
 }
-.profile > .profile-container > .user-info .specifications > div > ul > li {
+.profile > .profile-container > .user-info .user-specifications > div > ul > li {
   font-family: "Comfortaa", sans-serif;
   font-weight: 400;
   font-size: 16px;

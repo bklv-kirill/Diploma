@@ -16,13 +16,17 @@ class UpdateRequest extends FormRequest
     {
         return [
             'about' => ['nullable', 'string', 'max:10000'],
-            'avatar' => ['nullable', File::image()->max('10mb')],
+            'avatar' => ['nullable', File::types(['png', 'jpg', 'jpeg'])->max('10mb')],
             'phone' => ['nullable', 'string', 'min:18', 'max:18', 'unique:users'],
             'city_id' => ['nullable', 'integer', 'exists:cities,id'],
+            'universities' => ['nullable', 'array'],
+            'universities.*' => ['nullable', 'integer', 'exists:universities,id'],
+            'collages' => ['nullable', 'array'],
+            'collages.*' => ['nullable', 'integer', 'exists:collages,id'],
             'employments' => ['nullable', 'array'],
-            'employments.*' => ['nullable', 'int', 'exists:employments,id'],
+            'employments.*' => ['nullable', 'integer', 'exists:employments,id'],
             'charts' => ['nullable', 'array'],
-            'charts.*' => ['nullable', 'int', 'exists:charts,id'],
+            'charts.*' => ['nullable', 'integer', 'exists:charts,id'],
         ];
     }
 }
