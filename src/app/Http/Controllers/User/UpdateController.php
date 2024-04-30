@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UpdateRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Carbon;
 
 class UpdateController extends Controller
 {
@@ -14,7 +15,11 @@ class UpdateController extends Controller
     {
         $userData = $request->validated();
 
-        $userData['city_id'] = isset($userData['city_id']) ? $userData['city_id'] : null;
+        $userData['city_id'] = $userData['city_id'] ?? null;
+        $userData['salary'] = $userData['salary'] ?? null;
+
+        if (!$user->birthday)
+            $userData['birthday'] = isset($userData['birthday']) ? Carbon::make($userData['birthday']) : null;
 
         $loadUserAvatarIfExists($user, $userData['avatar'] ?? null);
 

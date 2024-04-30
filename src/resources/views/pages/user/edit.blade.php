@@ -34,12 +34,34 @@
                                    value="{{ old('phone') ?? $user->phone }}">
                             @error('phone')
                             <div class="phone-error">
-                                <span
-                                    class="about-error">Указан неверный или уже используемый номер телефона.</span>
+                                <span>Указан неверный или уже используемый номер телефона.</span>
                             </div>
                             @enderror
                         </div>
                     @endif
+                    @if(!$user->birthday)
+                        <div class="birthday">
+                            <h3>Дата рождения:</h3>
+                            <input type="text" data-birthday-enter="#birthdayEnter" name="birthday"
+                                   placeholder="01.01.1991"
+                                   value="{{ old('birthday') ?? $user->birthday }}">
+                            @error('birthday')
+                            <div class="birthday-error">
+                                <span>{{ $message }}</span>
+                            </div>
+                            @enderror
+                        </div>
+                    @endif
+                    <div class="salary">
+                        <h3>Желаемая зарплата: (в рублях)</h3>
+                        <input type="number" name="salary"
+                               value="{{ old('salary') ?? $user->salary }}">
+                        @error('salary')
+                        <div class="salary-error">
+                            <span>{{ $message }}</span>
+                        </div>
+                        @enderror
+                    </div>
                     <div class="city">
                         <h3>Город проживания:</h3>
                         <div class="city-select">
@@ -58,7 +80,8 @@
                                 <select name="universities[]" multiple>
                                     @if($universities = $user->universities)
                                         @foreach($universities as $university)
-                                            <option value="{{ $university->id }}" selected>{{ $university->name }}</option>
+                                            <option value="{{ $university->id }}"
+                                                    selected>{{ $university->name }}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -123,6 +146,13 @@
     <x-main-modal modalId="phoneEnter" modalTitle="Предупреждение!">
         <div class="phone-enter">
             <p>После заполнения номера телефона его <span>НЕЛЬЗЯ</span> будет изменить. <br> Пожалуйста, будте
+                внимательны.</p>
+        </div>
+    </x-main-modal>
+
+    <x-main-modal modalId="birthdayEnter" modalTitle="Предупреждение!">
+        <div class="phone-enter">
+            <p>После заполнения даты рождения ее <span>НЕЛЬЗЯ</span> будет изменить. <br> Пожалуйста, будте
                 внимательны.</p>
         </div>
     </x-main-modal>

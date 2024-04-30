@@ -58,12 +58,16 @@
                     <h3>Обо мне:</h3>
                     <p>- {{ $user->about ??  'Информация отсутствует' }}</p>
                 </div>
+                <div class="user-birthday">
+                    <h3>Дата рождения: </h3>
+                    <p>- {{ getFormatedDate($user->birthday) ??  'Не указана' }}</p>
+                </div>
                 <div class="user-specifications">
                     <x-user-profile-specification specificationTitle="Тип занятости:" :specifications="$employments"/>
                     <x-user-profile-specification specificationTitle="График работы:" :specifications="$charts"/>
                 </div>
-                <div class="user-about">
-                    <h3>Образования:</h3>
+                <div class="user-education">
+                    <h3>Образование:</h3>
                     @if($user->universities->count() || $user->collages->count())
                         @if($universities = $user->universities)
                             @foreach($universities as $university)
@@ -78,6 +82,10 @@
                     @else
                         <p>- Информация отсутствует</p>
                     @endif
+                </div>
+                <div class="user-birthday">
+                    <h3>Желаемая зарплата: </h3>
+                    <p>- {!! getMoney($user->salary) ?? 'Не указана' !!}</p>
                 </div>
                 <div class="user-city">
                     <h3>Город проживания:</h3>

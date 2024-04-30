@@ -60,18 +60,18 @@
   font-style: normal;
   color: #e91e63;
 }
-.profile-edit > .profile-edit-container > form > .phone {
+.profile-edit > .profile-edit-container > form > .phone, .profile-edit > .profile-edit-container > form .birthday, .profile-edit > .profile-edit-container > form .salary {
   margin: 10px;
   padding: 10px;
 }
-.profile-edit > .profile-edit-container > form > .phone > h3 {
+.profile-edit > .profile-edit-container > form > .phone > h3, .profile-edit > .profile-edit-container > form .birthday > h3, .profile-edit > .profile-edit-container > form .salary > h3 {
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 500;
   font-size: 20px;
   font-style: normal;
   color: #4070f4;
 }
-.profile-edit > .profile-edit-container > form > .phone > input {
+.profile-edit > .profile-edit-container > form > .phone > input, .profile-edit > .profile-edit-container > form .birthday > input, .profile-edit > .profile-edit-container > form .salary > input {
   margin-top: 5px;
   padding: 10px;
   border-radius: 5px;
@@ -80,13 +80,13 @@
   font-size: 16px;
   font-style: normal;
 }
-.profile-edit > .profile-edit-container > form > .phone > input:focus-visible {
+.profile-edit > .profile-edit-container > form > .phone > input:focus-visible, .profile-edit > .profile-edit-container > form .birthday > input:focus-visible, .profile-edit > .profile-edit-container > form .salary > input:focus-visible {
   outline: 2px solid #4070f4;
 }
-.profile-edit > .profile-edit-container > form > .phone > .phone-error {
+.profile-edit > .profile-edit-container > form > .phone > .phone-error, .profile-edit > .profile-edit-container > form > .phone > .birthday-error, .profile-edit > .profile-edit-container > form > .phone .salary-error, .profile-edit > .profile-edit-container > form .birthday > .phone-error, .profile-edit > .profile-edit-container > form .birthday > .birthday-error, .profile-edit > .profile-edit-container > form .birthday .salary-error, .profile-edit > .profile-edit-container > form .salary > .phone-error, .profile-edit > .profile-edit-container > form .salary > .birthday-error, .profile-edit > .profile-edit-container > form .salary .salary-error {
   margin-top: 5px;
 }
-.profile-edit > .profile-edit-container > form > .phone > .phone-error > span {
+.profile-edit > .profile-edit-container > form > .phone > .phone-error > span, .profile-edit > .profile-edit-container > form > .phone > .birthday-error > span, .profile-edit > .profile-edit-container > form > .phone .salary-error > span, .profile-edit > .profile-edit-container > form .birthday > .phone-error > span, .profile-edit > .profile-edit-container > form .birthday > .birthday-error > span, .profile-edit > .profile-edit-container > form .birthday .salary-error > span, .profile-edit > .profile-edit-container > form .salary > .phone-error > span, .profile-edit > .profile-edit-container > form .salary > .birthday-error > span, .profile-edit > .profile-edit-container > form .salary .salary-error > span {
   font-family: "Comfortaa", sans-serif;
   font-weight: 400;
   font-size: 16px;

@@ -89,7 +89,7 @@
                 }
             }
 
-            > .phone {
+            > .phone, .birthday, .salary {
                 margin: 10px;
                 padding: 10px;
 
@@ -117,7 +117,7 @@
                     }
                 }
 
-                > .phone-error {
+                > .phone-error, > .birthday-error, .salary-error {
                     margin-top: 5px;
 
                     > span {
@@ -145,7 +145,7 @@
                     color: $main-color;
                 }
 
-                > .city-select,  {
+                > .city-select, {
                     margin-top: 5px;
                 }
             }

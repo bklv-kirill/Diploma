@@ -8,14 +8,14 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\MainRole::class, 'main_role_id')->after('password')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\MainRole::class, 'main_role_id')->after('updated_at')->constrained()->cascadeOnDelete();
         });
     }
 
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('users_main_role_id_foreign');
+            $table->dropConstrainedForeignIdFor(\App\Models\MainRole::class);
         });
     }
 };

@@ -8,7 +8,7 @@ import './map.js';
 
 import './components/navbar.js';
 import './components/forms/modules/fileInput.js';
-import './components/forms/modules/phoneMask.js';
+import './iMask.js';
 
 import 'spinkit/spinkit.css'
 

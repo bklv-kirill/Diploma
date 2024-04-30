@@ -21,15 +21,21 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $table = 'users';
 
+    protected $attributes = [
+        'main_role_id' => 2,
+    ];
+
     protected $fillable = [
         'first_name',
         'second_name',
         'patronymic',
-        'city_id',
         'gender',
+        'birthday',
         'phone',
-        'email',
         'about',
+        'salary',
+        'city_id',
+        'email',
         'password',
         'main_role_id',
         'permissions',
@@ -63,8 +69,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'first_name',
         'second_name',
         'patronymic',
-        'phone',
         'email',
+        'phone',
         'updated_at',
         'created_at',
     ];
