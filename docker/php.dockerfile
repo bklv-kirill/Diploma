@@ -6,9 +6,9 @@ ARG GID
 ENV UID=${UID}
 ENV GID=${GID}
 
-RUN mkdir -p /var/www/html
+RUN mkdir -p /var/www/app
 
-WORKDIR /var/www/html
+WORKDIR /var/www/app
 
 RUN delgroup dialout
 
