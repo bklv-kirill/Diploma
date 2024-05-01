@@ -1,5 +1,5 @@
 FROM composer
 
-WORKDIR /var/www/html
+WORKDIR /var/www/app
 
 ENTRYPOINT ["composer"]

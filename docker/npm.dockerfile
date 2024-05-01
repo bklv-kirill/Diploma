@@ -1,5 +1,5 @@
 FROM node:current-alpine
 
-WORKDIR /var/www/html
+WORKDIR /var/www/app
 
 ENTRYPOINT ["npm"]
