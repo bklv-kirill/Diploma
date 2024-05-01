@@ -42,15 +42,6 @@ services:
       - ./:/var/www/app
     networks:
       - app-network
-  composer:
-    build:
-      context: ../docker
-      dockerfile: ../docker/composer.dockerfile
-    container_name: composer-container
-    volumes:
-      - ./:/var/www/app
-    networks:
-      - app-network
   mysql:
     image: mysql
     container_name: mysql-container
