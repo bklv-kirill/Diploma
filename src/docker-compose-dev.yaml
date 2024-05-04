@@ -18,7 +18,7 @@ services:
       - redis
       - rabbitmq
     networks:
-      - app-network
+      - dev-network
   php:
     build:
       context: ../docker
@@ -32,7 +32,7 @@ services:
       - ./:/var/www/app:delegated
       - ../conf/php/custom-php.ini:/usr/local/etc/php/conf.d/custom-php.ini:ro
     networks:
-      - app-network
+      - dev-network
   npm:
     build:
       context: ../docker
@@ -41,16 +41,7 @@ services:
     volumes:
       - ./:/var/www/app
     networks:
-      - app-network
-  composer:
-    build:
-      context: ../docker
-      dockerfile: ../docker/composer.dockerfile
-    container_name: composer-container
-    volumes:
-      - ./:/var/www/app
-    networks:
-      - app-network
+      - dev-network
   mysql:
     image: mysql
     container_name: mysql-container
@@ -63,11 +54,13 @@ services:
       - ../database:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
     depends_on:
       - phpmyadmin
     networks:
-      - app-network
+      - dev-network
   redis:
     image: redis
     container_name: redis-container
@@ -77,7 +70,7 @@ services:
       - 6379:6379
     restart: always
     networks:
-      - app-network
+      - dev-network
   rabbitmq:
     image: rabbitmq:3.13.1-management
     container_name: rabbitmq-container
@@ -95,7 +88,7 @@ services:
      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASS}
      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log_levels [{connection,error},{default,error}] disk_free_limit 2147483648
     networks:
-      - app-network
+      - dev-network
   phpmyadmin:
     image: phpmyadmin
     container_name: phpmyadmin-container
@@ -108,9 +101,9 @@ services:
       - PMA_HOST=${DB_HOST}
       - PMA_PORT=${DB_PORT}
     networks:
-      - app-network
+      - dev-network
 
 networks:
-  app-network:
-    name: app-network
+  dev-network:
+    name: dev-network
     driver: bridge
