@@ -226,6 +226,9 @@ body {
                     align-items: center;
                     justify-content: center;
 
+                    > label {
+                        margin-left: 5px;
+                    }
 
                     &:last-child {
                         margin-left: 15px;

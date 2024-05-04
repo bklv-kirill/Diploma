@@ -133,6 +133,11 @@
   color: #4070f4;
   margin-bottom: 5px;
 }
+.profile-edit > .profile-edit-container > form > .education > .education-select-container > .university-select .select2-selection__choice__display, .profile-edit > .profile-edit-container > form > .education > .education-select-container .collage-select .select2-selection__choice__display {
+  word-wrap: break-word !important;
+  text-overflow: inherit !important;
+  white-space: normal !important;
+}
 .profile-edit > .profile-edit-container > form > .about {
   margin: 10px;
   padding: 10px;

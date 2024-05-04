@@ -178,6 +178,12 @@
                             margin-bottom: 5px;
                         }
 
+                        .select2-selection__choice__display{
+                            word-wrap: break-word !important;
+                            text-overflow: inherit !important;
+                            white-space: normal !important;
+                        }
+
                         margin-top: 20px;
                     }
                 }

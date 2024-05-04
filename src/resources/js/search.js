@@ -50,7 +50,7 @@ $(document).ready(function () {
 
     $('.profile-edit .profile-edit-container form .city select').select2({
         language: 'ru',
-        width: '40%',
+        width: '100%',
         ajax: {
             url: "/api/cities",
             data: function (options) {
@@ -81,7 +81,7 @@ $(document).ready(function () {
 
     $('.profile-edit .profile-edit-container form .education .university-select select').select2({
         language: 'ru',
-        width: '60%',
+        width: '100%',
         ajax: {
             url: "/api/universities",
             data: function (options) {
@@ -112,7 +112,7 @@ $(document).ready(function () {
 
     $('.profile-edit .profile-edit-container form .education .collage-select select').select2({
         language: 'ru',
-        width: '60%',
+        width: '100%',
         ajax: {
             url: "/api/collages",
             data: function (options) {
