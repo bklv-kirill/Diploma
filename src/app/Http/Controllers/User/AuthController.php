@@ -20,7 +20,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Gate::denies('email-verified'))
-                toastr()->info('Для доступа к полному функционала сайта вам небходимо подтвердить Email адрес', 'Уведомление');
+                toastr()->info('Для доступа к полному функционалу сайта вам небходимо подтвердить Email адрес', 'Уведомление');
             return redirect()->route('main');
         }
 

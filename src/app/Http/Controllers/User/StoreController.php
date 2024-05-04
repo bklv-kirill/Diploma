@@ -14,7 +14,7 @@ class StoreController extends Controller
         $userData = $request->validated();
 
         if (User::query()->create($userData))
-            toastr()->info('На вашу почту было отправлено письми для ее подтверждения', 'Уведомление');
+            toastr()->info('На вашу почту было отправлено письмо для ее подтверждения', 'Уведомление');
 
         return redirect()->route('main');
     }
