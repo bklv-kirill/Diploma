@@ -60,6 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin-top: 10px;
   border-bottom: 1px solid #4070f4;
 }
@@ -76,6 +77,7 @@
   font-size: 16px;
   font-style: normal;
   color: rgba(64, 112, 244, 0.88);
+  word-break: break-all;
 }
 .profile > .profile-container > .user-container > .user-profile-edit {
   margin: 10px;

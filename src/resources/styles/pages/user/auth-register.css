@@ -172,6 +172,9 @@ body .wrapper > form > .gender-select > .gender-radio {
   align-items: center;
   justify-content: center;
 }
+body .wrapper > form > .gender-select > .gender-radio > label {
+  margin-left: 5px;
+}
 body .wrapper > form > .gender-select > .gender-radio:last-child {
   margin-left: 15px;
 }
