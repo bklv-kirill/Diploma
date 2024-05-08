@@ -9,9 +9,9 @@ class UniversityUser extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $table = 'university_user';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'university_id',

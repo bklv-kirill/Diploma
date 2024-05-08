@@ -10,6 +10,7 @@ class Chart extends Model
     use HasFactory;
 
     protected $table = 'charts';
+
     protected $fillable = [
         'name',
         'slug',

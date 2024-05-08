@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('collages', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name', '1000');
-            $table->string('slug', '1000');
+            $table->string('name');
+            $table->string('slug');
         });
     }
 

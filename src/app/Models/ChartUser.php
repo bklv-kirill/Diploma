@@ -9,9 +9,9 @@ class ChartUser extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $table = 'chart_user';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'chart_id',

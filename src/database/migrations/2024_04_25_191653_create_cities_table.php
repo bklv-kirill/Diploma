@@ -13,7 +13,7 @@ return new class extends Migration
 
             $table->foreignIdFor(\App\Models\Region::class, 'region_id')->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->double('geo_lat')->nullable();
             $table->double('geo_lon')->nullable();
         });

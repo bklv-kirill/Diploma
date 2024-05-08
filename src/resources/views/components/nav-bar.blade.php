@@ -29,17 +29,17 @@
     <ul class="navigation">
         <li>
             <div>
-                <a href="">Навигация</a>
+                <a href="">Вакансии</a>
             </div>
         </li>
         <li>
             <div>
-                <a href="">Навигация</a>
+                <a @class(['active-page' => request()->routeIs('applicant.index')]) href="{{ route('applicant.index') }}">Соискатели</a>
             </div>
         </li>
         <li>
             <div>
-                <a href="">Навигация</a>
+                <a href="">F.A.Q.</a>
             </div>
         </li>
     </ul>

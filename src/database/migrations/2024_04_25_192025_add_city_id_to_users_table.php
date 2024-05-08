@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\City::class, 'city_id')->nullable()->after('salary')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\City::class, 'city_id')->nullable()->after('salary');
         });
     }
 

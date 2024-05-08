@@ -16,10 +16,7 @@ class IndexController extends Controller
         $search = $searchData['q'] ?? null;
         $page = $searchData['page'] ?? null;
 
-        $universities = University::query()
-            ->where('name', 'LIKE', '%' . $search . '%')
-            ->orderBy('name')
-            ->paginate(20, '*', 'universities', $page);
+        $universities = University::search($search, 'universities', $page);
 
         return new UniversityCollection($universities);
     }

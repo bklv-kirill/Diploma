@@ -9,9 +9,9 @@ class CollageUser extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $table = 'collage_user';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'collage_id',

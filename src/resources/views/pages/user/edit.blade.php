@@ -1,4 +1,4 @@
-<x-main-layout :title="'Личный кабинет'">
+<x-main-layout title="Личный кабинет">
 
     <div class="profile-edit">
         <div class="profile-edit-container">
@@ -98,6 +98,28 @@
                             </div>
                         </div>
                     </div>
+                    <div class="softs">
+                        <h3>Гибкие навыки: </h3>
+                        <select name="softs[]" multiple>
+                            @if($softs = $user->softs)
+                                @foreach($softs as $soft)
+                                    <option value="{{ $soft->id }}"
+                                            selected>{{ $soft->name }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                        <div class="hards">
+                            <h3>Профессиональные навыки: </h3>
+                            <select name="hards[]" multiple>
+                                @if($hards = $user->hards)
+                                    @foreach($hards as $hard)
+                                        <option value="{{ $hard->id }}"
+                                                selected>{{ $hard->name }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        </div>
                     <div class="specifications">
                         <div>
                             <h3>Занятость:</h3>

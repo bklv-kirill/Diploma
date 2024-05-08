@@ -16,10 +16,7 @@ class IndexController extends Controller
         $search = $searchData['q'] ?? null;
         $page = $searchData['page'] ?? null;
 
-        $cites = City::query()
-            ->where('name', 'LIKE', '%' . $search . '%')
-            ->orderBy('name')
-            ->paginate(20, '*', 'cities', $page);
+        $cites = City::search($search, 'cities', $page);
 
         return new CityCollection($cites);
     }

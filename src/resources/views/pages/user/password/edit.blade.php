@@ -1,4 +1,4 @@
-<x-main-layout :title="'Изменение пароля'">
+<x-main-layout title="Изменение пароля">
 
     <div class="edit-password">
         <div class="edit-password-container">

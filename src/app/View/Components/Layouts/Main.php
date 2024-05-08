@@ -8,8 +8,9 @@ use Illuminate\View\Component;
 
 class Main extends Component
 {
-
-    public function __construct(public string $title)
+    public function __construct(
+        public string $title,
+    )
     {
     }
 

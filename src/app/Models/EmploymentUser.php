@@ -9,9 +9,9 @@ class EmploymentUser extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $table = 'employment_user';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'employment_id',

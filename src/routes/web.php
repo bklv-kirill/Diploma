@@ -14,6 +14,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/email/verify/{id}/{hash}', \App\Http\Controllers\User\EmailVerificationController::class)
         ->middleware('signed')
         ->name('verification.verify');
+
+    Route::name('applicant.')->group(function () {
+        Route::get('/applicants', \App\Http\Controllers\Pages\Applicant\IndexController::class)->name('index');
+    });
 });
 
 Route::fallback(function () {

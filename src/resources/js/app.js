@@ -32,3 +32,4 @@ import '../styles/pages/main.scss';
 import '../styles/pages/user/profile.scss';
 import '../styles/pages/user/edit.scss';
 import '../styles/pages/user/password/edit.scss';
+import '../styles/pages/applicant/index.scss';

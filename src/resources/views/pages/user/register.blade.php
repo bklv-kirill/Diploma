@@ -1,4 +1,4 @@
-<x-auth-register-layout :title="'Регистрация'">
+<x-auth-register-layout title="Регистрация">
     <div class="wrapper">
         <h2>Регистрация</h2>
         <x-form :action="route('user.store')" method="POST">

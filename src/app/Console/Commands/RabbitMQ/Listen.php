@@ -7,6 +7,7 @@ use App\Services\RabbitMQ\RabbitMQService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Console\Command;
 use PhpAmqpLib\Message\AMQPMessage;
+use Throwable;
 
 class Listen extends Command
 {
@@ -31,7 +32,7 @@ class Listen extends Command
 
         try {
             $rabbitMQChanel->consume();
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             echo $exception->getMessage();
         }
     }

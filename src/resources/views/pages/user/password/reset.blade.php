@@ -1,4 +1,4 @@
-<x-auth-register-layout :title="'Сброс пароля'">
+<x-auth-register-layout title="Сброс пароля">
     <div class="wrapper">
         <h2>Сброс пароля</h2>
         <x-form :action="route('password.update')" method="POST">

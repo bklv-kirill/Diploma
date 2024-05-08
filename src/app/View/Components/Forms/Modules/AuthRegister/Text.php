@@ -9,10 +9,9 @@ use Illuminate\View\Component;
 class Text extends Component
 {
     public function __construct(
-        public string $link,
-        public string $linkTitle,
+        public string  $link,
+        public string  $linkTitle,
         public ?string $beforeLink = null,
-
     )
     {
     }

@@ -146,10 +146,8 @@
                 }
             }
 
-            > .user-about, > .user-birthday, > .user-education, > .user-city {
+            > .user-about, > .user-birthday, > .user-salary, > .user-softs, > .user-education, > .user-city {
                 margin: 10px;
-
-                word-break: break-all;
 
                 > h3 {
                     font-family: "Montserrat Alternates", sans-serif;
@@ -188,7 +186,7 @@
                     }
 
                     > ul {
-                        > li {
+                        > li, > p {
                             font-family: "Comfortaa", sans-serif;
                             font-weight: 400;
                             font-size: 16px;

@@ -1,4 +1,4 @@
-<x-auth-register-layout :title="'Восстановление пароля'">
+<x-auth-register-layout title="Восстановление пароля">
     <div class="wrapper">
         <h2>Восстановление пароля</h2>
         <x-form :action="route('password.send-reset-link')" method="POST">

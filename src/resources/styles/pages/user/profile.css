@@ -111,25 +111,24 @@
   font-style: normal;
   color: #e91e63;
 }
-.profile > .profile-container > .user-info > .user-about, .profile > .profile-container > .user-info > .user-birthday, .profile > .profile-container > .user-info > .user-education, .profile > .profile-container > .user-info > .user-city {
+.profile > .profile-container > .user-info > .user-about, .profile > .profile-container > .user-info > .user-birthday, .profile > .profile-container > .user-info > .user-salary, .profile > .profile-container > .user-info > .user-softs, .profile > .profile-container > .user-info > .user-education, .profile > .profile-container > .user-info > .user-city {
   margin: 10px;
-  word-break: break-all;
 }
-.profile > .profile-container > .user-info > .user-about > h3, .profile > .profile-container > .user-info > .user-birthday > h3, .profile > .profile-container > .user-info > .user-education > h3, .profile > .profile-container > .user-info > .user-city > h3 {
+.profile > .profile-container > .user-info > .user-about > h3, .profile > .profile-container > .user-info > .user-birthday > h3, .profile > .profile-container > .user-info > .user-salary > h3, .profile > .profile-container > .user-info > .user-softs > h3, .profile > .profile-container > .user-info > .user-education > h3, .profile > .profile-container > .user-info > .user-city > h3 {
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 500;
   font-size: 20px;
   font-style: normal;
   color: #4070f4;
 }
-.profile > .profile-container > .user-info > .user-about > p, .profile > .profile-container > .user-info > .user-birthday > p, .profile > .profile-container > .user-info > .user-education > p, .profile > .profile-container > .user-info > .user-city > p {
+.profile > .profile-container > .user-info > .user-about > p, .profile > .profile-container > .user-info > .user-birthday > p, .profile > .profile-container > .user-info > .user-salary > p, .profile > .profile-container > .user-info > .user-softs > p, .profile > .profile-container > .user-info > .user-education > p, .profile > .profile-container > .user-info > .user-city > p {
   font-family: "Comfortaa", sans-serif;
   font-weight: 400;
   font-size: 16px;
   font-style: normal;
   color: rgba(64, 112, 244, 0.88);
 }
-.profile > .profile-container > .user-info > .user-about.user-city > .ymap-container, .profile > .profile-container > .user-info > .user-birthday.user-city > .ymap-container, .profile > .profile-container > .user-info > .user-education.user-city > .ymap-container, .profile > .profile-container > .user-info > .user-city.user-city > .ymap-container {
+.profile > .profile-container > .user-info > .user-about.user-city > .ymap-container, .profile > .profile-container > .user-info > .user-birthday.user-city > .ymap-container, .profile > .profile-container > .user-info > .user-salary.user-city > .ymap-container, .profile > .profile-container > .user-info > .user-softs.user-city > .ymap-container, .profile > .profile-container > .user-info > .user-education.user-city > .ymap-container, .profile > .profile-container > .user-info > .user-city.user-city > .ymap-container {
   display: grid;
   margin-top: 10px;
 }
@@ -143,7 +142,7 @@
   font-style: normal;
   color: #4070f4;
 }
-.profile > .profile-container > .user-info .user-specifications > div > ul > li {
+.profile > .profile-container > .user-info .user-specifications > div > ul > li, .profile > .profile-container > .user-info .user-specifications > div > ul > p {
   font-family: "Comfortaa", sans-serif;
   font-weight: 400;
   font-size: 16px;

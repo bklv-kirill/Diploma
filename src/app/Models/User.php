@@ -82,6 +82,10 @@ class User extends Authenticatable implements MustVerifyEmail
             $this->second_name . ' ' . $this->first_name . ' ' . $this->patronymic;
     }
 
+    public function mainRole(): BelongsTo
+    {
+        return $this->belongsTo(MainRole::class, 'main_role_id', 'id');
+    }
     public function avatar(): string
     {
         return $this->attachment()->firstWhere('group', 'avatar')?->getRelativeUrlAttribute() ?? asset('/images/default.jpg');
@@ -109,5 +113,14 @@ class User extends Authenticatable implements MustVerifyEmail
     public function charts(): BelongsToMany
     {
         return $this->belongsToMany(Chart::class, 'chart_user', 'user_id', 'chart_id');
+    }
+
+    public function softs(): BelongsToMany
+    {
+        return $this->belongsToMany(Soft::class, 'soft_user', 'user_id', 'soft_id');
+    }
+    public function hards(): BelongsToMany
+    {
+        return $this->belongsToMany(Hard::class, 'hard_user', 'user_id', 'hard_id');
     }
 }

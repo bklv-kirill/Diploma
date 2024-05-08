@@ -48,7 +48,7 @@ $(document).ready(function () {
         };
     });
 
-    $('.profile-edit .profile-edit-container form .city select').select2({
+    $('.city-select select').select2({
         language: 'ru',
         width: '100%',
         ajax: {
@@ -96,8 +96,8 @@ $(document).ready(function () {
                 const data = response.data;
                 options.page = response.meta.current_page || 1;
 
-                data.forEach(function (city) {
-                    city.text = city.name
+                data.forEach(function (university) {
+                    university.text = university.name
                 })
 
                 return {
@@ -127,8 +127,70 @@ $(document).ready(function () {
                 const data = response.data;
                 options.page = response.meta.current_page || 1;
 
-                data.forEach(function (city) {
-                    city.text = city.name
+                data.forEach(function (collage) {
+                    collage.text = collage.name
+                })
+
+                return {
+                    results: data,
+                    pagination: {
+                        more: (options.page * 20) < response.meta.total
+                    }
+                };
+            },
+        },
+    });
+
+    $('.softs select').select2({
+        language: 'ru',
+        width: '100%',
+        ajax: {
+            url: "/api/softs",
+            data: function (options) {
+                return {
+                    q: options.term,
+                    page: options.page
+                };
+            },
+            dataType: 'json',
+            delay: 250,
+            processResults: function (response, options) {
+                const data = response.data;
+                options.page = response.meta.current_page || 1;
+
+                data.forEach(function (soft) {
+                    soft.text = soft.name
+                })
+
+                return {
+                    results: data,
+                    pagination: {
+                        more: (options.page * 20) < response.meta.total
+                    }
+                };
+            },
+        },
+    });
+
+    $('.hards select').select2({
+        language: 'ru',
+        width: '100%',
+        ajax: {
+            url: "/api/hards",
+            data: function (options) {
+                return {
+                    q: options.term,
+                    page: options.page
+                };
+            },
+            dataType: 'json',
+            delay: 250,
+            processResults: function (response, options) {
+                const data = response.data;
+                options.page = response.meta.current_page || 1;
+
+                data.forEach(function (hard) {
+                    hard.text = hard.name
                 })
 
                 return {

@@ -16,10 +16,7 @@ class IndexController extends Controller
         $search = $searchData['q'] ?? null;
         $page = $searchData['page'] ?? null;
 
-        $collages = Collage::query()
-            ->where('name', 'LIKE', '%' . $search . '%')
-            ->orderBy('name')
-            ->paginate(20, '*', 'universities', $page);
+        $collages = Collage::search($search, 'collages', $page);
 
         return new CollageCollection($collages);
     }

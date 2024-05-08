@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
             'slug' => 'admin',
         ]);
         MainRole::factory()->create([
-            'name' => 'Работник',
-            'slug' => 'worker',
+            'name' => 'Соискатель',
+            'slug' => 'applicant',
         ]);
         MainRole::factory()->create([
             'name' => 'Рабодатель',

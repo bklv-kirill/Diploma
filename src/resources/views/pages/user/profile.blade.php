@@ -1,4 +1,4 @@
-<x-main-layout :title="'Личный кабинет'">
+<x-main-layout title="Личный кабинет">
 
     <div class="profile">
         <div class="profile-container">
@@ -58,17 +58,13 @@
                     <h3>Обо мне:</h3>
                     <p>- {{ $user->about ??  'Информация отсутствует' }}</p>
                 </div>
-                <div class="user-birthday">
-                    <h3>Дата рождения: </h3>
-                    <p>- {{ getFormatedDate($user->birthday) ??  'Не указана' }}</p>
-                </div>
-                <div class="user-specifications">
-                    <x-user-profile-specification specificationTitle="Тип занятости:" :specifications="$employments"/>
-                    <x-user-profile-specification specificationTitle="График работы:" :specifications="$charts"/>
+                <div class="user-salary">
+                    <h3>Желаемая зарплата: </h3>
+                    <p>- {!! getMoney($user->salary) ?? 'Информация отсутствует' !!}</p>
                 </div>
                 <div class="user-education">
                     <h3>Образование:</h3>
-                    @if($user->universities->count() || $user->collages->count())
+                    @if($user->universities->isNotEmpty() || $user->collages->isNotEmpty())
                         @if($universities = $user->universities)
                             @foreach($universities as $university)
                                 <p>- {{ $university->name }}</p>
@@ -83,13 +79,33 @@
                         <p>- Информация отсутствует</p>
                     @endif
                 </div>
+                <div class="user-softs">
+                    <h3>Гибкие навыки: </h3>
+                    @forelse($user->softs as $soft)
+                        <p>- {{ $soft->name }}</p>
+                    @empty
+                        <p>- Информация отсутствует</p>
+                    @endforelse
+                </div>
+                <div class="user-softs">
+                    <h3>Профессиональные навыки: </h3>
+                    @forelse($user->hards as $hard)
+                        <p>- {{ $hard->name }}</p>
+                    @empty
+                        <p>- Информация отсутствует</p>
+                    @endforelse
+                </div>
                 <div class="user-birthday">
-                    <h3>Желаемая зарплата: </h3>
-                    <p>- {!! getMoney($user->salary) ?? 'Не указана' !!}</p>
+                    <h3>Дата рождения: </h3>
+                    <p>- {{ getFormatedDate($user->birthday) ??  'Информация отсутствует' }}</p>
+                </div>
+                <div class="user-specifications">
+                    <x-user-profile-specification specificationTitle="Тип занятости:" :specifications="$employments"/>
+                    <x-user-profile-specification specificationTitle="График работы:" :specifications="$charts"/>
                 </div>
                 <div class="user-city">
                     <h3>Город проживания:</h3>
-                    <p>- {{ $user->city->name ?? 'Не указан' }}</p>
+                    <p>- {{ $user->city->name ?? 'Информация отсутствует' }}</p>
                     @if($user->city)
                         <div class="ymap-container"></div>
 

@@ -10,7 +10,7 @@ class LoadUserAvatarIfExistsAction
 {
     public function __invoke(User $user, ?UploadedFile $uploadAvatar): void
     {
-        if (!$uploadAvatar) return;
+        if (is_null($uploadAvatar)) return;
 
         $user->attachment()->where('group', 'avatar')->delete();
 

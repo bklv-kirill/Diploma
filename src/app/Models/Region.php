@@ -9,9 +9,9 @@ class Region extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     protected $table = 'regions';
+
+    public $timestamps = false;
 
     protected $fillable = [
         'district_id',

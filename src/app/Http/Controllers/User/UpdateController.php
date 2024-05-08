@@ -18,15 +18,17 @@ class UpdateController extends Controller
         $userData['city_id'] = $userData['city_id'] ?? null;
         $userData['salary'] = $userData['salary'] ?? null;
 
-        if (!$user->birthday)
+        if (is_null($user->birthday))
             $userData['birthday'] = isset($userData['birthday']) ? Carbon::make($userData['birthday']) : null;
 
         $loadUserAvatarIfExists($user, $userData['avatar'] ?? null);
 
-        $user->employments()->sync($userData['employments'] ?? []);
-        $user->charts()->sync($userData['charts'] ?? []);
         $user->universities()->sync($userData['universities'] ?? []);
         $user->collages()->sync($userData['collages'] ?? []);
+        $user->softs()->sync($userData['softs'] ?? []);
+        $user->hards()->sync($userData['hards'] ?? []);
+        $user->employments()->sync($userData['employments'] ?? []);
+        $user->charts()->sync($userData['charts'] ?? []);
 
         if ($user->update($userData))
             toastr()->success('Данные успешно обновлены!', 'Отчет');

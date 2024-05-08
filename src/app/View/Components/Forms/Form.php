@@ -8,11 +8,10 @@ use Illuminate\View\Component;
 
 class Form extends Component
 {
-
     public function __construct(
         public string $action,
         public string $method,
-        public bool   $isMultipartFormData = false
+        public bool   $isMultipartFormData = false,
     )
     {
     }

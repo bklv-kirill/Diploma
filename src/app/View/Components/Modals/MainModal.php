@@ -8,7 +8,10 @@ use Illuminate\View\Component;
 
 class MainModal extends Component
 {
-    public function __construct(public string $modalId, public string $modalTitle)
+    public function __construct(
+        public string $modalId,
+        public string $modalTitle,
+    )
     {
     }
 

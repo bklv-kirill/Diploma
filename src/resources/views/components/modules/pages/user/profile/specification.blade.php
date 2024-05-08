@@ -4,7 +4,7 @@
         @forelse($specifications as $specification)
             <li>- {{ $specification->name }}</li>
         @empty
-            <li>- Не указан</li>
+            <p>- Информация отсутствует</p>
         @endforelse
     </ul>
 </div>
