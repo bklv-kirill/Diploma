@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\User;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -41,8 +40,16 @@ class AppServiceProvider extends ServiceProvider
 
         \App\Models\User::observe(\App\Observers\UserObserver::class);
 
-        \Illuminate\Support\Facades\Gate::define('email-verified', function (User $user) {
+        Blade::if('emailVerified', function () {
+            $user = auth()->user();
+
             return !is_null($user->email_verified_at);
+        });
+
+        Blade::if('userIsEmployer', function () {
+            $user = auth()->user();
+
+            return !is_null($user) && !$user->hasRole('Соискатель');
         });
     }
 }

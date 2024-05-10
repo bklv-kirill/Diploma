@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\AuthRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Gate;
 
 class AuthController extends Controller
 {
@@ -19,13 +18,17 @@ class AuthController extends Controller
         ], isset($userData['remember_me']))) {
             $request->session()->regenerate();
 
-            if (Gate::denies('email-verified'))
+            $user = auth()->user();
+
+            if (is_null($user->email_verified_at))
                 toastr()->info('Для доступа к полному функционалу сайта вам небходимо подтвердить Email адрес', 'Уведомление');
             return redirect()->route('main');
         }
 
         return back()->withErrors([
             'password' => 'Неверный пароль.',
-        ])->onlyInput('password');
+        ])->withInput([
+            'email' => $userData['email'],
+        ]);
     }
 }

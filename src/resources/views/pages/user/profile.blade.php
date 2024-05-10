@@ -1,3 +1,5 @@
+@php($isApplicant = auth()->user()->id !== $user->id)
+
 <x-main-layout title="Личный кабинет">
 
     <div class="profile">
@@ -46,7 +48,14 @@
                     <x-user-edit-contact contactTitle="Номер телефона:" :contact="$user->phone ?? 'не указан'"/>
                     <x-user-edit-contact contactTitle="Email:" :contact="$user->email"/>
                 </div>
-                <a href="{{ route('user.edit') }}" class="user-profile-edit">Редактировать профиль</a>
+                @if($isApplicant)
+                    <a href="mailto:{{ $user->email }}" class="user-profile-edit">Написать на почту</a>
+                    @if($user->phone)
+                        <a href="tel::{{ $user->phone }}" class="user-profile-edit">Позвонить</a>
+                    @endif
+                @else
+                    <a href="{{ route('user.edit') }}" class="user-profile-edit">Редактировать профиль</a>
+                @endif
             </div>
             <div class="user-info">
                 <div class="user-created">
@@ -100,8 +109,9 @@
                     <p>- {{ getFormatedDate($user->birthday) ??  'Информация отсутствует' }}</p>
                 </div>
                 <div class="user-specifications">
-                    <x-user-profile-specification specificationTitle="Тип занятости:" :specifications="$employments"/>
-                    <x-user-profile-specification specificationTitle="График работы:" :specifications="$charts"/>
+                    <x-user-profile-specification specificationTitle="Тип занятости:"
+                                                  :specifications="$user->employments"/>
+                    <x-user-profile-specification specificationTitle="График работы:" :specifications="$user->charts"/>
                 </div>
                 <div class="user-city">
                     <h3>Город проживания:</h3>

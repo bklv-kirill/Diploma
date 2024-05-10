@@ -13,15 +13,6 @@
   margin: 10px;
   padding: 10px;
 }
-.profile-edit > .profile-edit-container > form > .profile-avatar > .avatar {
-  width: 200px;
-  height: 200px;
-  border-radius: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  cursor: pointer;
-}
 .profile-edit > .profile-edit-container > form > .profile-avatar .file-input {
   margin-top: 20px;
 }

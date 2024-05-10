@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 use Orchid\Attachment\Attachable;
-use Orchid\Attachment\Models\Attachment;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
+use Orchid\Platform\Models\Role;
 use Orchid\Platform\Models\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -20,10 +21,6 @@ class User extends Authenticatable implements MustVerifyEmail
     use Attachable;
 
     protected $table = 'users';
-
-    protected $attributes = [
-        'main_role_id' => 2,
-    ];
 
     protected $fillable = [
         'first_name',
@@ -37,7 +34,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'city_id',
         'email',
         'password',
-        'main_role_id',
         'permissions',
     ];
 
@@ -75,6 +71,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'created_at',
     ];
 
+    public static function applicants()
+    {
+        return self::query()->whereHas('roles', function (Builder $query) {
+            $query->where('slug', 'applicant');
+        });
+    }
+
+    public function hasRole(string $role): bool
+    {
+        return $this->roles()->where('name', $role)->exists();
+    }
+
     public function fullName(bool $notOfficialName = false): string
     {
         return $notOfficialName ?
@@ -82,10 +90,6 @@ class User extends Authenticatable implements MustVerifyEmail
             $this->second_name . ' ' . $this->first_name . ' ' . $this->patronymic;
     }
 
-    public function mainRole(): BelongsTo
-    {
-        return $this->belongsTo(MainRole::class, 'main_role_id', 'id');
-    }
     public function avatar(): string
     {
         return $this->attachment()->firstWhere('group', 'avatar')?->getRelativeUrlAttribute() ?? asset('/images/default.jpg');
@@ -100,6 +104,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(University::class, 'university_user', 'user_id', 'university_id');
     }
+
     public function collages(): BelongsToMany
     {
         return $this->belongsToMany(Collage::class, 'collage_user', 'user_id', 'collage_id');
@@ -119,8 +124,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Soft::class, 'soft_user', 'user_id', 'soft_id');
     }
+
     public function hards(): BelongsToMany
     {
         return $this->belongsToMany(Hard::class, 'hard_user', 'user_id', 'hard_id');
+    }
+
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'role_users', 'user_id', 'role_id');
     }
 }

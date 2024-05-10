@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Chart;
 use App\Models\Employment;
-use App\Models\MainRole;
 use Illuminate\Database\Seeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -13,19 +12,6 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        MainRole::factory()->create([
-            'name' => 'Администратор',
-            'slug' => 'admin',
-        ]);
-        MainRole::factory()->create([
-            'name' => 'Соискатель',
-            'slug' => 'applicant',
-        ]);
-        MainRole::factory()->create([
-            'name' => 'Рабодатель',
-            'slug' => 'employer',
-        ]);
-
         Employment::factory()->create([
             'name' => 'Полная занятость',
             'slug' => 'full-employment',

@@ -10,6 +10,8 @@ class UserObserver
 {
     public function created(User $user): void
     {
+        $user->roles()->attach(2);
+
         auth()->login($user);
 
         $sendEmailVerificationRabbitMQAction = new SendEmailVerificationRabbitMQAction();

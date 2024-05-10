@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Pages\User;
 use App\Http\Controllers\Controller;
 use App\Models\Chart;
 use App\Models\Employment;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
 class EditController extends Controller
@@ -14,7 +13,7 @@ class EditController extends Controller
     {
         $user = auth()->user();
 
-        if (Gate::denies('email-verified'))
+        if (is_null($user->email_verified_at))
             toastr()->info('Полная настройка вашего профила станет доступна после подтверждения Email адреса', 'Уведомление');
 
         // TODO: Реализовать получение $employments и $charts через кеш. Добавить к ним обсерверы.

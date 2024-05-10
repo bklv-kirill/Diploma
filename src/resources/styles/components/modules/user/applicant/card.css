@@ -1,0 +1,66 @@
+.applicants-list-item {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 10px;
+  background-color: rgba(64, 112, 244, 0.18);
+  border-radius: 5px;
+}
+.applicants-list-item h3 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  font-style: normal;
+  color: #4070f4;
+}
+.applicants-list-item li, .applicants-list-item p {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  font-style: normal;
+  color: #4070f4;
+}
+.applicants-list-item > .applicant-avatar {
+  display: flex;
+  flex-direction: column;
+}
+.applicants-list-item > .applicant-avatar > .avatar {
+  border-radius: 5px;
+}
+.applicants-list-item > .applicant-avatar > a {
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #4070f4;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+.applicants-list-item > .applicant-avatar > a:hover {
+  background-color: #3c78ff;
+}
+.applicants-list-item > .applicants-list-item-info > .applicant-fio {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px;
+}
+.applicants-list-item > .applicants-list-item-info > .applicant-fio > svg {
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  min-height: 22px;
+  margin-right: 10px;
+}
+.applicants-list-item > .applicants-list-item-info > div {
+  margin: 10px;
+}
+
+/*# sourceMappingURL=card.css.map */

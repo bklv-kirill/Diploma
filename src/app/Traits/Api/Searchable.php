@@ -11,6 +11,6 @@ trait Searchable
         return self::query()
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orderBy('name')
-            ->paginate(20, '*', $pageName, $page);
+            ->paginate(20, ['*'], $pageName, $page);
     }
 }

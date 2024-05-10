@@ -16,16 +16,6 @@
   flex-direction: column;
   padding: 10px;
 }
-.profile > .profile-container > .user-container > .avatar {
-  width: 250px;
-  height: 250px;
-  margin: 10px;
-  border-radius: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  cursor: pointer;
-}
 .profile > .profile-container > .user-container > .user-fio {
   display: flex;
   align-items: center;

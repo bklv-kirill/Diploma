@@ -73,7 +73,7 @@
                     transition: background-color 0.2s ease;
 
                     &:hover {
-                        background-color: #3c78ff;
+                        background-color: $main-hover-color;
                     }
                 }
             }

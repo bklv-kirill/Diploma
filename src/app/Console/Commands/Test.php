@@ -8,7 +8,7 @@ class Test extends Command
 {
     protected $signature = 'test:run';
 
-    protected $description = 'Command description';
+    protected $description = 'Command for test';
 
     public function handle()
     {
