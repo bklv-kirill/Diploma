@@ -120,10 +120,11 @@
                         <div class="ymap-container"></div>
 
                         <script>
-                            ymapCoords = {
+                            let ymapCoords = {
                                 'geo_lat': {!! $user->city->geo_lat !!},
                                 'geo_lon': {!! $user->city->geo_lon !!}
                             };
+                            let ymapZoom = 10;
                         </script>
                     @endif
                 </div>

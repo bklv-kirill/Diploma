@@ -5,7 +5,7 @@ import './swiper.js';
 import './fancyapps.js';
 import './accordion.js';
 import './search.js';
-import './map.js';
+import './ymap.js';
 
 import './components/navbar.js';
 import './components/forms/modules/fileInput.js';

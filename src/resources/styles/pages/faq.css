@@ -17,20 +17,20 @@
   font-style: normal;
   color: #4070f4;
 }
-.faq > .accordion-container {
+.faq > .faq-accordion-container {
   width: 100%;
 }
-.faq > .accordion-container > .ac {
+.faq > .faq-accordion-container > .ac {
   margin: 20px;
 }
-.faq > .accordion-container > .ac > .ac-header > .ac-trigger {
+.faq > .faq-accordion-container > .ac > .ac-header > .ac-trigger {
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 500;
   font-size: 20px;
   font-style: normal;
   color: #4070f4;
 }
-.faq > .accordion-container > .ac > .ac-panel > .ac-text {
+.faq > .faq-accordion-container > .ac > .ac-panel > .ac-text {
   margin-left: 10px;
   font-family: "Comfortaa", sans-serif;
   font-weight: 400;
@@ -38,7 +38,7 @@
   font-style: normal;
   color: #4070f4;
 }
-.faq > .accordion-container > .ac > .ac-panel > .ac-text > li > a {
+.faq > .faq-accordion-container > .ac > .ac-panel > .ac-text > li > a {
   text-decoration: underline;
   color: #e91e63;
 }

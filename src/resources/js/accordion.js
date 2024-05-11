@@ -3,12 +3,21 @@ import Accordion from 'accordion-js';
 import 'accordion-js/dist/accordion.min.css';
 
 $(document).ready(function () {
-    const accordionContainer = $('.accordion-container');
+    const faqAccordionContainer = $('.faq-accordion-container');
 
-    if (accordionContainer.length !== 0) {
-        new Accordion(accordionContainer[0], {
+    if (faqAccordionContainer.length !== 0) {
+        new Accordion(faqAccordionContainer[0], {
             showMultiple: true,
         });
+    }
+
+    const mainAccordionContainer = $('.main-accordion-container');
+
+    if (mainAccordionContainer.length !== 0) {
+        const mainAccordion = new Accordion(mainAccordionContainer[0], {
+            showMultiple: true,
+        });
+        mainAccordion.openAll();
     }
 })
 

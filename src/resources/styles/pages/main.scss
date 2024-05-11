@@ -1,1 +1,119 @@
+@import '../variables/colors';
 
+.main {
+    display: grid;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+
+    max-width: 1200px;
+
+    > .main-title {
+        margin: 20px;
+
+        text-align: center;
+
+        > h1 {
+            font-family: "Montserrat Alternates", sans-serif;
+            font-weight: 500;
+            font-size: 30px;
+            font-style: normal;
+            color: $main-color;
+
+            > span {
+                color: $secondary-color;
+            }
+        }
+    }
+
+    > .main-swiper {
+        width: 95%;
+        height: 500px;
+
+        border-radius: 5px;
+    }
+
+    > .main-content {
+        margin: 20px;
+
+        > .main-content-title {
+            text-align: center;
+
+            > h2 {
+                font-family: "Montserrat Alternates", sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                font-style: normal;
+                color: $main-color;
+
+                > span {
+                    color: $secondary-color;
+                }
+            }
+        }
+
+        > .main-accordion-container {
+            width: 100%;
+
+            > .ac {
+                margin: 20px;
+
+                > .ac-header {
+
+                    > .ac-trigger {
+                        font-family: "Montserrat Alternates", sans-serif;
+                        font-weight: 500;
+                        font-size: 20px;
+                        font-style: normal;
+                        color: $main-color;
+                    }
+
+                }
+
+                > .ac-panel {
+
+                    > .ac-text {
+                        margin-left: 10px;
+
+                        font-family: "Comfortaa", sans-serif;
+                        font-weight: 400;
+                        font-size: 16px;
+                        font-style: normal;
+                        color: $main-color;
+
+                        > li {
+                            > a {
+                                text-decoration: underline;
+                                color: $secondary-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        > .ymap-wrapper {
+            display: grid;
+
+            margin: 20px;
+
+            text-align: center;
+
+            > h2 {
+                font-family: "Montserrat Alternates", sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                font-style: normal;
+                color: $main-color;
+
+                margin-bottom: 10px;
+
+                > span {
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+}

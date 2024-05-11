@@ -3,7 +3,7 @@
         <div class="faq-title">
             <h2>Часто задаваемые вопросы</h2>
         </div>
-        <div class="accordion-container">
+        <div class="faq-accordion-container">
             <div class="ac">
                 <h2 class="ac-header">
                     <button type="button" class="ac-trigger">Как разместить свою вакансию на сайте?</button>
@@ -76,21 +76,13 @@
 
         <div class="swiper faq-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img
-                        src="{{ asset('images/faq/faq-photo-1.jpg') }}"
-                        alt="">
-                </div>
-                <div class="swiper-slide">
-                    <img
-                        src="{{ asset('images/faq/faq-photo-2.jpg') }}"
-                        alt="">
-                </div>
-                <div class="swiper-slide">
-                    <img
-                        src="{{ asset('images/faq/faq-photo-3.jpg') }}"
-                        alt="">
-                </div>
+                @foreach($faqPhotosPaths as $faqPhotoPath)
+                    <div class="swiper-slide">
+                        <img
+                            src="{{ asset('images/' . $faqPhotoPath) }}"
+                            alt="">
+                    </div>
+                @endforeach
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>

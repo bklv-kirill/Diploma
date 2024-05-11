@@ -16,7 +16,7 @@ $(document).ready(function () {
             {
                 location: {
                     center: [ymapCoords.geo_lon, ymapCoords.geo_lat],
-                    zoom: 10,
+                    zoom: ymapZoom,
                 }
             },
         );

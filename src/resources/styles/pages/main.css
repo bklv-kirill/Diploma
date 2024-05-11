@@ -1,3 +1,86 @@
-
+.main {
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  max-width: 1200px;
+}
+.main > .main-title {
+  margin: 20px;
+  text-align: center;
+}
+.main > .main-title > h1 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  font-style: normal;
+  color: #4070f4;
+}
+.main > .main-title > h1 > span {
+  color: #e91e63;
+}
+.main > .main-swiper {
+  width: 95%;
+  height: 500px;
+  border-radius: 5px;
+}
+.main > .main-content {
+  margin: 20px;
+}
+.main > .main-content > .main-content-title {
+  text-align: center;
+}
+.main > .main-content > .main-content-title > h2 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #4070f4;
+}
+.main > .main-content > .main-content-title > h2 > span {
+  color: #e91e63;
+}
+.main > .main-content > .main-accordion-container {
+  width: 100%;
+}
+.main > .main-content > .main-accordion-container > .ac {
+  margin: 20px;
+}
+.main > .main-content > .main-accordion-container > .ac > .ac-header > .ac-trigger {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #4070f4;
+}
+.main > .main-content > .main-accordion-container > .ac > .ac-panel > .ac-text {
+  margin-left: 10px;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-style: normal;
+  color: #4070f4;
+}
+.main > .main-content > .main-accordion-container > .ac > .ac-panel > .ac-text > li > a {
+  text-decoration: underline;
+  color: #e91e63;
+}
+.main > .main-content > .ymap-wrapper {
+  display: grid;
+  margin: 20px;
+  text-align: center;
+}
+.main > .main-content > .ymap-wrapper > h2 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  font-style: normal;
+  color: #4070f4;
+  margin-bottom: 10px;
+}
+.main > .main-content > .ymap-wrapper > h2 > span {
+  color: #e91e63;
+}
 
 /*# sourceMappingURL=main.css.map */
