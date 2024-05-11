@@ -6,7 +6,7 @@ $(document).ready(function () {
         $('.applicants-show-more a').detach();
     })
 
-    const applicantsSearchButton = applicantsSearchForm.find('.applicants-search-button');
+    const applicantsSearchButton = applicantsSearchForm.find('.applicants-search-button button');
     const applicantsList = $('.applicants-list');
 
     const applicantsListLoaderHtml = `
