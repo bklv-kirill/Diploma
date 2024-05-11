@@ -15,9 +15,6 @@ class ProfileController extends Controller
         $user = $applicant;
         $isApplicant = true;
 
-        if (!$user->hasRole('Соискатель') || $user->id === auth()->user()->id)
-            return redirect()->route('main');
-
         return view('pages.user.profile', compact('user', 'isApplicant'));
     }
 }

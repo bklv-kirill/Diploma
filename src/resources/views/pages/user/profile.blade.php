@@ -1,4 +1,4 @@
-@php($isApplicant = auth()->user()->id !== $user->id)
+@php($isApplicant = auth()->user()?->id !== $user->id)
 
 <x-main-layout title="Личный кабинет">
 
