@@ -6,9 +6,9 @@ use Illuminate\Console\Command;
 
 class PermissionCreate extends Command
 {
-    protected $signature = 'app:permission-create';
+    protected $signature = 'permissions:create';
 
-    protected $description = 'Command description';
+    protected $description = 'Command for create permission';
 
     public function handle()
     {

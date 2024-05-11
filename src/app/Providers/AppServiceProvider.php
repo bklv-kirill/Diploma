@@ -45,11 +45,5 @@ class AppServiceProvider extends ServiceProvider
 
             return !is_null($user->email_verified_at);
         });
-
-        Blade::if('userIsEmployer', function () {
-            $user = auth()->user();
-
-            return !is_null($user) && !$user->hasRole('Соискатель');
-        });
     }
 }

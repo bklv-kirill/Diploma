@@ -70,7 +70,7 @@
     justify-content: flex-start;
   }
 }
-@media (max-width: 430px) {
+@media (max-width: 410px) {
   .nav-bar {
     justify-content: space-between;
   }

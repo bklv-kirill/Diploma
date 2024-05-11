@@ -7,9 +7,9 @@ use Orchid\Platform\Models\Role;
 
 class RoleCreate extends Command
 {
-    protected $signature = 'app:role-create';
+    protected $signature = 'roles:create';
 
-    protected $description = 'Command description';
+    protected $description = 'Command for create roles';
 
     public function handle()
     {

@@ -49,23 +49,12 @@ class IndexController extends Controller
 
         if (!is_null($currentAuthUserId))
             $applicantService->getApplicantsQueryBuilder()->whereNot('id', $currentAuthUserId);
-        if (!is_null($ageFrom) || !is_null($ageTo))
-            $applicantService->getApplicantsQueryBuilder()->whereNotNull('birthday');
-
+        if (!is_null($ageTo))
+            $applicantService->getApplicantsQueryBuilder()->whereDate('birthday', '>', Carbon::now()->subYear($ageTo));
+        if (!is_null($ageFrom))
+            $applicantService->getApplicantsQueryBuilder()->whereDate('birthday', '<', Carbon::now()->subYear($ageFrom));
 
         $applicantsData = $applicantService->getFilteredApplicants($nextPage);
-
-        if (!is_null($ageFrom)) {
-            $applicantsFilteredByAge = $applicantsData->filter(function (User $applicant) use ($ageFrom) {
-                return Carbon::now()->year - Carbon::make($applicant->birthday)->year > $ageFrom;
-            });
-        }
-
-        if (!is_null($ageTo)) {
-            $applicantsFilteredByAge = $applicantsData->filter(function (User $applicant) use ($ageTo) {
-                return Carbon::now()->year - Carbon::make($applicant->birthday)->year < $ageTo;
-            });
-        }
 
         $applicantsCards = $applicantService->getApplicantsCards(isset($applicantsFilteredByAge) ? $applicantsFilteredByAge : $applicantsData);
 

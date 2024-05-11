@@ -17,6 +17,6 @@ class LoadUserAvatarIfExistsAction
         $uploadAvatar = new File($uploadAvatar, 'images', 'avatar');
         $avatar = $uploadAvatar->load();
 
-        $user->attachment()->syncWithoutDetaching($avatar->id);
+        $user->attachment()->attach($avatar->id);
     }
 }

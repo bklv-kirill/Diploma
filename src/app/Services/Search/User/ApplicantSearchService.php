@@ -52,6 +52,6 @@ class ApplicantSearchService
 
     public function getFilteredApplicants(int $nextPage): LengthAwarePaginator
     {
-        return $this->applicantsQueryBuilder->paginate(1, ['*'], 'applicants', $nextPage);
+        return $this->applicantsQueryBuilder->paginate(5, ['*'], 'applicants', $nextPage);
     }
 }

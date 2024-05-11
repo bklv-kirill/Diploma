@@ -8,6 +8,7 @@
 
     margin: 10px;
     padding: 10px;
+
     background-color: rgba(64, 112, 244, 0.18);
     border-radius: 5px;
 
@@ -61,6 +62,7 @@
 
 
     > .applicants-list-item-info {
+        max-width: 800px;
 
         > .applicant-fio {
             display: flex;
@@ -81,6 +83,17 @@
 
         > div {
             margin: 10px;
+
+            &.applicant-specifications {
+
+                > div:not(:first-child) {
+                    margin-top: 10px;
+                }
+            }
         }
+    }
+
+    @media (max-width: 750px) {
+        justify-content: center;
     }
 }

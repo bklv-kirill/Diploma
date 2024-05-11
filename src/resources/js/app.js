@@ -3,6 +3,7 @@ import './bootstrap';
 import './modals.js';
 import './swiper.js';
 import './fancyapps.js';
+import './accordion.js';
 import './search.js';
 import './map.js';
 
@@ -33,6 +34,7 @@ import '../styles/components/headers/main.scss';
 import '../styles/components/layouts/main.scss';
 
 import '../styles/pages/main.scss';
+import '../styles/pages/faq.scss';
 import '../styles/pages/user/profile.scss';
 import '../styles/pages/user/edit.scss';
 import '../styles/pages/user/password/edit.scss';

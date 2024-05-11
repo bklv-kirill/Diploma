@@ -46,6 +46,9 @@
 .applicants-list-item > .applicant-avatar > a:hover {
   background-color: #3c78ff;
 }
+.applicants-list-item > .applicants-list-item-info {
+  max-width: 800px;
+}
 .applicants-list-item > .applicants-list-item-info > .applicant-fio {
   display: flex;
   align-items: center;
@@ -61,6 +64,14 @@
 }
 .applicants-list-item > .applicants-list-item-info > div {
   margin: 10px;
+}
+.applicants-list-item > .applicants-list-item-info > div.applicant-specifications > div:not(:first-child) {
+  margin-top: 10px;
+}
+@media (max-width: 750px) {
+  .applicants-list-item {
+    justify-content: center;
+  }
 }
 
 /*# sourceMappingURL=card.css.map */

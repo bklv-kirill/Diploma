@@ -33,16 +33,14 @@
             </div>
         </li>
         @php($user = auth()->user())
-        @userIsEmployer
         <li>
             <div>
                 <a @class(['active-page' => request()->routeIs('applicant.index')]) href="{{ route('applicant.index') }}">Соискатели</a>
             </div>
         </li>
-        @enduserIsEmployer
         <li>
             <div>
-                <a href="">F.A.Q.</a>
+                <a @class(['active-page' => request()->routeIs('faq')]) href="{{ route('faq') }}">F.A.Q.</a>
             </div>
         </li>
     </ul>

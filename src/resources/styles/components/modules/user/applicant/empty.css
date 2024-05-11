@@ -4,6 +4,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+  text-align: center;
 }
 .applicants-list-empty > h2 {
   margin: 20px;
