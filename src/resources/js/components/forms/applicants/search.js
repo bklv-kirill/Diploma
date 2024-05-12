@@ -9,6 +9,8 @@ $(document).ready(function () {
     const applicantsSearchButton = applicantsSearchForm.find('.applicants-search-button button');
     const applicantsList = $('.applicants-list');
 
+    const applicantsSortButtons = $('.applicants-sort-button');
+
     const applicantsListLoaderHtml = `
         <div class="applicants-list-loader">
             <div class="sk-grid">
@@ -29,41 +31,33 @@ $(document).ready(function () {
         </div>`;
 
     applicantsSearchButton.on('click', applicantsSearchButtonCallback);
+    applicantsSortButtons.on('click', applicantsSortButtonsCallback);
     applicantsSearchButton.click();
+
+    function removeSortingOrderTypeClasses() {
+        applicantsSortButtons.removeClass('desc');
+        applicantsSortButtons.removeClass('asc');
+        applicantsSortButtons.data('type', '')
+    }
+
+    function switchSortingOrderTypeClass(orderType, button) {
+        if (orderType === 'asc') {
+            button.removeClass('desc');
+            button.addClass('asc');
+        } else {
+            button.removeClass('asc');
+            button.addClass('desc');
+        }
+    }
 
     function applicantsSearchButtonCallback(event) {
         event.preventDefault();
 
         const applicantsSearchData = getApplicantsSearchData();
 
-        $.ajax({
-            url: '/api/applicants',
-            method: 'GET',
-            dataType: 'json',
-            data: applicantsSearchData,
-            beforeSend: () => {
-                applicantsList.html('');
+        removeSortingOrderTypeClasses()
 
-                $(this).addClass('submit');
-                $(this).off('click');
-                $(this).on('click', function (event) {
-                    event.preventDefault();
-                });
-
-                applicantsList.append(applicantsListLoaderHtml);
-            },
-        }).then((response) => {
-            $(this).removeClass('submit');
-
-            $(this).on('click', applicantsSearchButtonCallback);
-
-            applicantsList.html(response.html);
-
-            if (response.currentPage !== response.lastPage)
-                addApplicantsListShowMoreCallBack(response);
-        }).fail((error) => {
-            // window.location.reload();
-        });
+        mainApplicantsAjaxRequest(applicantsSearchData);
     }
 
     function applicantsShowMoreCallback(event) {
@@ -73,6 +67,9 @@ $(document).ready(function () {
 
         let applicantsSearchData = getApplicantsSearchData();
         applicantsSearchData.nextPage = $(this).data('next-page');
+
+        applicantsSearchData.orderColumn = applicantsSortButtons.data('order-column') ?? null;
+        applicantsSearchData.orderType = applicantsSortButtons.data('order-type') ?? null;
 
         $.ajax({
             url: '/api/applicants',
@@ -111,12 +108,65 @@ $(document).ready(function () {
         };
     }
 
+    function applicantsSortButtonsCallback() {
+        removeSortingOrderTypeClasses();
+
+        let orderType = $(this).data('order-type');
+        orderType = orderType === 'desc' ? 'asc' : 'desc';
+
+        $(this).data('order-type', orderType);
+
+        switchSortingOrderTypeClass(orderType, $(this));
+
+        const applicantsSearchData = getApplicantsSearchData();
+        applicantsSearchData.orderColumn = $(this).data('order-column');
+        applicantsSearchData.orderType = orderType;
+
+        mainApplicantsAjaxRequest(applicantsSearchData);
+    }
+
     function addApplicantsListShowMoreCallBack(response) {
         applicantsList.append(applicantsListShowMoreHtml);
 
         const applicantsListShowMore = $('.applicants-show-more a');
         applicantsListShowMore.data('next-page', response.currentPage + 1)
         applicantsListShowMore.on('click', applicantsShowMoreCallback);
+    }
+
+    function mainApplicantsAjaxRequest(applicantsSearchData) {
+        $.ajax({
+            url: '/api/applicants',
+            method: 'GET',
+            dataType: 'json',
+            data: applicantsSearchData,
+            beforeSend: () => {
+                applicantsList.html('');
+
+                applicantsSortButtons.addClass('submit');
+                applicantsSortButtons.off('click');
+
+                applicantsSearchButton.addClass('submit');
+                applicantsSearchButton.off('click');
+                applicantsSearchButton.on('click', function (event) {
+                    event.preventDefault();
+                });
+
+                applicantsList.append(applicantsListLoaderHtml);
+            },
+        }).then((response) => {
+            applicantsSearchButton.removeClass('submit');
+            applicantsSortButtons.removeClass('submit');
+
+            applicantsSearchButton.on('click', applicantsSearchButtonCallback);
+            applicantsSortButtons.on('click', applicantsSortButtonsCallback);
+
+            applicantsList.html(response.html);
+
+            if (response.currentPage !== response.lastPage)
+                addApplicantsListShowMoreCallBack(response);
+        }).fail((error) => {
+            // window.location.reload();
+        });
     }
 
     function getFormData(key, formData, isArray = false) {

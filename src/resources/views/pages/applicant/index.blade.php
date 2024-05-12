@@ -1,4 +1,9 @@
 <x-main-layout title="Соискатели">
+    <div class="applicants-filter-sorting">
+        <button class="applicants-sort-button" data-order-column="salary">По зарплате</button>
+        <button class="applicants-sort-button" data-order-column="birthday">По возрасту</button>
+    </div>
+
     <div class="applicants">
         <div class="applicants-filter-container">
             <div class="applicants-filter">
@@ -62,7 +67,7 @@
                         <div>
                             <input type="checkbox" name="education[]" id="collages"
                                    value="collages">
-                            <label for="collages">Среднее</label>
+                            <label for="collages">Среднее профессиональное</label>
                         </div>
                     </div>
 

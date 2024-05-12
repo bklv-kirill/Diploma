@@ -29,6 +29,8 @@ class IndexController extends Controller
         $salaryFrom = $applicantsSearchData['salaryFrom'];
         $salaryTo = $applicantsSearchData['salaryTo'];
         $currentAuthUserId = $applicantsSearchData['currentAuthUserId'];
+        $orderColumn = $applicantsSearchData['orderColumn'] ?? null;
+        $orderType = $applicantsSearchData['orderType'] ?? null;
         $nextPage = $applicantsSearchData['nextPage'] ?? 1;
 
         $applicantService = new ApplicantSearchService(User::applicants());
@@ -53,6 +55,9 @@ class IndexController extends Controller
             $applicantService->getApplicantsQueryBuilder()->whereDate('birthday', '>', Carbon::now()->subYear($ageTo));
         if (!is_null($ageFrom))
             $applicantService->getApplicantsQueryBuilder()->whereDate('birthday', '<', Carbon::now()->subYear($ageFrom));
+        if (!is_null($orderColumn) && !is_null($orderType)) {
+            $applicantService->getApplicantsQueryBuilder()->orderBy($orderColumn, $orderType);
+        }
 
         $applicantsData = $applicantService->getFilteredApplicants($nextPage);
 
