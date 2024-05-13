@@ -81,7 +81,7 @@
                         <input type="hidden" name="current_auth_user_id" value="{{ auth()->user()->id }}">
                     @endauth
                     <div class="applicants-search-button">
-                        <button>Поиск</button>
+                        <button id="test">Поиск</button>
                     </div>
                 </form>
             </div>

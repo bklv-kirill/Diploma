@@ -57,7 +57,7 @@ $(document).ready(function () {
 
         removeSortingOrderTypeClasses()
 
-        mainApplicantsAjaxRequest(applicantsSearchData);
+        sendMainApplicantsAjaxRequest(applicantsSearchData);
     }
 
     function applicantsShowMoreCallback(event) {
@@ -119,10 +119,14 @@ $(document).ready(function () {
         switchSortingOrderTypeClass(orderType, $(this));
 
         const applicantsSearchData = getApplicantsSearchData();
-        applicantsSearchData.orderColumn = $(this).data('order-column');
-        applicantsSearchData.orderType = orderType;
+        applicantsSearchData.order = {'orderColumn': $(this).data('order-column'), 'orderType': orderType};
 
-        mainApplicantsAjaxRequest(applicantsSearchData);
+        if ($(window).width() <= 750)
+            $([document.documentElement, document.body]).animate({
+                scrollTop: applicantsList.offset().top,
+            }, 2200);
+
+        sendMainApplicantsAjaxRequest(applicantsSearchData);
     }
 
     function addApplicantsListShowMoreCallBack(response) {
@@ -133,7 +137,7 @@ $(document).ready(function () {
         applicantsListShowMore.on('click', applicantsShowMoreCallback);
     }
 
-    function mainApplicantsAjaxRequest(applicantsSearchData) {
+    function sendMainApplicantsAjaxRequest(applicantsSearchData) {
         $.ajax({
             url: '/api/applicants',
             method: 'GET',

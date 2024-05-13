@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Filters\Filterable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -19,6 +20,8 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
 
     use Attachable;
+
+    use Filterable;
 
     protected $table = 'users';
 

@@ -30,8 +30,9 @@ class ApplicantRequest extends FormRequest
             'salaryFrom' => ['nullable', 'integer'],
             'salaryTo' => ['nullable', 'integer'],
             'currentAuthUserId' => ['nullable', 'integer'],
-            'orderColumn' => ['nullable', 'string', 'in:salary,birthday'],
-            'orderType' => ['nullable', 'string', 'in:desc,asc'],
+            'order' => ['nullable', 'array'],
+            'order.orderColumn' => ['nullable', 'string', 'in:salary,birthday'],
+            'order.orderType' => ['nullable', 'string', 'in:desc,asc'],
             'nextPage' => ['nullable', 'integer'],
         ];
     }
