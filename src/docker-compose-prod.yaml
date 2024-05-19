@@ -27,7 +27,7 @@ services:
   php:
     build:
       context: ../docker
-      dockerfile: ../docker/php.dockerfile
+      dockerfile: php.dockerfile
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
@@ -35,7 +35,6 @@ services:
     restart: always
     volumes:
       - ./:/var/www/app:delegated
-      - ../conf/php/custom-php.ini:/usr/local/etc/php/conf.d/custom-php.ini:ro
     networks:
       - prod-network
   npm:
