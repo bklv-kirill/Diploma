@@ -11,6 +11,7 @@ use Illuminate\Http\Response;
 
 class IndexController extends Controller
 {
+
     public function __invoke(ApplicantRequest $request): Response
     {
         sleep(1);
@@ -19,17 +20,26 @@ class IndexController extends Controller
 
         $nextPage = $applicantsSearchData['nextPage'] ?? 1;
 
-        $filter = new ApplicantFilter($applicantsSearchData);
-        $applicantsData = User::filter($filter)->paginate(5, ['*'], 'applicants', $nextPage);
+        $filter         = new ApplicantFilter($applicantsSearchData);
+        $applicantsData = User::filter($filter)->paginate(
+            5,
+            ['*'],
+            'applicants',
+            $nextPage
+        );
 
         $builtApplicantsCardsAction = new BuiltApplicantCardsAction();
-        $applicantsCards = $builtApplicantsCardsAction($applicantsData);
+        $applicantsCards            = $builtApplicantsCardsAction(
+            $applicantsData,
+            $applicantsSearchData['search'] ?? null
+        );
 
         return response([
-            'status' => 'success',
-            'html' => $applicantsCards,
+            'status'      => 'success',
+            'html'        => $applicantsCards,
             'currentPage' => $applicantsData->currentPage(),
-            'lastPage' => $applicantsData->lastPage(),
+            'lastPage'    => $applicantsData->lastPage(),
         ], 200);
     }
+
 }

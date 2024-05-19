@@ -8,15 +8,23 @@ use Illuminate\Support\Str;
 
 class ApplicantFilter extends AbstractFilter
 {
+
     public function __construct(array $filterData)
     {
         $filterData['isApplicant'] = true;
 
         foreach ($filterData as $column => $value) {
-            if (is_null($value)) continue;
+            if (is_null($value)) {
+                continue;
+            }
 
             $this->filters[Str::camel($column)] = $value;
         }
+    }
+
+    protected function search(Builder $builder, string $search): Builder
+    {
+        return $builder->where('about', 'LIKE', '%'.$search.'%');
     }
 
     protected function isApplicant(Builder $builder): Builder
@@ -33,20 +41,33 @@ class ApplicantFilter extends AbstractFilter
 
     protected function ageFrom(Builder $builder, int $ageFrom): Builder
     {
-        return $builder->whereDate('birthday', '<', Carbon::now()->subYear($ageFrom));
+        return $builder->whereDate(
+            'birthday',
+            '<',
+            Carbon::now()->subYear($ageFrom)
+        );
     }
 
     protected function ageTo(Builder $builder, int $ageTo): Builder
     {
-        return $builder->whereDate('birthday', '>', Carbon::now()->subYear($ageTo));
+        return $builder->whereDate(
+            'birthday',
+            '>',
+            Carbon::now()->subYear($ageTo)
+        );
     }
 
-    protected function employments(Builder $builder, array $employments): Builder
-    {
+    protected function employments(
+        Builder $builder,
+        array $employments
+    ): Builder {
         foreach ($employments as $employment) {
-            $builder->whereHas('employments', function (Builder $query) use ($employment) {
-                $query->where('employment_id', $employment);
-            });
+            $builder->whereHas(
+                'employments',
+                function (Builder $query) use ($employment) {
+                    $query->where('employment_id', $employment);
+                }
+            );
         }
 
         return $builder;
@@ -55,9 +76,12 @@ class ApplicantFilter extends AbstractFilter
     protected function charts(Builder $builder, array $charts): Builder
     {
         foreach ($charts as $chart) {
-            $builder->whereHas('charts', function (Builder $query) use ($chart) {
-                $query->where('chart_id', $chart);
-            });
+            $builder->whereHas(
+                'charts',
+                function (Builder $query) use ($chart) {
+                    $query->where('chart_id', $chart);
+                }
+            );
         }
 
         return $builder;
@@ -104,13 +128,19 @@ class ApplicantFilter extends AbstractFilter
         return $builder->where('salary', '<=', $salaryTo);
     }
 
-    protected function currentAuthUserId(Builder $builder, int $currentAuthUserId): Builder
-    {
+    protected function currentAuthUserId(
+        Builder $builder,
+        int $currentAuthUserId
+    ): Builder {
         return $builder->where('id', '!=', $currentAuthUserId);
     }
 
     protected function order(Builder $builder, array $orderData): Builder
     {
-        return $builder->orderBy($orderData['orderColumn'], $orderData['orderType']);
+        return $builder->orderBy(
+            $orderData['orderColumn'],
+            $orderData['orderType']
+        );
     }
+
 }

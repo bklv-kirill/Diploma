@@ -16,6 +16,11 @@
                     </div>
 
                     <div class="applicants-filter-item from-to">
+                        <h3>Поиск по описанию</h3>
+                        <input type="text" name="search">
+                    </div>
+
+                    <div class="applicants-filter-item from-to">
                         <h3>Возраст</h3>
                         <input type="number" name="age_from" placeholder="От">
                         <input type="number" name="age_to" placeholder="До">

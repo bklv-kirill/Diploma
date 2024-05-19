@@ -32,7 +32,7 @@
         </div>
         <div class="applicant-about">
             <h3>Обо мне:</h3>
-            <p>- {{ $applicant->about ??  'Информация отсутствует' }}</p>
+            <p>- {!! $applicant->about ??  'Информация отсутствует' !!}</p>
         </div>
         <div class="applicant-education">
             <h3>Образование:</h3>
@@ -53,14 +53,14 @@
         </div>
         <div class="applicant-specifications">
             <x-user-profile-specification specificationTitle="Тип занятости:"
-                                          :specifications="$applicant->employments"/>
+                                          :specifications="$applicant->employments" />
             <x-user-profile-specification specificationTitle="График работы:"
-                                          :specifications="$applicant->charts"/>
+                                          :specifications="$applicant->charts" />
         </div>
     </div>
 
     <div class="applicant-avatar">
-        <x-user-avatar :avatar="$applicant->avatar()" :fullUserName="$applicant->fullName()"/>
+        <x-user-avatar :avatar="$applicant->avatar()" :fullUserName="$applicant->fullName()" />
         <a href="{{ route('applicant.profile', $applicant->id) }}">Открыть профиль</a>
     </div>
 </div>

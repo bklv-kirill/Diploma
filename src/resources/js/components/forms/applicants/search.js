@@ -4,7 +4,7 @@ $(document).ready(function () {
     const applicantsSearchForm = $('.applicants-filter form');
     applicantsSearchForm.on('change', function () {
         $('.applicants-show-more a').detach();
-    })
+    });
 
     const applicantsSearchButton = applicantsSearchForm.find('.applicants-search-button button');
     const applicantsList = $('.applicants-list');
@@ -37,7 +37,7 @@ $(document).ready(function () {
     function removeSortingOrderTypeClasses() {
         applicantsSortButtons.removeClass('desc');
         applicantsSortButtons.removeClass('asc');
-        applicantsSortButtons.data('type', '')
+        applicantsSortButtons.data('type', '');
     }
 
     function switchSortingOrderTypeClass(orderType, button) {
@@ -53,15 +53,21 @@ $(document).ready(function () {
     function applicantsSearchButtonCallback(event) {
         event.preventDefault();
 
+        applicantsSortButtons.data('order-type', '');
+
         const applicantsSearchData = getApplicantsSearchData();
 
-        removeSortingOrderTypeClasses()
+        removeSortingOrderTypeClasses();
+
+        mobileScroll();
 
         sendMainApplicantsAjaxRequest(applicantsSearchData);
     }
 
     function applicantsShowMoreCallback(event) {
         event.preventDefault();
+
+        disableSearchAndSortControls();
 
         const applicantsListShowMoreContainer = $(this).parent();
 
@@ -77,23 +83,27 @@ $(document).ready(function () {
             dataType: 'json',
             data: applicantsSearchData,
             beforeSend: () => {
-                applicantsListShowMoreContainer.html(applicantsListLoaderHtml)
+                applicantsListShowMoreContainer.html(applicantsListLoaderHtml);
             },
         }).then((response) => {
             $('.applicants-list .applicants-show-more').detach();
 
             applicantsList.append(response.html);
 
-            if (response.currentPage !== response.lastPage)
+            enableSearchAndSortControls();
+
+            if (response.currentPage !== response.lastPage) {
                 addApplicantsListShowMoreCallBack(response);
+            }
         }).fail((error) => {
-            // window.location.reload();
+            window.location.reload();
         });
     }
 
     function getApplicantsSearchData() {
         const applicantsSearchFormData = new FormData(applicantsSearchForm[0]);
         return {
+            'search': getFormData('search', applicantsSearchFormData),
             'cityId': getFormData('city_id', applicantsSearchFormData),
             'ageFrom': getFormData('age_from', applicantsSearchFormData),
             'ageTo': getFormData('age_to', applicantsSearchFormData),
@@ -119,12 +129,9 @@ $(document).ready(function () {
         switchSortingOrderTypeClass(orderType, $(this));
 
         const applicantsSearchData = getApplicantsSearchData();
-        applicantsSearchData.order = {'orderColumn': $(this).data('order-column'), 'orderType': orderType};
+        applicantsSearchData.order = { 'orderColumn': $(this).data('order-column'), 'orderType': orderType };
 
-        if ($(window).width() <= 750)
-            $([document.documentElement, document.body]).animate({
-                scrollTop: applicantsList.offset().top,
-            }, 2200);
+        mobileScroll();
 
         sendMainApplicantsAjaxRequest(applicantsSearchData);
     }
@@ -133,7 +140,7 @@ $(document).ready(function () {
         applicantsList.append(applicantsListShowMoreHtml);
 
         const applicantsListShowMore = $('.applicants-show-more a');
-        applicantsListShowMore.data('next-page', response.currentPage + 1)
+        applicantsListShowMore.data('next-page', response.currentPage + 1);
         applicantsListShowMore.on('click', applicantsShowMoreCallback);
     }
 
@@ -146,31 +153,48 @@ $(document).ready(function () {
             beforeSend: () => {
                 applicantsList.html('');
 
-                applicantsSortButtons.addClass('submit');
-                applicantsSortButtons.off('click');
-
-                applicantsSearchButton.addClass('submit');
-                applicantsSearchButton.off('click');
-                applicantsSearchButton.on('click', function (event) {
-                    event.preventDefault();
-                });
+                disableSearchAndSortControls();
 
                 applicantsList.append(applicantsListLoaderHtml);
             },
         }).then((response) => {
-            applicantsSearchButton.removeClass('submit');
-            applicantsSortButtons.removeClass('submit');
-
-            applicantsSearchButton.on('click', applicantsSearchButtonCallback);
-            applicantsSortButtons.on('click', applicantsSortButtonsCallback);
+            enableSearchAndSortControls();
 
             applicantsList.html(response.html);
 
-            if (response.currentPage !== response.lastPage)
+            if (response.currentPage !== response.lastPage) {
                 addApplicantsListShowMoreCallBack(response);
+            }
         }).fail((error) => {
-            // window.location.reload();
+            window.location.reload();
         });
+    }
+
+    function disableSearchAndSortControls() {
+        applicantsSortButtons.addClass('submit');
+        applicantsSortButtons.off('click');
+
+        applicantsSearchButton.addClass('submit');
+        applicantsSearchButton.off('click');
+        applicantsSearchButton.on('click', function (event) {
+            event.preventDefault();
+        });
+    }
+
+    function enableSearchAndSortControls() {
+        applicantsSearchButton.removeClass('submit');
+        applicantsSortButtons.removeClass('submit');
+
+        applicantsSearchButton.on('click', applicantsSearchButtonCallback);
+        applicantsSortButtons.on('click', applicantsSortButtonsCallback);
+    }
+
+    function mobileScroll() {
+        if ($(window).width() <= 750) {
+            $([document.documentElement, document.body]).animate({
+                scrollTop: applicantsList.offset().top,
+            }, 2200);
+        }
     }
 
     function getFormData(key, formData, isArray = false) {
