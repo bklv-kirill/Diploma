@@ -9,7 +9,7 @@
             <div class="applicants-filter">
                 <form>
                     <div class="applicants-filter-item">
-                        <h3>Город проживания</h3>
+                        <h3>Город</h3>
                         <div class="city-select">
                             <select name="city_id"></select>
                         </div>
@@ -86,7 +86,7 @@
                         <input type="hidden" name="current_auth_user_id" value="{{ auth()->user()->id }}">
                     @endauth
                     <div class="applicants-search-button">
-                        <button id="test">Поиск</button>
+                        <button>Поиск</button>
                     </div>
                 </form>
             </div>

@@ -29,7 +29,7 @@
     <ul class="navigation">
         <li>
             <div>
-                <a href="">Вакансии</a>
+                <a @class(['active-page' => request()->routeIs('vacancy.index')]) href="{{ route('vacancy.index') }}">Вакансии</a>
             </div>
         </li>
         @php($user = auth()->user())

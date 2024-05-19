@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 use App\Orchid\Screens\PlatformScreen;
 use App\Orchid\Screens\Role\RoleEditScreen;
@@ -75,3 +75,16 @@ Route::screen('roles', RoleListScreen::class)
         ->parent('platform.index')
         ->push(__('Roles'), route('platform.systems.roles')));
 
+Route::name('platform.')->group(function () {
+    Route::name('vacancy.')->group(function () {
+        Route::screen('/vacancies',
+            \App\Orchid\Screens\VacancyIndexScreen::class)
+            ->name('index');
+        Route::screen('/vacancies/create',
+            \App\Orchid\Screens\VacancyStoreScreen::class)
+            ->name('store');
+        Route::screen('/vacancies/edit/{vacancy}',
+            \App\Orchid\Screens\VacancyEditScreen::class)
+            ->name('edit');
+    });
+});

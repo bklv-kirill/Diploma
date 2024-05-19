@@ -12,7 +12,7 @@ import './components/forms/modules/fileInput.js';
 import './components/forms/applicants/search.js';
 import './iMask.js';
 
-import 'spinkit/spinkit.css'
+import 'spinkit/spinkit.css';
 
 import '../styles/variables/colors.scss';
 import '../styles/variables/fonts.scss';
@@ -39,3 +39,4 @@ import '../styles/pages/user/profile.scss';
 import '../styles/pages/user/edit.scss';
 import '../styles/pages/user/password/edit.scss';
 import '../styles/pages/applicant/index.scss';
+import '../styles/pages/vacancy/index.scss';
