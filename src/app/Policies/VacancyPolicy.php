@@ -16,7 +16,11 @@ class VacancyPolicy
 
     public function update(User $user, Vacancy $vacancy): bool
     {
-        return $user->id === $vacancy->user_id;
+        return $vacancy->exists
+            ?
+            $user->id === $vacancy->user_id
+            :
+            true;
     }
 
     public function delete(User $user, Vacancy $vacancy): bool {}
