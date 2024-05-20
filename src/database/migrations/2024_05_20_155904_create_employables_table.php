@@ -8,19 +8,16 @@ return new class extends Migration {
 
     public function up(): void
     {
-        Schema::create('employment_vacancy', function (Blueprint $table) {
-            $table->id();
-
+        Schema::create('employables', function (Blueprint $table) {
             $table->foreignIdFor(\App\Models\Employment::class, 'employment_id')
                 ->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(\App\Models\Vacancy::class, 'vacancy_id')
-                ->constrained()->cascadeOnDelete();
+            $table->morphs('employable');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('employment_vacancy');
+        Schema::dropIfExists('employables');
     }
 
 };

@@ -19,6 +19,9 @@ return new class extends Migration {
             $table->foreignIdFor(\App\Models\City::class, 'city_id')
                 ->constrained()->cascadeOnDelete();
 
+            $table->foreignIdFor(\App\Models\User::class, 'user_id')
+                ->constrained()->cascadeOnDelete();
+
             $table->timestamps();
         });
     }

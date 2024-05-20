@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Builder;
 
 trait Filterable
 {
-    public static function filter(AbstractFilter $filter): Builder
-    {
-        return $filter->apply(self::query());
+
+    public static function scopeFilter(
+        Builder $builder,
+        AbstractFilter $filter
+    ): Builder {
+        return $filter->apply($builder);
     }
+
 }

@@ -8,16 +8,17 @@ use App\Models\User;
 
 class UserObserver
 {
+
     public function created(User $user): void
     {
         $user->roles()->attach(2);
 
         auth()->login($user);
 
-        $sendEmailVerificationRabbitMQAction = new SendEmailVerificationRabbitMQAction();
+        $sendEmailVerificationRabbitMQAction
+            = new SendEmailVerificationRabbitMQAction();
         $sendEmailVerificationRabbitMQAction($user->email);
-
-        Telegram::sendMessage(view('components.modules.telegram.user.created', compact(['user']))->render());
+        //        Telegram::sendMessage(view('components.modules.telegram.user.created', compact(['user']))->render());
     }
 
     public function deleted(User $user): void
@@ -28,6 +29,8 @@ class UserObserver
         $user->attachment()->delete();
         $user->attachment()->sync([]);
 
-        Telegram::sendMessage(view('components.modules.telegram.user.deleted', compact(['user']))->render());
+        Telegram::sendMessage(view('components.modules.telegram.user.deleted',
+            compact(['user']))->render());
     }
+
 }

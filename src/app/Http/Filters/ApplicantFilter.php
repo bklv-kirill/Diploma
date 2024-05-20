@@ -4,7 +4,6 @@ namespace App\Http\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
 
 class ApplicantFilter extends AbstractFilter
 {
@@ -13,13 +12,7 @@ class ApplicantFilter extends AbstractFilter
     {
         $filterData['isApplicant'] = true;
 
-        foreach ($filterData as $column => $value) {
-            if (is_null($value)) {
-                continue;
-            }
-
-            $this->filters[Str::camel($column)] = $value;
-        }
+        parent::__construct($filterData);
     }
 
     protected function search(Builder $builder, string $search): Builder
@@ -29,9 +22,7 @@ class ApplicantFilter extends AbstractFilter
 
     protected function isApplicant(Builder $builder): Builder
     {
-        return $builder->whereHas('roles', function (Builder $query) {
-            $query->where('name', 'Соискатель');
-        });
+        return $builder->applicants();
     }
 
     protected function cityId(Builder $builder, int $cityId): Builder

@@ -3,10 +3,23 @@
 namespace App\Http\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 abstract class AbstractFilter
 {
+
     protected array $filters = [];
+
+    public function __construct(array $filterData)
+    {
+        foreach ($filterData as $column => $value) {
+            if (is_null($value)) {
+                continue;
+            }
+
+            $this->filters[Str::camel($column)] = $value;
+        }
+    }
 
     public function apply(Builder $builder): Builder
     {
@@ -18,4 +31,5 @@ abstract class AbstractFilter
 
         return $builder;
     }
+
 }

@@ -22,6 +22,7 @@ class PlatformProvider extends OrchidServiceProvider
         return [
             Menu::make('Вакансии')
                 ->icon('list')
+                ->permission('vacancy.create')
                 ->route('platform.vacancy.index'),
 
             Menu::make(__('Users'))

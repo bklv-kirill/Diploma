@@ -8,19 +8,16 @@ return new class extends Migration {
 
     public function up(): void
     {
-        Schema::create('hard_vacancy', function (Blueprint $table) {
-            $table->id();
-
+        Schema::create('hardables', function (Blueprint $table) {
             $table->foreignIdFor(\App\Models\Hard::class, 'hard_id')
                 ->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(\App\Models\Vacancy::class, 'vacancy_id')
-                ->constrained()->cascadeOnDelete();
+            $table->morphs('hardable');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('hard_vacancy');
+        Schema::dropIfExists('hardables');
     }
 
 };

@@ -80,10 +80,7 @@ Route::name('platform.')->group(function () {
         Route::screen('/vacancies',
             \App\Orchid\Screens\VacancyIndexScreen::class)
             ->name('index');
-        Route::screen('/vacancies/create',
-            \App\Orchid\Screens\VacancyStoreScreen::class)
-            ->name('store');
-        Route::screen('/vacancies/edit/{vacancy}',
+        Route::screen('/vacancy/{vacancy?}',
             \App\Orchid\Screens\VacancyEditScreen::class)
             ->name('edit');
     });
