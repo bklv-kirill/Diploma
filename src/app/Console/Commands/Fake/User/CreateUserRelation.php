@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands\Fake\User;
 
+use App\Models\Chart;
 use App\Models\Collage;
+use App\Models\Employment;
 use App\Models\Hard;
 use App\Models\Soft;
 use App\Models\University;
@@ -43,6 +45,18 @@ class CreateUserRelation extends Command
                 $hard = Hard::query()->inRandomOrder()->first();
 
                 $user->hards()->attach($hard->id);
+            }
+
+            if ((bool)rand(0, 1)) {
+                $employment = Employment::query()->inRandomOrder()->first();
+
+                $user->employments()->attach($employment->id);
+            }
+
+            if ((bool)rand(0, 1)) {
+                $chart = Chart::query()->inRandomOrder()->first();
+
+                $user->charts()->attach($chart->id);
             }
         });
 
