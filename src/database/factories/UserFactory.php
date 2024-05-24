@@ -22,16 +22,16 @@ class UserFactory extends Factory
 
         return [
             'first_name'        => $this->faker->firstName([
-                'male',
                 'female',
+                'male',
             ][$gender]),
             'second_name'       => $this->faker->lastName([
-                'male',
                 'female',
+                'male',
             ][$gender]),
             'patronymic'        => $this->faker->lastName([
-                'male',
                 'female',
+                'male',
             ][$gender]),
             'gender'            => $gender,
             'birthday'          => $birthday,
