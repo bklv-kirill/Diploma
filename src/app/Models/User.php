@@ -129,8 +129,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function employments(): MorphToMany
     {
-        return $this->morphToMany(Employment::class, 'employable',
-            'employables');
+        return $this->morphToMany(Employment::class, 'employmentable',
+            'employmentables');
     }
 
     public function charts(): MorphToMany
