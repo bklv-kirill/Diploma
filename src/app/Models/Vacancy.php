@@ -37,22 +37,23 @@ class Vacancy extends Model
 
     public function employments(): MorphToMany
     {
-        return $this->morphToMany(Employment::class, 'employable');
+        return $this->morphToMany(Employment::class, 'employmentable',
+            'employmentables');
     }
 
     public function charts(): MorphToMany
     {
-        return $this->morphToMany(Chart::class, 'chartable');
+        return $this->morphToMany(Chart::class, 'chartable', 'chartables');
     }
 
     public function softs(): MorphToMany
     {
-        return $this->morphToMany(Soft::class, 'softable');
+        return $this->morphToMany(Soft::class, 'softable', 'softables');
     }
 
     public function hards(): MorphToMany
     {
-        return $this->morphToMany(Hard::class, 'hardable');
+        return $this->morphToMany(Hard::class, 'hardable', 'hardables');
     }
 
     public function owner(): BelongsTo
