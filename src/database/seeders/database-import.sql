@@ -8274,9 +8274,7 @@ VALUES (237, 'Арсений', 'Константинов', 'Муравьёв', 1
         '$2y$12$is9XnekwBXcZm13HJJEk6utJK42hGGbfW.YeOw2qSc0wdTNsf2fF.', 1, NULL, '2024-05-24 20:44:35',
         '2024-05-24 20:44:35', NULL);
 INSERT INTO `role_users` (`user_id`, `role_id`)
-VALUES (1, 1),
-       (1, 2),
-       (2, 2),
+VALUES (2, 2),
        (3, 2),
        (4, 2),
        (5, 2),
