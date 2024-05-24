@@ -58,6 +58,12 @@ class CreateUserRelation extends Command
 
                 $user->charts()->attach($chart->id);
             }
+
+            $employment = Employment::query()->inRandomOrder()->first();
+            $chart      = Chart::query()->inRandomOrder()->first();
+
+            $user->employments()->attach($employment->id);
+            $user->charts()->attach($chart->id);
         });
 
         dd('User relations have been created');
