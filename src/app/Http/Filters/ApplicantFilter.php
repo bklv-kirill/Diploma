@@ -15,9 +15,11 @@ class ApplicantFilter extends AbstractFilter
         parent::__construct($filterData);
     }
 
-    protected function search(Builder $builder, string $search): Builder
-    {
-        return $builder->where('about', 'LIKE', '%'.$search.'%');
+    protected function searchDescription(
+        Builder $builder,
+        string $searchDescription
+    ): Builder {
+        return $builder->where('about', 'LIKE', '%'.$searchDescription.'%');
     }
 
     protected function isApplicant(Builder $builder): Builder

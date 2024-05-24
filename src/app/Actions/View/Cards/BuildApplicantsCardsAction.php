@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 
-class BuiltApplicantCardsAction
+class BuildApplicantsCardsAction
 {
 
     public function __invoke(
@@ -17,7 +17,7 @@ class BuiltApplicantCardsAction
 
         if ($applicants->isEmpty()) {
             $applicantsCards
-                = view('components.modules.user.applicant.empty')->render();
+                = view('components.forms.empty')->render();
         }
 
         foreach ($applicants as $applicant) {
@@ -31,7 +31,7 @@ class BuiltApplicantCardsAction
                 );
             }
             $applicantsCards .= view(
-                'components.modules.user.applicant.card',
+                'components.modules.pages.applicant.card',
                 compact(['applicant'])
             )->render();
         }

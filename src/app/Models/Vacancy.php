@@ -6,6 +6,7 @@ use App\Traits\Filters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Orchid\Screen\AsSource;
 
@@ -22,7 +23,7 @@ class Vacancy extends Model
     protected $fillable
         = [
             'title',
-            'about',
+            'description',
             'salary_from',
             'salary_to',
             'city_id',
@@ -52,6 +53,17 @@ class Vacancy extends Model
     public function hards(): MorphToMany
     {
         return $this->morphToMany(Hard::class, 'hardable');
+    }
+
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function responses(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'responses', 'vacancy_id',
+            'user_id');
     }
 
 }

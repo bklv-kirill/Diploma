@@ -18,7 +18,9 @@ class UserObserver
         $sendEmailVerificationRabbitMQAction
             = new SendEmailVerificationRabbitMQAction();
         $sendEmailVerificationRabbitMQAction($user->email);
-        //        Telegram::sendMessage(view('components.modules.telegram.user.created', compact(['user']))->render());
+        
+        Telegram::sendMessage(view('components.modules.telegram.user.created',
+            compact(['user']))->render());
     }
 
     public function deleted(User $user): void

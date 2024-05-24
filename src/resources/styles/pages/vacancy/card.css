@@ -1,0 +1,74 @@
+.vacancy-list-item {
+  margin: 10px;
+  padding: 10px;
+  background-color: rgba(64, 112, 244, 0.18);
+  border-radius: 5px;
+}
+.vacancy-list-item > .vacancy-item, .vacancy-list-item > .vacancy-accordion-container {
+  margin: 10px;
+}
+.vacancy-list-item > .vacancy-item h3, .vacancy-list-item > .vacancy-accordion-container h3 {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  font-style: normal;
+  color: #4070f4;
+}
+.vacancy-list-item > .vacancy-item li, .vacancy-list-item > .vacancy-item p, .vacancy-list-item > .vacancy-accordion-container li, .vacancy-list-item > .vacancy-accordion-container p {
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  font-style: normal;
+  color: #4070f4;
+}
+.vacancy-list-item > .vacancy-item > .ac, .vacancy-list-item > .vacancy-accordion-container > .ac {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.vacancy-list-item > .vacancy-item > .ac > .ac-header > .ac-trigger, .vacancy-list-item > .vacancy-accordion-container > .ac > .ac-header > .ac-trigger {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  font-style: normal;
+  color: #4070f4;
+}
+.vacancy-list-item > .response-button {
+  margin: 10px;
+  padding: 5px 10px;
+  background-color: #4070f4;
+  border-radius: 5px;
+  text-align: center;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  font-style: normal;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+.vacancy-list-item > .response-button:hover {
+  background-color: #3c78ff;
+}
+.vacancy-list-item > .response-button.respond-process {
+  cursor: wait;
+  background-color: rgba(64, 112, 244, 0.4);
+}
+.vacancy-list-item > .response-button.reject-process {
+  cursor: wait;
+  background-color: rgba(233, 30, 99, 0.4);
+}
+.vacancy-list-item > .response-button.responded {
+  background-color: #e91e63;
+}
+.vacancy-list-item > .response-button.owned {
+  cursor: not-allowed;
+  background-color: #00bd04;
+}
+.vacancy-list-item > .vacancy-owned {
+  margin: 10px;
+  font-family: "Comfortaa", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  font-style: normal;
+  color: #00bd04;
+}
+
+/*# sourceMappingURL=card.css.map */

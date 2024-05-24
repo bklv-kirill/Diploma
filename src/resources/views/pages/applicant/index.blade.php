@@ -1,32 +1,32 @@
 <x-main-layout title="Соискатели">
-    <div class="applicants-filter-sorting">
-        <button class="applicants-sort-button" data-order-column="salary">По зарплате</button>
-        <button class="applicants-sort-button" data-order-column="birthday">По возрасту</button>
+    <div class="filter-sorting">
+        <button class="sort-button" data-order-column="salary">По зарплате</button>
+        <button class="sort-button" data-order-column="birthday">По возрасту</button>
     </div>
 
     <div class="applicants">
-        <div class="applicants-filter-container">
-            <div class="applicants-filter">
+        <div class="filter-container">
+            <div class="filter">
                 <form>
-                    <div class="applicants-filter-item">
+                    <div class="filter-item">
                         <h3>Город</h3>
                         <div class="city-select">
                             <select name="city_id"></select>
                         </div>
                     </div>
 
-                    <div class="applicants-filter-item from-to">
+                    <div class="filter-item from-to">
                         <h3>Поиск по описанию</h3>
-                        <input type="text" name="search">
+                        <input type="text" name="search_description">
                     </div>
 
-                    <div class="applicants-filter-item from-to">
+                    <div class="filter-item from-to">
                         <h3>Возраст</h3>
                         <input type="number" name="age_from" placeholder="От">
                         <input type="number" name="age_to" placeholder="До">
                     </div>
 
-                    <div class="applicants-filter-item select">
+                    <div class="filter-item select">
                         <h3>Тип занятости</h3>
                         @foreach($employments as $employment)
                             <div>
@@ -37,7 +37,7 @@
                         @endforeach
                     </div>
 
-                    <div class="applicants-filter-item select">
+                    <div class="filter-item select">
                         <h3>График работы</h3>
                         @foreach($charts as $chart)
                             <div>
@@ -48,21 +48,21 @@
                         @endforeach
                     </div>
 
-                    <div class="applicants-filter-item">
+                    <div class="filter-item">
                         <h3>Гибкие навыки</h3>
                         <div class="softs">
                             <select name="softs[]" multiple></select>
                         </div>
                     </div>
 
-                    <div class="applicants-filter-item">
+                    <div class="filter-item">
                         <h3>Профессиональные навыки</h3>
                         <div class="hards">
                             <select name="hards[]" multiple></select>
                         </div>
                     </div>
 
-                    <div class="applicants-filter-item select">
+                    <div class="filter-item select">
                         <h3>Образование</h3>
                         <div>
                             <input type="checkbox" name="education[]" id="universities"
@@ -76,23 +76,23 @@
                         </div>
                     </div>
 
-                    <div class="applicants-filter-item from-to">
+                    <div class="filter-item from-to">
                         <h3>Желаемая зарплата</h3>
                         <input type="number" name="salary_from" placeholder="От">
                         <input type="number" name="salary_to" placeholder="До">
                     </div>
 
                     @auth
-                        <input type="hidden" name="current_auth_user_id" value="{{ auth()->user()->id }}">
+                        <input type="hidden" id="currentAuthUserId" name="current_auth_user_id" value="{{ auth()->user()?->id }}">
                     @endauth
-                    <div class="applicants-search-button">
+                    <div class="search-button">
                         <button>Поиск</button>
                     </div>
                 </form>
             </div>
         </div>
 
-        <div class="applicants-list">
+        <div class="list">
         </div>
     </div>
 </x-main-layout>

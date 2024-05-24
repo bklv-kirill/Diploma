@@ -95,7 +95,7 @@
                 <div class="ymap-container"></div>
             </div>
             <script>
-                let ymapCoords = {'geo_lat': 57.1522, 'geo_lon': 65.5272};
+                let ymapCoords = { 'geo_lat': 57.1522, 'geo_lon': 65.5272 };
                 let ymapZoom = 3;
             </script>
         </div>

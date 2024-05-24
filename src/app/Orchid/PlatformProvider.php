@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace App\Orchid;
 
+use Illuminate\Support\Facades\Gate;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
@@ -22,8 +23,13 @@ class PlatformProvider extends OrchidServiceProvider
         return [
             Menu::make('Вакансии')
                 ->icon('list')
-                ->permission('vacancy.create')
+                ->canSee(Gate::allows('is-admin'))
                 ->route('platform.vacancy.index'),
+
+            Menu::make('Мои вакансии')
+                ->icon('list')
+                ->canSee(Gate::allows('is-employment'))
+                ->route('platform.vacancy.my-vacancies-index'),
 
             Menu::make(__('Users'))
                 ->icon('bs.people')

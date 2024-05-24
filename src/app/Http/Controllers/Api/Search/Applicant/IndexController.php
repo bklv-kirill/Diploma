@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Api\Search\Applicant;
 
-use App\Actions\View\Cards\BuiltApplicantCardsAction;
+use App\Actions\View\Cards\BuildApplicantsCardsAction;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\ApplicantFilter;
-use App\Http\Requests\Api\Search\ApplicantRequest;
+use App\Http\Requests\Api\Search\SearchRequest;
 use App\Models\User;
 use Illuminate\Http\Response;
 
 class IndexController extends Controller
 {
 
-    public function __invoke(ApplicantRequest $request): Response
+    public function __invoke(SearchRequest $request): Response
     {
         sleep(1);
 
@@ -28,8 +28,8 @@ class IndexController extends Controller
             $nextPage
         );
 
-        $builtApplicantsCardsAction = new BuiltApplicantCardsAction();
-        $applicantsCards            = $builtApplicantsCardsAction(
+        $buildApplicantsCardsAction = new BuildApplicantsCardsAction();
+        $applicantsCards            = $buildApplicantsCardsAction(
             $applicantsData,
             $applicantsSearchData['search'] ?? null
         );

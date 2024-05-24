@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Models\Vacancy;
+use Illuminate\Support\Facades\Gate;
 
 class VacancyPolicy
 {
@@ -16,11 +17,13 @@ class VacancyPolicy
 
     public function update(User $user, Vacancy $vacancy): bool
     {
-        return $vacancy->exists
-            ?
-            $user->id === $vacancy->user_id
-            :
-            true;
+        if (Gate::allows('is-admin')) {
+            return true;
+        } elseif (Gate::allows('is-employment')) {
+            return ! $vacancy->exists || $user->id === $vacancy->user_id;
+        }
+
+        return false;
     }
 
     public function delete(User $user, Vacancy $vacancy): bool {}

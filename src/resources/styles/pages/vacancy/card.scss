@@ -1,0 +1,94 @@
+@import '../../variables/colors';
+
+.vacancy-list-item {
+    margin: 10px;
+    padding: 10px;
+
+    background-color: rgba(64, 112, 244, 0.18);
+    border-radius: 5px;
+
+    > .vacancy-item, > .vacancy-accordion-container {
+        margin: 10px;
+
+        h3 {
+            font-family: "Montserrat Alternates", sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            font-style: normal;
+            color: $main-color;
+        }
+
+        li, p {
+            font-family: "Comfortaa", sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            font-style: normal;
+            color: $main-color;
+        }
+
+        > .ac {
+            background-color: rgba(255, 255, 255, 0.5);
+
+            > .ac-header {
+
+                > .ac-trigger {
+                    font-family: "Montserrat Alternates", sans-serif;
+                    font-weight: 500;
+                    font-size: 18px;
+                    font-style: normal;
+                    color: $main-color;
+                }
+            }
+        }
+    }
+
+    > .response-button {
+        margin: 10px;
+        padding: 5px 10px;
+
+        background-color: $main-color;
+        border-radius: 5px;
+
+        text-align: center;
+        font-family: "Montserrat Alternates", sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        font-style: normal;
+        color: #fff;
+
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: $main-hover-color;
+        }
+
+        &.respond-process {
+            cursor: wait;
+            background-color: rgba(64, 112, 244, 0.4);
+        }
+
+        &.reject-process {
+            cursor: wait;
+            background-color: rgba(233, 30, 99, 0.4);
+        }
+
+        &.responded {
+            background-color: $secondary-color;
+        }
+
+        &.owned {
+            cursor: not-allowed;
+            background-color: #00bd04;
+        }
+    }
+
+    > .vacancy-owned {
+        margin: 10px;
+
+        font-family: "Comfortaa", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        font-style: normal;
+        color: #00bd04;
+    }
+}

@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\Vacancy;
 
-use App\Http\Filters\VacancyFilter;
+use App\Http\Filters\OrchidVacancyFilter;
 use App\Models\City;
 use App\Models\Vacancy;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
@@ -18,20 +17,15 @@ use Orchid\Screen\Screen;
 use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
 
-class VacancyIndexScreen extends Screen
+class MyVacancyIndexScreen extends Screen
 {
-
-    public function permission(): ?iterable
-    {
-        return [
-            'vacancy.create',
-        ];
-    }
 
     public function query(Request $request): iterable
     {
-        $filter    = new VacancyFilter($request->get('filter', []));
-        $vacancies = Vacancy::filter($filter)->paginate(20);
+        $filter    = new OrchidVacancyFilter($request->get('filter', []));
+        $vacancies = Vacancy::filter($filter)
+            ->where('user_id', auth()->user()->id)
+            ->paginate(20);
 
         return [
             'vacancies' => $vacancies,
@@ -40,7 +34,7 @@ class VacancyIndexScreen extends Screen
 
     public function name(): ?string
     {
-        return 'Вакансии';
+        return 'Мои вакансии';
     }
 
     public function commandBar(): iterable
@@ -55,8 +49,6 @@ class VacancyIndexScreen extends Screen
     public function delete(Request $request): RedirectResponse
     {
         $vacancy = Vacancy::query()->find($request->get('vacancyId'));
-
-        abort_if(Gate::denies('update', $vacancy), 403);
 
         $vacancy->delete();
 

@@ -78,10 +78,17 @@ Route::screen('roles', RoleListScreen::class)
 Route::name('platform.')->group(function () {
     Route::name('vacancy.')->group(function () {
         Route::screen('/vacancies',
-            \App\Orchid\Screens\VacancyIndexScreen::class)
+            \App\Orchid\Screens\Vacancy\VacancyIndexScreen::class)
+            ->middleware('is-admin')
             ->name('index');
-        Route::screen('/vacancy/{vacancy?}',
-            \App\Orchid\Screens\VacancyEditScreen::class)
-            ->name('edit');
+
+        Route::middleware('is-employment')->group(function () {
+            Route::screen('/my-vacancies',
+                \App\Orchid\Screens\Vacancy\MyVacancyIndexScreen::class)
+                ->name('my-vacancies-index');
+            Route::screen('/vacancy/{vacancy?}',
+                \App\Orchid\Screens\Vacancy\VacancyEditScreen::class)
+                ->name('edit');
+        });
     });
 });

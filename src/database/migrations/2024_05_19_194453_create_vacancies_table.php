@@ -12,9 +12,9 @@ return new class extends Migration {
             $table->id();
 
             $table->string('title');
-            $table->text('about');
-            $table->unsignedInteger('salary_from');
-            $table->unsignedInteger('salary_to');
+            $table->text('description');
+            $table->unsignedBigInteger('salary_from');
+            $table->unsignedBigInteger('salary_to');
 
             $table->foreignIdFor(\App\Models\City::class, 'city_id')
                 ->constrained()->cascadeOnDelete();

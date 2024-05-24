@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   nginx:
-    image: nginx:stable-alpine
+    image: nginx
     container_name: nginx-container
     expose:
       - 80/tcp
@@ -19,6 +19,7 @@ services:
       - rabbitmq
     networks:
       - dev-network
+
   php:
     build:
       context: ../docker/php-dev
@@ -32,6 +33,7 @@ services:
       - ./:/var/www/app:delegated
     networks:
       - dev-network
+
   npm:
     build:
       context: ../docker
@@ -41,6 +43,7 @@ services:
       - ./:/var/www/app
     networks:
       - dev-network
+
   mysql:
     image: mysql
     container_name: mysql-container
@@ -60,6 +63,7 @@ services:
       - phpmyadmin
     networks:
       - dev-network
+
   redis:
     image: redis
     container_name: redis-container
@@ -68,8 +72,11 @@ services:
     ports:
       - 6379:6379
     restart: always
+    depends_on:
+      - redisinsight
     networks:
       - dev-network
+
   rabbitmq:
     image: rabbitmq:3.13.1-management
     container_name: rabbitmq-container
@@ -88,6 +95,7 @@ services:
       - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log_levels [{connection,error},{default,error}] disk_free_limit 2147483648
     networks:
       - dev-network
+
   phpmyadmin:
     image: phpmyadmin
     container_name: phpmyadmin-container
@@ -99,6 +107,16 @@ services:
     environment:
       - PMA_HOST=${DB_HOST}
       - PMA_PORT=${DB_PORT}
+    networks:
+      - dev-network
+
+  redisinsight:
+    image: redislabs/redisinsight
+    container_name: redisinsight-container
+    expose:
+      - 5000/tcp
+    ports:
+      - 8082:5540
     networks:
       - dev-network
 

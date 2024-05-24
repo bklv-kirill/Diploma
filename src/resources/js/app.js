@@ -8,8 +8,9 @@ import './search.js';
 import './ymap.js';
 
 import './components/navbar.js';
+import './components/scrollToTopButton.js';
 import './components/forms/modules/fileInput.js';
-import './components/forms/applicants/search.js';
+import './components/forms/search.js';
 import './iMask.js';
 
 import 'spinkit/spinkit.css';
@@ -24,10 +25,10 @@ import '../styles/components/modals/main.scss';
 import '../styles/components/modals/delete-account-confirmation.scss';
 import '../styles/components/modals/phone-enter.scss';
 import '../styles/components/modules/user/avatar.scss';
-import '../styles/components/modules/user/applicant/card.scss';
-import '../styles/components/modules/user/applicant/empty.scss';
+import '../styles/components/forms/empty.scss';
 
 import '../styles/components/forms/modules/checkbox.scss';
+import '../styles/components/forms/search.scss';
 
 import '../styles/components/headers/main.scss';
 
@@ -39,4 +40,6 @@ import '../styles/pages/user/profile.scss';
 import '../styles/pages/user/edit.scss';
 import '../styles/pages/user/password/edit.scss';
 import '../styles/pages/applicant/index.scss';
+import '../styles/pages/applicant/card.scss';
 import '../styles/pages/vacancy/index.scss';
+import '../styles/pages/vacancy/card.scss';

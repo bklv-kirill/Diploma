@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Actions\User\CheckUserIsApplicantAction;
+use App\Actions\User\CheckUserIsVacancyOwnerAction;
+use App\Models\User;
 use App\Models\Vacancy;
 use App\Policies\VacancyPolicy;
 use Illuminate\Support\Facades\Blade;
@@ -51,11 +54,31 @@ class AppServiceProvider extends ServiceProvider
             \App\View\Components\Modules\Pages\User\Profile\Specification::class);
 
         \App\Models\User::observe(\App\Observers\UserObserver::class);
+        \App\Models\Vacancy::observe(\App\Observers\VacancyObserver::class);
 
         Blade::if('emailVerified', function () {
             $user = auth()->user();
 
             return ! is_null($user->email_verified_at);
+        });
+        Blade::if('userIsApplicant', function (?User $user) {
+            return (new CheckUserIsApplicantAction())($user);
+        });
+        Blade::if('userIsVacancyOwner',
+            function (?User $user, Vacancy $vacancy) {
+                return (new CheckUserIsVacancyOwnerAction())($user, $vacancy);
+            });
+
+        Gate::define('respond-vacancy', function (User $user) {
+            return (new CheckUserIsApplicantAction())($user);
+        });
+
+        Gate::define('is-admin', function (User $user) {
+            return $user->hasRole('Администратор');
+        });
+
+        Gate::define('is-employment', function (User $user) {
+            return $user->hasRole('Работадатель') || Gate::allows('is-admin');
         });
 
         Gate::policy(Vacancy::class, VacancyPolicy::class);

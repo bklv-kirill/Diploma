@@ -154,4 +154,10 @@ class User extends Authenticatable implements MustVerifyEmail
             'role_id');
     }
 
+    public function responses(): BelongsToMany
+    {
+        return $this->belongsToMany(Vacancy::class, 'responses', 'user_id',
+            'vacancy_id');
+    }
+
 }

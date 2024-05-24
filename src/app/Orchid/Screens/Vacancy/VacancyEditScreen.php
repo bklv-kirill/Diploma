@@ -1,22 +1,26 @@
 <?php
 
-namespace App\Orchid\Screens;
+namespace App\Orchid\Screens\Vacancy;
 
 use App\Models\Chart;
 use App\Models\City;
 use App\Models\Employment;
 use App\Models\Hard;
 use App\Models\Soft;
+use App\Models\User;
 use App\Models\Vacancy;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
+use Orchid\Screen\Actions\DropDown;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Select;
-use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Screen;
+use Orchid\Screen\TD;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
@@ -24,13 +28,6 @@ class VacancyEditScreen extends Screen
 {
 
     public $vacancy;
-
-    public function permission(): ?iterable
-    {
-        return [
-            'vacancy.create',
-        ];
-    }
 
     public function query(Vacancy $vacancy): iterable
     {
@@ -63,6 +60,7 @@ class VacancyEditScreen extends Screen
             Button::make('Удалить')
                 ->icon('trash')
                 ->method('delete')
+                ->confirm('Вы действительно хотите удалить вакансию?')
                 ->canSee($this->vacancy->exists),
         ];
     }
@@ -77,6 +75,8 @@ class VacancyEditScreen extends Screen
 
         $vacancy->update($vacancyData);
         $this->createManyToMany($vacancy, $vacancyData);
+
+        Toast::success('Вакансия успешно обновлена.');
 
         return redirect()->route('platform.vacancy.edit', $vacancy);
     }
@@ -94,6 +94,8 @@ class VacancyEditScreen extends Screen
 
         $vacancy = Vacancy::query()->create($vacancyData);
         $this->createManyToMany($vacancy, $vacancyData);
+
+        Toast::success('Вакансия успешно создана.');
 
         return redirect()->route('platform.vacancy.index');
     }
@@ -127,14 +129,14 @@ class VacancyEditScreen extends Screen
                 'redirect'    => $redirectBack,
             ];
         }
-        if (Str::length($vacancyData['about']) < 3) {
+        if (Str::length($vacancyData['description']) < 3) {
             Toast::error('Описание вакансии должно содержать минимум 3 символа.');
 
             return [
                 'redirectHas' => true,
                 'redirect'    => $redirectBack,
             ];
-        } elseif (Str::length($vacancyData['about']) > 10000) {
+        } elseif (Str::length($vacancyData['description']) > 10000) {
             Toast::error('Описание вакансии не может быть длиннее 10000 символов.');
 
             return [
@@ -170,7 +172,7 @@ class VacancyEditScreen extends Screen
         return redirect()->back()
             ->withInput([
                 'vacancy.title'       => $vacancyData['title'],
-                'vacancy.about'       => $vacancyData['about'],
+                'vacancy.description' => $vacancyData['description'],
                 'vacancy.salary_from' => $vacancyData['salary_from'],
                 'vacancy.salary_to'   => $vacancyData['salary_to'],
                 'vacancy.employments' => $vacancyData['employments'],
@@ -191,8 +193,7 @@ class VacancyEditScreen extends Screen
                         ->type('text')
                         ->required(),
 
-                    TextArea::make('vacancy.about')
-                        ->rows(10)
+                    Quill::make('vacancy.description')
                         ->title('Описание вакансии')
                         ->required(),
 
@@ -234,6 +235,34 @@ class VacancyEditScreen extends Screen
                         ->empty('Город не выбран')
                         ->required(),
                 ]),
+
+                'Отклики' =>
+                    Layout::table('vacancy.responses', [
+                        TD::make('id', 'Номер'),
+                        TD::make('first_name', 'Имя'),
+                        TD::make('second_name', 'Фамилия'),
+                        TD::make('patronymic', 'Отчество'),
+                        TD::make('birthday', 'Дата рождения')->render(function (
+                            User $applicant
+                        ) {
+                            return $applicant->birthday ??
+                                'Информация отсутствует';
+                        }),
+                        TD::make('actions', 'Действия')
+                            ->alignCenter()
+                            ->width('100px')
+                            ->render(function (User $applicant) {
+                                return DropDown::make()
+                                    ->icon('list')
+                                    ->list([
+                                        Link::make('Открыть профиль')
+                                            ->route('applicant.profile',
+                                                $applicant),
+                                        Button::make('Удалить')
+                                            ->confirm('Вы действительно хотите удалить вакансию?'),
+                                    ]);
+                            }),
+                    ]),
             ]),
         ];
     }

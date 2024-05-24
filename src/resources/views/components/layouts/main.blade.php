@@ -10,11 +10,12 @@
     @vite(['resources/styles/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-<x-nav-bar/>
+<x-nav-bar />
 <div class="main-content">
     {{ $slot }}
 </div>
+<div class="scroll-to-top-button hidden"></div>
 
-<x-footer/>
+<x-footer />
 </body>
 </html>
